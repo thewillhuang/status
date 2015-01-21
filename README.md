@@ -3,16 +3,21 @@ This is our new mvp, as Victor said it, i think it has the lowest path of resist
 
 #what is it
 Every single hospital floor has a bed status board. The purpose of this board is to allow the health care team, that is Doctor, Nurse, Charge Nurese, CNA (certified nurse assistants), unit secretary to know these things:
-*The availibity of each room on the floor.
-*The code status (what to do if this patient is dieing, can we do CPR, or do we DNR -- do not recessitate).
-*The registered nurse responsibile for this patient.
-*The doctor responsible for this patient.
-*The CNA responsible for this patient.
-*The Room number this patient is.
-*What isloations(certain diseases are so bad that they need to be isolated to prevent the spread of infection. ex Tuberculosis)
+<ul>
+<li>The availibity of each room on the floor.</li>
+<li>The code status (what to do if this patient is dieing, can we do CPR, or do we DNR -- do not recessitate).</li>
+<li>The registered nurse responsibile for this patient.</li>
+<li>The doctor responsible for this patient.</li>
+<li>The CNA responsible for this patient.</li>
+<li>The Room number this patient is.</li>
+<li>What isloations(certain diseases are so bad that they need to be isolated to prevent the spread of infection. ex Tuberculosis)</li>
+</ul>
 
 # Goals
-*Replace this hand written bed staus board, with a digital version whos primary function is simplicity. Simple to edit. Clear to understand
-
+<ul>
+  <li>Replace this hand written bed staus board, with a digital version whos primary function is simplicity. Simple to edit. Clear to understand</li>
+</ul>
 #Streach Goals
-*Change some status based on alarms, maybe getting input from some sensor.
+<ul>
+  <li>Change some status based on alarms, maybe getting input from some sensor.</li>
+</ul>
