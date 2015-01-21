@@ -1,0 +1,19 @@
+{
+  "name": "portfolio",
+  "version": "0.0.1",
+  "homepage": "https://github.com/thewillhuang/portfolio",
+  "authors": [
+    "william huang <will.h86@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+  },
+  "devDependencies": {}
+}
