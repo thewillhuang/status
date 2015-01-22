@@ -1,4 +1,114 @@
-[
-  {"author": "Will", "text": "William comment"},
-  {"author": "Kate", "text": "kate comment too"}
-]
+{
+  "MedSurg1":{
+    "100":{
+      "Name":"Jessica Alba",
+      "MD":"Steven Chen",
+      "RN":"Mary",
+      "code":1,
+      "isolation":"C.Diff",
+      "MISC":"colonoscopy",
+      "acuity":3
+    },
+    "101":{
+      "Name":"Michael Jackson",
+      "MD":"Michael Lee",
+      "RN":"Jack",
+      "code":1,
+      "isolation":"TB",
+      "MISC":"",
+      "acuity":5
+    },
+    "102":{
+      "Name":"Leeroy",
+      "MD":"Mario",
+      "RN":"Browser",
+      "code":1,
+      "isolation":"Trolling",
+      "MISC":"WOW",
+      "acuity":4
+    },
+    "103":{
+      "Name":"Jessica Cho",
+      "MD":"William Ma",
+      "RN":"Kate",
+      "code":1,
+      "isolation":"",
+      "MISC":"",
+      "acuity":3
+    },
+    "104":{
+      "Name":"Jessica Alba",
+      "MD":"Steven Chen",
+      "RN":"Mary",
+      "code":1,
+      "isolation":"C.Diff",
+      "MISC":"colonoscopy",
+      "acuity":5
+    },
+    "105":{
+      "Name":"Jessica Alba",
+      "MD":"Steven Chen",
+      "RN":"Mary",
+      "code":1,
+      "isolation":"C.Diff",
+      "MISC":"colonoscopy",
+      "acuity":5
+    }
+  },
+  "Telemetry":{
+    "200":{
+      "Name":"Jessica Alba",
+      "MD":"Steven Chen",
+      "RN":"Mary",
+      "code":1,
+      "isolation":"C.Diff",
+      "MISC":"colonoscopy",
+      "acuity":1
+    },
+    "201":{
+      "Name":"Michael Jackson",
+      "MD":"Michael Lee",
+      "RN":"Jack",
+      "code":1,
+      "isolation":"TB",
+      "MISC":"",
+      "acuity":5
+    },
+    "202":{
+      "Name":"Leeroy",
+      "MD":"Mario",
+      "RN":"Browser",
+      "code":1,
+      "isolation":"Trolling",
+      "MISC":"WOW",
+      "acuity":4
+    },
+    "203":{
+      "Name":"Jessica Cho",
+      "MD":"William Ma",
+      "RN":"Kate",
+      "code":1,
+      "isolation":"",
+      "MISC":"",
+      "acuity":3
+    },
+    "204":{
+      "Name":"Jessica Alba",
+      "MD":"Steven Chen",
+      "RN":"Mary",
+      "code":1,
+      "isolation":"C.Diff",
+      "MISC":"colonoscopy",
+      "acuity":5
+    },
+    "205":{
+      "Name":"Jessica Alba",
+      "MD":"Steven Chen",
+      "RN":"Mary",
+      "code":1,
+      "isolation":"C.Diff",
+      "MISC":"colonoscopy",
+      "acuity":5
+    }
+  }
+}

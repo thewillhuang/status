@@ -1,1 +1,1 @@
-require('./qApp.jsx');
+require('./bedStatusApp.jsx');
