@@ -12,4 +12,5 @@ gulp.task('watch', ['watchify', 'browserSync'], function() {
   gulp.watch(config.images.src, ['images']);
   gulp.watch(config.markup.src, ['markup']);
   gulp.watch(config.copy.src, ['copy']);
+  gulp.watch(config.gulp.src, ['gulp']);
 });

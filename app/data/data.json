@@ -1,114 +1,70 @@
 {
-  "MedSurg1":{
-    "100":{
-      "Name":"Jessica Alba",
-      "MD":"Steven Chen",
-      "RN":"Mary",
-      "code":1,
-      "isolation":"C.Diff",
-      "MISC":"colonoscopy",
-      "acuity":3
+  "MedSurg1":[
+    {
+      "room":100,
+      "ptName": "Jessica Alba",
+      "mdName": "Dr. Paul Liu",
+      "rnName": "Mary",
+      "cnaName": "Jack",
+      "codeStatus": 1,
+      "isolation": "c.diff",
+      "misc": "dc",
+      "acuity": 5
     },
-    "101":{
-      "Name":"Michael Jackson",
-      "MD":"Michael Lee",
-      "RN":"Jack",
-      "code":1,
-      "isolation":"TB",
-      "MISC":"",
-      "acuity":5
+    {
+      "room":101,
+      "ptName": "Jessica Alba",
+      "mdName": "Dr. Paul Liu",
+      "rnName": "Mary",
+      "cnaName": "Jack",
+      "codeStatus": 1,
+      "isolation": "c.diff",
+      "misc": "dc",
+      "acuity": 5
     },
-    "102":{
-      "Name":"Leeroy",
-      "MD":"Mario",
-      "RN":"Browser",
-      "code":1,
-      "isolation":"Trolling",
-      "MISC":"WOW",
-      "acuity":4
+    {
+      "room":102,
+      "ptName": "Jessica Alba",
+      "mdName": "Dr. Paul Liu",
+      "rnName": "Mary",
+      "cnaName": "Jack",
+      "codeStatus": 1,
+      "isolation": "c.diff",
+      "misc": "dc",
+      "acuity": 5
     },
-    "103":{
-      "Name":"Jessica Cho",
-      "MD":"William Ma",
-      "RN":"Kate",
-      "code":1,
-      "isolation":"",
-      "MISC":"",
-      "acuity":3
+    {
+      "room":103,
+      "ptName": "Jessica Alba",
+      "mdName": "Dr. Paul Liu",
+      "rnName": "Mary",
+      "cnaName": "Jack",
+      "codeStatus": 1,
+      "isolation": "c.diff",
+      "misc": "dc",
+      "acuity": 5
     },
-    "104":{
-      "Name":"Jessica Alba",
-      "MD":"Steven Chen",
-      "RN":"Mary",
-      "code":1,
-      "isolation":"C.Diff",
-      "MISC":"colonoscopy",
-      "acuity":5
+    {
+      "room":104,
+      "ptName": "Jessica Alba",
+      "mdName": "Dr. Paul Liu",
+      "rnName": "Mary",
+      "cnaName": "Jack",
+      "codeStatus": 1,
+      "isolation": "c.diff",
+      "misc": "dc",
+      "acuity": 5
     },
-    "105":{
-      "Name":"Jessica Alba",
-      "MD":"Steven Chen",
-      "RN":"Mary",
-      "code":1,
-      "isolation":"C.Diff",
-      "MISC":"colonoscopy",
-      "acuity":5
+    {
+      "room":105,
+      "ptName": "Jessica Alba",
+      "mdName": "Dr. Paul Liu",
+      "rnName": "Mary",
+      "cnaName": "Jack",
+      "codeStatus": 1,
+      "isolation": "c.diff",
+      "misc": "dc",
+      "acuity": 5
     }
-  },
-  "Telemetry":{
-    "200":{
-      "Name":"Jessica Alba",
-      "MD":"Steven Chen",
-      "RN":"Mary",
-      "code":1,
-      "isolation":"C.Diff",
-      "MISC":"colonoscopy",
-      "acuity":1
-    },
-    "201":{
-      "Name":"Michael Jackson",
-      "MD":"Michael Lee",
-      "RN":"Jack",
-      "code":1,
-      "isolation":"TB",
-      "MISC":"",
-      "acuity":5
-    },
-    "202":{
-      "Name":"Leeroy",
-      "MD":"Mario",
-      "RN":"Browser",
-      "code":1,
-      "isolation":"Trolling",
-      "MISC":"WOW",
-      "acuity":4
-    },
-    "203":{
-      "Name":"Jessica Cho",
-      "MD":"William Ma",
-      "RN":"Kate",
-      "code":1,
-      "isolation":"",
-      "MISC":"",
-      "acuity":3
-    },
-    "204":{
-      "Name":"Jessica Alba",
-      "MD":"Steven Chen",
-      "RN":"Mary",
-      "code":1,
-      "isolation":"C.Diff",
-      "MISC":"colonoscopy",
-      "acuity":5
-    },
-    "205":{
-      "Name":"Jessica Alba",
-      "MD":"Steven Chen",
-      "RN":"Mary",
-      "code":1,
-      "isolation":"C.Diff",
-      "MISC":"colonoscopy",
-      "acuity":5
-    }
-  }
+  ]
 }
