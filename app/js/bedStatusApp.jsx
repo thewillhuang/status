@@ -109,7 +109,7 @@ var PatientRow = React.createClass({
     }
     var roomAttribute = roomProperty.map(function(key, index) {
       console.log(roomProperty[index]);
-      <PatientCol roomProperty={roomProperty[index]} />;
+      return (<PatientCol roomProperty={roomProperty[index]} />);
     });
     return (
       <Row>
