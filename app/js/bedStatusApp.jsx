@@ -89,10 +89,9 @@ var MainViewBox = React.createClass({
         <PatientRow room={key} key={index} />
         );
     });
-    console.log(roomData);
     return (
       <Grid>
-      grid{roomData}
+      {roomData}
       </Grid>
     );
   }
@@ -108,13 +107,13 @@ var PatientRow = React.createClass({
       roomProperty.push(this.props.room[roomKey[i]]);
     }
     var roomAttribute = roomProperty.map(function(key, index) {
-      console.log(index, roomProperty[index]);
-      <PatientCol roomProperty={roomProperty[index]} key={index} />;
+      return (
+        <PatientCol roomProperty={roomProperty[index]} key={key} />
+        );
     });
-    console.log(roomAttribute);
     return (
       <Row>
-      row {roomAttribute}
+      {roomAttribute}
       </Row>
     );
   }
@@ -127,9 +126,9 @@ var PatientCol = React.createClass({
 
   render: function() {
     return (
-      <div>
-      div{console.log(this.props.roomProperty)}
-      </div>
+      <Col xs={1} md={1} >
+      {this.props.roomProperty}
+      </Col>
     );
   }
 
