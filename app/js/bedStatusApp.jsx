@@ -4,75 +4,76 @@ var React = require('react');
 var Grid  = require('react-bootstrap/Grid');
 var Col   = require('react-bootstrap/Col');
 var Row   = require('react-bootstrap/Row');
+var Table = require('react-bootstrap/Table');
 // var Time  = require('./displaytime.jsx');
 var data  =
 {
   "MedSurg1":[
     {
-      "room":100,
-      "ptName": "Jessica Alba",
-      "mdName": "Dr. Paul Liu",
-      "rnName": "Mary",
-      "cnaName": "Jack",
-      "codeStatus": 1,
-      "isolation": "c.diff",
-      "misc": "dc",
-      "acuity": 5
+      "Rm":100,
+      "Patient": "Jessica Alba",
+      "Doctor": "Dr. Paul Liu",
+      "Nurse": "Mary",
+      "CNA": "Jack",
+      "Code": 1,
+      "Isolation": "c.diff",
+      "MISC": "dc",
+      "Acuity": 5
     },
     {
-      "room":101,
-      "ptName": "Jessica Alba",
-      "mdName": "Dr. Paul Liu",
-      "rnName": "Mary",
-      "cnaName": "Jack",
-      "codeStatus": 1,
-      "isolation": "c.diff",
-      "misc": "dc",
-      "acuity": 5
+      "Rm":101,
+      "Patient": "Jessica Alba",
+      "Doctor": "Dr. Paul Liu",
+      "Nurse": "Mary",
+      "CNA": "Jack",
+      "Code": 1,
+      "Isolation": "c.diff",
+      "Misc": "dc",
+      "Acuity": 5
     },
     {
-      "room":102,
-      "ptName": "Jessica Alba",
-      "mdName": "Dr. Paul Liu",
-      "rnName": "Mary",
-      "cnaName": "Jack",
-      "codeStatus": 1,
-      "isolation": "c.diff",
-      "misc": "dc",
-      "acuity": 5
+      "Rm":102,
+      "Patient": "Jessica Alba",
+      "Doctor": "Dr. Paul Liu",
+      "Nurse": "Mary",
+      "CNA": "Jack",
+      "Code": 1,
+      "Isolation": "c.diff",
+      "Misc": "dc",
+      "Acuity": 5
     },
     {
-      "room":103,
-      "ptName": "Jessica Alba",
-      "mdName": "Dr. Paul Liu",
-      "rnName": "Mary",
-      "cnaName": "Jack",
-      "codeStatus": 1,
-      "isolation": "c.diff",
-      "misc": "dc",
-      "acuity": 5
+      "Rm":103,
+      "Patient": "Jessica Alba",
+      "Doctor": "Dr. Paul Liu",
+      "Nurse": "Mary",
+      "CNA": "Jack",
+      "Code": 1,
+      "Isolation": "c.diff",
+      "Misc": "dc",
+      "Acuity": 5
     },
     {
-      "room":104,
-      "ptName": "Jessica Alba",
-      "mdName": "Dr. Paul Liu",
-      "rnName": "Mary",
-      "cnaName": "Jack",
-      "codeStatus": 1,
-      "isolation": "c.diff",
-      "misc": "dc",
-      "acuity": 5
+      "Rm":104,
+      "Patient": "Jessica Alba",
+      "Doctor": "Dr. Paul Liu",
+      "Nurse": "Mary",
+      "CNA": "Jack",
+      "Code": 1,
+      "Isolation": "c.diff",
+      "Misc": "dc",
+      "Acuity": 5
     },
     {
-      "room":105,
-      "ptName": "Jessica Alba",
-      "mdName": "Dr. Paul Liu",
-      "rnName": "Mary",
-      "cnaName": "Jack",
-      "codeStatus": 1,
-      "isolation": "c.diff",
-      "misc": "dc",
-      "acuity": 5
+      "Rm":105,
+      "Patient": "Jessica Alba",
+      "Doctor": "Dr. Paul Liu",
+      "Nurse": "Mary",
+      "CNA": "Jack",
+      "Code": 1,
+      "Isolation": "c.diff",
+      "Misc": "dc",
+      "Acuity": 5
     }
   ]
 };
@@ -84,14 +85,31 @@ var MainViewBox = React.createClass({
 
   render: function() {
     var dataKey = Object.keys(this.props.data);
+    var objKey;
+
     var roomData = this.props.data[dataKey[0]].map(function(key, index) {
+      objKey = Object.keys(key);
       return (
         <PatientRow room={key} key={index} />
         );
     });
+
+    var tableHead = objKey.map(function(key, index) {
+      return(
+        <TableHead head={key} key={index} />
+        );
+    });
+
     return (
       <Grid>
-      {roomData}
+        <Row>
+          <Col xs={18} md={12}>
+            <Table striped bordered condensed hover responsive>
+              {tableHead}
+              {roomData}
+            </Table>
+          </Col>
+        </Row>
       </Grid>
     );
   }
@@ -112,23 +130,33 @@ var PatientRow = React.createClass({
         );
     });
     return (
-      <Row>
+      <tr>
       {roomAttribute}
-      </Row>
+      </tr>
     );
   }
 
 });
 
-var React = require('react');
-
 var PatientCol = React.createClass({
 
   render: function() {
     return (
-      <Col xs={1} md={1} >
+      <td>
       {this.props.roomProperty}
-      </Col>
+      </td>
+    );
+  }
+
+});
+
+var TableHead = React.createClass({
+
+  render: function() {
+    return (
+      <th>
+      {this.props.head}
+      </th>
     );
   }
 
