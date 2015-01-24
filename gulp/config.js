@@ -79,5 +79,14 @@ module.exports = {
     opts: {spare:true},
     src: dest + '/*.html',
     dest: dest
+  },
+  nodemon: {
+    script: 'server.js',
+    ignore: [
+      'gulpfile.js',
+      'node_modules/'
+    ],
+    ext: 'js html',
+    env: { 'NODE_ENV': 'development' }
   }
 };
