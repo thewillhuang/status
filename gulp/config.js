@@ -7,19 +7,11 @@ var compression = require('compression');
 module.exports = {
   browserSync: {
     server: {
-
-      // watch the following files; changes will be injected (css & images) or cause browser to refresh
-      files: ['public/**/*.*'],
-
-      // informs browser-sync to proxy our expressjs app which would run at the following location
-      proxy: 'http://localhost:3000',
-
-      // informs browser-sync to use the following port for the proxied app
-      // notice that the default port is 3000, which would clash with our expressjs
-      port: 4000,
-
-      // open the proxied app in chrome
-      browser: ['google chrome']
+      // Serve up our build folder
+      baseDir: dest,
+      middleware: [compression()]
+      // proxy: 'localhost:3000',  // local node app address
+      // port: 4004  // use *different* port than above
     }
   },
   sass: {

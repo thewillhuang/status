@@ -6,7 +6,7 @@ module.exports = {
     description: 'Prototype',
     keywords: 'whiteboard'
   },
-  port: process.env.PORT || 3000,
+  port: process.env.PORT || 8000,
   templateEngine: 'swig',
   sessionSecret: 'JOE',
   sessionCollection: 'sessions',
