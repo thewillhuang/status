@@ -1,32 +1,42 @@
 'use strict';
 
-var compression = require('compression');
-var express     = require('express');
-var app         = express();
-var port        = process.env.PORT || 3000;
-var bodyparser  = require('body-parser');
-var path        = __dirname + '/build/';
-// var mongoose    = require('mongoose');
-// var uriUtil     = require('mongodb-uri');
-// var options     = { server: { socketOptions: { keepAlive: 1, connectTimeoutMS: 30000 } },
-//                     replset: { socketOptions: { keepAlive: 1, connectTimeoutMS: 30000 } } };
-// var mongodbUri  = process.env.MONGOLAB_URI;
-// var mongooseUri = uriUtil.formatMongoose(mongodbUri);
+var init     = require('./config/init')(),
+    config   = require('./config/config'),
+    mongoose = require('mongoose'),
+    chalk    = require('chalk');
 
-// mongoose.connect(process.env.MONGO_URL || mongooseUri || 'mongodb://localhost/q_dev', options);
+// db connection
+var db = mongoose.connect(config.db.uri, config.db.options, function(err) {
+  if (err) {
+    console.error(chalk.red('Could not connect to MongoDB!'));
+    console.log(chalk.red(err));
+  }
+});
+mongoose.connection.on('error', function(err) {
+  console.error(chalk.red('MongoDB connection error: ' + err));
+  process.exit(-1);
+  }
+);
 
-app.use(bodyparser.json());
-app.set('json spaces', 2);
-app.set('etag', 'weak');
-app.use(compression());
-app.use(express.static(path));
+// Init the express application
+var app = require('./config/express')(db);
 
-// app.use(function(req, res, next) {
-//   console.log(req.method, req.url, req.body);
-//   next();
-// });
+// passport config
+require('./config/passport')();
 
-//routes
+// Start the app by listening on <port>
+app.listen(config.port);
 
-app.listen(port);
-console.log('server started at', port);
+// Expose app
+exports = module.exports = app;
+
+// Logging initialization
+console.log('--');
+console.log(chalk.green(config.app.title + ' application started'));
+console.log(chalk.green('Environment:\t\t\t' + process.env.NODE_ENV));
+console.log(chalk.green('Port:\t\t\t\t' + config.port));
+console.log(chalk.green('Database:\t\t\t' + config.db.uri));
+if (process.env.NODE_ENV === 'secure') {
+  console.log(chalk.green('HTTPs:\t\t\t\ton'));
+}
+console.log('--');
