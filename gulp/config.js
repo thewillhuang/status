@@ -68,7 +68,7 @@ module.exports = {
     }]
   },
   production: {
-    cssSrc: dest + '/*.scss',
+    cssSrc: dest + '/*.css',
     jsSrc: dest + '/*.js',
     dest: dest,
     cssOpt: {
