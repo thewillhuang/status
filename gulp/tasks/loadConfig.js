@@ -5,7 +5,7 @@ var applicationJavaScriptFiles,
     applicationCSSFiles,
     applicationTestFiles;
 
- gulp.task('loadConfig', function() {
+gulp.task('loadConfig', function() {
   var init = require('../../config/init')();
   var config = require('../../config/config');
   applicationJavaScriptFiles = config.assets.js;

@@ -91,7 +91,7 @@
     "express": "^4.11.1",
     "express-session": "^1.10.1",
     "forever": "^0.13.0",
-    "glob": "^4.0.5",
+    "glob": "^4.3.5",
     "helmet": "^0.6.0",
     "lodash": "^2.4.1",
     "method-override": "^2.3.1",
@@ -103,6 +103,7 @@
     "passport-local": "^1.0.0",
     "react": "^0.12.2",
     "react-bootstrap": "^0.13.2",
+    "superagent": "^0.21.0",
     "swig": "^1.4.2"
   }
 }

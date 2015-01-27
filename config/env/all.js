@@ -14,7 +14,7 @@ module.exports = {
     path: '/',
     httpOnly: true,
     secure: false,
-    maxAge: null,
+    maxAge: null
     // domain: 'ourdomain.com'
   },
   sessionName: 'connect.sid',
@@ -35,7 +35,7 @@ module.exports = {
       'build/css/*.sass'
     ],
     js: [
-      'build/js/*.js',
+      'build/js/*.js'
     ],
     tests: [
     ]
