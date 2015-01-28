@@ -21,8 +21,8 @@ var Cell = React.createClass({
     this.setState({
       value: this.refs.input.getValue()
     });
-    // _.debounce(this.sendPost, 500).bind(this);
-    this.sendPost();
+    _.debounce(this.sendPost(), 500);
+    // this.sendPost();
   },
 
   sendPost: function() {
