@@ -21,14 +21,14 @@ var Cell = React.createClass({
     this.setState({
       value: event.target.value
     });
-    _.debounce(this.sendPost, 500);
-    // this.sendPost();
+    // _.debounce(this.sendPost(), 500);
+    this.sendPost();
   },
 
   sendPost: function() {
     console.log('sending');
     request
-      .post('/api/update/'+ this.props.room + '/' +  this.state.value)
+      .post('/boards/'+ this.props.room + '/' +  this.props.index + '/' + this.state.value)
       .end(function(error, res){
         console.log(res);
     });
@@ -60,7 +60,7 @@ var PatientRow = React.createClass({
     }
     var roomAttribute = roomProperty.map(function(key, index) {
       return (
-        <Cell roomProperty={roomProperty[index]} key={key} room={roomProperty[0]}/>
+        <Cell roomProperty={roomProperty[index]} key={key} room={roomProperty[0]} index={roomKey[index]} />
         );
     });
     return (
