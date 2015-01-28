@@ -1,6 +1,5 @@
 'use strict';
 var React = require('react');
-// var Grid  = require('react-bootstrap/Grid');
 var Input = require('react-bootstrap/Input');
 var Col   = require('react-bootstrap/Col');
 var Row   = require('react-bootstrap/Row');
@@ -8,7 +7,6 @@ var Table = require('react-bootstrap/Table');
 var data  = require('../data/data.json');
 var request = require('superagent');
 var React = require('react');
-var _ = require('lodash');
 
 var Cell = React.createClass({
   getInitialState: function() {
@@ -17,18 +15,17 @@ var Cell = React.createClass({
     };
   },
 
-  handleChange: function(event) {
+  handleChange: function() {
     this.setState({
-      value: event.target.value
+      value: this.refs.input.getInputDOMNode().value
     });
-    // _.debounce(this.sendPost(), 500);
     this.sendPost();
   },
 
   sendPost: function() {
-    console.log('sending', this.refs.input.getInputDOMNode().value);
+    var value = this.refs.input.getInputDOMNode().value || null;
     request
-      .post('/boards/'+ this.props.room + '/' +  this.props.index + '/' + this.refs.input.getInputDOMNode().value)
+      .post('/boards/'+ this.props.room + '/' +  this.props.index + '/' + value)
       .end(function(error, res){
         console.log(res);
     });
@@ -117,6 +114,6 @@ var MainViewBox = React.createClass({
 
 });
 
-React.render(<MainViewBox data={data.MedSurg1}/>, document.getElementById('reactRoot'));
+React.render(<MainViewBox data={data.MedSurg1} />, document.getElementById('reactRoot'));
 
 module.exports = MainViewBox;
