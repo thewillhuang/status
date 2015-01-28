@@ -7,12 +7,19 @@ module.exports = function(app) {
   // Board Routes
   app.route('/boards')
     .get(boards.list)
-    .post(users.requiresLogin, boards.create);
+    .post(boards.create);
+
+    // temporality comment out login required
+    // .post(users.requiresLogin, boards.create);
 
   app.route('/boards/:boardId')
     .get(boards.read)
-    .put(users.requiresLogin, boards.hasAuthorization, boards.update)
-    .delete(users.requiresLogin, boards.hasAuthorization, boards.delete);
+    .put(boards.update)
+    .delete(boards.delete);
+
+    // temporality comment out login required
+    // .put(users.requiresLogin, boards.hasAuthorization, boards.update)
+    // .delete(users.requiresLogin, boards.hasAuthorization, boards.delete);
 
   // Finish by binding the board middleware
   app.param('boardId', boards.boardByID);
