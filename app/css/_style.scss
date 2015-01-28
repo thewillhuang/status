@@ -1,0 +1,263 @@
+/*** Base Elements ***/
+body {
+  background: #f5f5f5;
+  color: #434343;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 12px;
+}
+
+/*** Navbar ***/
+#navbar {
+  /*background-color: #dc5151;*/
+  /*background-image: -webkit-linear-gradient(top, #DC5151 0%, #FFADAD 100%);*/
+  height: 7em;
+}
+
+.logo {
+  height: 120px;
+  margin-left: 85%;
+  width: 120px;
+}
+
+#navbar-items {
+  font-size: 13px;
+  margin-right: 10%;
+  margin-top: 18px;
+}
+
+/*** Carousel ***/
+#myCarousel {
+  margin-top: 84px;
+}
+
+/*** Login ***/
+.container-login {
+  color: #333333;
+  margin: -6% 23.1%;
+  min-height: 0;
+  padding: 65px 25px;
+  width: 480px;
+}
+
+.middle {
+  left: 50.5%;
+  opacity: 1;
+  right: auto;
+  top: 10%;
+}
+
+.login-background {
+  background-color: #f5f5f5;
+  border: medium none;
+  border-radius: 9px;
+  padding: 10px 30px;
+  width: 85%;
+  /*height: 3.5em;*/
+}
+
+.container-login h2 {
+  color: #5f9f9f;
+  font-size: 15px;
+}
+
+.form-control {
+  background-color: #ffffff;
+  background-image: none;
+  border: 1px solid #999999;
+  border-radius: 0;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+  color: #333333;
+  display: block;
+  font-size: 14px;
+  height: 34px;
+  line-height: 1.42857;
+  padding: 6px 12px;
+  transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+  width: 100%;
+}
+
+.form-login-button button {
+  background-color: #5f9f9f;
+  border-color: #5f9f9f;
+  color: #ffffff;
+  border-radius: 0;
+  font-size: 15px;
+  line-height: 1.10;
+  padding: 10px 16px;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.form-login-button a {
+  font-size: 12px;
+}
+
+.form-login button:hover, .form-login button:focus {
+  background-color: #de2f18;
+  border-color: #be2815;
+}
+
+/*** Intergation ***/
+.row-integration {
+  background: #312E33;
+  min-height: 100px;
+  padding-left: 16.8%;
+  padding-right: 17.5%;
+  text-align: center;
+}
+.row-integration p {
+  background: #312E33;
+  color: #f5f5f5;
+  padding: 8px 0 1px 0;
+  text-align: center;
+}
+
+/*** Process ***/
+.row-title h2 {
+  font-size: 22px;
+  letter-spacing: 2px;
+  margin-left: 17.5%;
+  margin-top: 7%;
+  padding-bottom: 35px;
+  text-align: left;
+}
+
+.process-content {
+  font-size: 4em;
+  margin: 0 auto;
+  width: 64.7%;
+}
+
+.process-content p {
+  color: #434343;
+  font-size: 12px;
+  padding-bottom: 20px;
+}
+
+/*** Footer ***/
+.footer-row {
+  background-color: #312E33;
+  bottom: 0;
+  display: inline-block;
+  font-size: 11px;
+  margin-bottom: -5px;
+  margin-top: 7%;
+  min-height: 140px;
+  padding: 20px;
+  width: 100%;
+}
+
+#footer-col {
+  width: 10% !important;
+}
+
+.footer-row li {
+  list-style: none;
+  margin-top: 50%;
+  margin-left: 279%;
+  text-align: center;
+}
+
+.footer-row a {
+  color: #eee;
+}
+
+#bfoot {
+  font-size: 10px;
+  margin-right: 16.2%;
+  padding-top: 2.25%;
+  text-align: center;
+}
+
+/*** Media Queries ***/
+@media screen and (max-width: 991px) {
+  .footer-row ul {
+    text-align: center;
+    list-style: none;
+  }
+
+  .footer-row li {
+    display: inline;
+    padding: 10px;
+  }
+}
+
+@media screen and (max-width: 845px) {
+  /*** Navbar ***/
+  #navbar-items {
+    display: inline;
+    position: relative;
+    bottom: 3.2em;
+    left: 16em;
+    font-size: 13px;
+    margin-right: 10%;
+  }
+
+  /*** Login ***/
+  .container-login {
+    color: #333333;
+    margin: -6% 23.1%;
+    min-height: 0;
+    padding: 65px 25px;
+    width: 480px;
+  }
+
+  .middle {
+    left: 10%;
+    opacity: 1;
+    right: auto;
+    top: 10%;
+  }
+
+  .login-background {
+    background-color: #f5f5f5;
+    border: medium none;
+    border-radius: 9px;
+    padding: 10px 30px;
+    width: 70%;
+    /*height: 3.5em;*/
+  }
+}
+
+@media screen and (max-width: 401px) {
+  /*** Navbar ***/
+  .navbar-nav > li > a {
+    padding-top: 0;
+  }
+
+  /*** Login ***/
+  .container-login {
+    color: #333333;
+    margin: -6% 56.1%;
+    min-height: 0;
+    padding: 65px 25px;
+    width: 450px;
+  }
+
+  .middle {
+    left: 0%;
+    opacity: 1;
+    right: auto;
+    top: 10%;
+  }
+
+  /*** Footer ***/
+  .footer-row ul {
+    list-style: none;
+    text-align: center;
+  }
+
+  .footer-row li {
+    display: inline;
+    padding: 10px;
+  }
+
+  #footer-col {
+    width: 28% !important;
+  }
+
+  #bfoot {
+    margin-right: 26.2%;
+    width: 50%;
+  }
+}

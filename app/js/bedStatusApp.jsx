@@ -17,11 +17,11 @@ var Cell = React.createClass({
     };
   },
 
-  handleChange: function() {
+  handleChange: function(event) {
     this.setState({
-      value: this.refs.input.getValue()
+      value: event.target.value
     });
-    _.debounce(this.sendPost(), 500);
+    _.debounce(this.sendPost, 500);
     // this.sendPost();
   },
 
@@ -42,8 +42,7 @@ var Cell = React.createClass({
       value={this.state.value}
       onChange={this.handleChange}
       submit={this.handleChange}
-      ref="input">
-      </Input>
+      placeholder={this.state.value} />
       </td>
     );
   }

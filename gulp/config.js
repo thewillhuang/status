@@ -62,9 +62,14 @@ module.exports = {
     //   // external: ['jquery', 'underscore']
     // },
     {
-      entries: src + '/js/all.js',
+      entries: src + '/js/status.js',
       dest: dest,
-      outputName: 'bundle.js'
+      outputName: 'status.js'
+    },
+    {
+      entries: src + '/js/site.js',
+      dest: dest,
+      outputName: 'site.js'
     }]
   },
   production: {
