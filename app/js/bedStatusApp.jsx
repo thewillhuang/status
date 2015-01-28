@@ -26,9 +26,9 @@ var Cell = React.createClass({
   },
 
   sendPost: function() {
-    console.log('sending');
+    console.log('sending', this.refs.input.getInputDOMNode().value);
     request
-      .post('/boards/'+ this.props.room + '/' +  this.props.index + '/' + this.state.value)
+      .post('/boards/'+ this.props.room + '/' +  this.props.index + '/' + this.refs.input.getInputDOMNode().value)
       .end(function(error, res){
         console.log(res);
     });
@@ -41,6 +41,7 @@ var Cell = React.createClass({
       type="text"
       value={this.state.value}
       onChange={this.handleChange}
+      ref="input"
       submit={this.handleChange}
       placeholder={this.state.value} />
       </td>
