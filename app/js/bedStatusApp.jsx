@@ -103,7 +103,7 @@ var MainViewBox = React.createClass({
     return (
         <Row>
           <Col xs={18} md={12}>
-            <Table striped bordered condensed hover responsive>
+            <Table striped condensed hover responsive>
               {tableHead}
               {roomData}
             </Table>
