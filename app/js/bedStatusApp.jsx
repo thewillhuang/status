@@ -24,8 +24,12 @@ var Cell = React.createClass({
 
   sendPost: function() {
     var value = this.refs.input.getInputDOMNode().value || null;
+    var index = this.props.index;
+    var obj = {};
+    obj[index] = value;
     request
-      .post('/boards/'+ this.props.id + '/' +  this.props.index + '/' + value)
+      .post('/boards/'+ this.props.id)
+      .send(obj)
       .end(function(error, res){
         console.log(error);
     });
@@ -50,7 +54,6 @@ var Cell = React.createClass({
 
 var PatientRow = React.createClass({
   render: function() {
-    console.log(this.props.rowID);
     var rowID = this.props.rowID;
     var roomKey = Object.keys(this.props.room);
     var roomProperty = [];
