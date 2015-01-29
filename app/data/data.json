@@ -1,70 +1,151 @@
+// var BoardSchema = new Schema({
+//   floor: String,
+//   order: Number,
+//   data: Schema.Types.Mixed,
+//   updated: {type: Date, default: Date.now},
+//   isActive: Boolean,
+//   history: String,
+// });
+[
 {
-  "MedSurg1":[
-    {
-      "Rm":100,
-      "Patient": "Jessica Alba",
-      "Doctor": "Dr. Paul Liu",
-      "Nurse": "Mary",
-      "CNA": "Jack",
-      "Code": 1,
-      "Isolation": "c.diff",
-      "MISC": "dc",
-      "Acuity": 5
-    },
-    {
-      "Rm":101,
-      "Patient": "Jessica Alba",
-      "Doctor": "Dr. Paul Liu",
-      "Nurse": "Mary",
-      "CNA": "Jack",
-      "Code": 1,
-      "Isolation": "c.diff",
-      "Misc": "dc",
-      "Acuity": 5
-    },
-    {
-      "Rm":102,
-      "Patient": "Jessica Alba",
-      "Doctor": "Dr. Paul Liu",
-      "Nurse": "Mary",
-      "CNA": "Jack",
-      "Code": 1,
-      "Isolation": "c.diff",
-      "Misc": "dc",
-      "Acuity": 5
-    },
-    {
-      "Rm":103,
-      "Patient": "Jessica Alba",
-      "Doctor": "Dr. Paul Liu",
-      "Nurse": "Mary",
-      "CNA": "Jack",
-      "Code": 1,
-      "Isolation": "c.diff",
-      "Misc": "dc",
-      "Acuity": 5
-    },
-    {
-      "Rm":104,
-      "Patient": "Jessica Alba",
-      "Doctor": "Dr. Paul Liu",
-      "Nurse": "Mary",
-      "CNA": "Jack",
-      "Code": 1,
-      "Isolation": "c.diff",
-      "Misc": "dc",
-      "Acuity": 5
-    },
-    {
-      "Rm":105,
-      "Patient": "Jessica Alba",
-      "Doctor": "Dr. Paul Liu",
-      "Nurse": "Mary",
-      "CNA": "Jack",
-      "Code": 1,
-      "Isolation": "c.diff",
-      "Misc": "dc",
-      "Acuity": 5
-    }
-  ]
-}
+  "_id":"54aa32abe8beb379bfdfe355",
+  "floor": "Medical Surgical 1",
+  "order":1,
+  "data":
+  {
+    "Rm":100,
+    "Patient": "Jessica Alba",
+    "Doctor": "Dr. Paul Liu",
+    "Nurse": "Mary",
+    "CNA": "Jack",
+    "Code": 1,
+    "Isolation": "c.diff",
+    "MISC": "dc",
+    "Acuity": 5
+  },
+  "updated":"2015-01-05T06:43:55.892Z",
+  "isActive":true,
+  "history":""
+},
+{
+  "_id":"54aa32abe8beb379bfdfe355",
+  "floor": "Medical Surgical 1",
+  "order":2,
+  "data":
+  {
+    "Rm":101,
+    "Patient": "Jessica Alba",
+    "Doctor": "Dr. Paul Liu",
+    "Nurse": "Mary",
+    "CNA": "Jack",
+    "Code": 1,
+    "Isolation": "c.diff",
+    "MISC": "dc",
+    "Acuity": 5
+  },
+  "updated":"2015-01-05T06:43:55.892Z",
+  "isActive":true,
+  "history":""
+},
+{
+  "_id":"54aa32abe8beb379bfdfe355",
+  "floor": "Medical Surgical 1",
+  "order":3,
+  "data":
+  {
+    "Rm":102,
+    "Patient": "Jessica Alba",
+    "Doctor": "Dr. Paul Liu",
+    "Nurse": "Mary",
+    "CNA": "Jack",
+    "Code": 1,
+    "Isolation": "c.diff",
+    "MISC": "dc",
+    "Acuity": 5
+  },
+  "updated":"2015-01-05T06:43:55.892Z",
+  "isActive":true,
+  "history":""
+},
+{
+  "_id":"54aa32abe8beb379bfdfe355",
+  "floor": "Medical Surgical 1",
+  "order":4,
+  "data":
+  {
+    "Rm":103,
+    "Patient": "Jessica Alba",
+    "Doctor": "Dr. Paul Liu",
+    "Nurse": "Mary",
+    "CNA": "Jack",
+    "Code": 1,
+    "Isolation": "c.diff",
+    "MISC": "dc",
+    "Acuity": 5
+  },
+  "updated":"2015-01-05T06:43:55.892Z",
+  "isActive":true,
+  "history":""
+},
+{
+  "_id":"54aa32abe8beb379bfdfe355",
+  "floor": "Medical Surgical 1",
+  "order":5,
+  "data":
+  {
+    "Rm":104,
+    "Patient": "Jessica Alba",
+    "Doctor": "Dr. Paul Liu",
+    "Nurse": "Mary",
+    "CNA": "Jack",
+    "Code": 1,
+    "Isolation": "c.diff",
+    "MISC": "dc",
+    "Acuity": 5
+  },
+  "updated":"2015-01-05T06:43:55.892Z",
+  "isActive":true,
+  "history":""
+},
+{
+  "_id":"54aa32abe8beb379bfdfe355",
+  "floor": "Medical Surgical 1",
+  "order":6,
+  "data":
+  {
+    "Rm":105,
+    "Patient": "Jessica Alba",
+    "Doctor": "Dr. Paul Liu",
+    "Nurse": "Mary",
+    "CNA": "Jack",
+    "Code": 1,
+    "Isolation": "c.diff",
+    "MISC": "dc",
+    "Acuity": 5
+  },
+  "updated":"2015-01-05T06:43:55.892Z",
+  "isActive":true,
+  "history":""
+},
+{
+  "_id":"54aa32abe8beb379bfdfe355",
+  "floor": "Medical Surgical 1",
+  "order":7,
+  "data":
+  {
+    "Rm":106,
+    "Patient": "Jessica Alba",
+    "Doctor": "Dr. Paul Liu",
+    "Nurse": "Mary",
+    "CNA": "Jack",
+    "Code": 1,
+    "Isolation": "c.diff",
+    "MISC": "dc",
+    "Acuity": 5
+  },
+  "updated":"2015-01-05T06:43:55.892Z",
+  "isActive":true,
+  "history":""
+},
+
+]
