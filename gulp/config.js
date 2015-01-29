@@ -3,6 +3,7 @@ var dest = './build';
 var src = './app';
 var gulp = './gulp';
 var compression = require('compression');
+var neat = require('node-neat').includePaths;
 
 module.exports = {
   browserSync: {
@@ -20,7 +21,8 @@ module.exports = {
     settings: {
       sourcemap: true,
       sourceComments: 'map',
-      imagePath: '/img' // Used by the image-url helper
+      imagePath: '/img', // Used by the image-url helper
+      includePaths: ['styles'].concat(neat)
     },
     sourcemap: {
       loadMaps: true

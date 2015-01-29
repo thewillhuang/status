@@ -1,13 +1,4 @@
-// var BoardSchema = new Schema({
-//   floor: String,
-//   order: Number,
-//   data: Schema.Types.Mixed,
-//   updated: {type: Date, default: Date.now},
-//   isActive: Boolean,
-//   history: String,
-// });
-[
-{
+[{
   "_id":"54aa32abe8beb379bfdfe355",
   "floor": "Medical Surgical 1",
   "order":1,
@@ -146,6 +137,4 @@
   "updated":"2015-01-05T06:43:55.892Z",
   "isActive":true,
   "history":""
-},
-
-]
+}]
