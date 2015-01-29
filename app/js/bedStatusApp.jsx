@@ -7,6 +7,7 @@ var Table = require('react-bootstrap/Table');
 var data  = require('../data/data.json');
 var request = require('superagent');
 var React = require('react');
+var _ = require('lodash');
 
 var Cell = React.createClass({
   getInitialState: function() {
@@ -25,14 +26,21 @@ var Cell = React.createClass({
   sendPost: function() {
     var value = this.refs.input.getInputDOMNode().value || null;
     var index = this.props.index;
+    var id = this.props.id;
     var obj = {};
     obj[index] = value;
-    request
-      .post('/boards/'+ this.props.id)
-      .send(obj)
-      .end(function(error, res){
-        console.log(error);
-    });
+
+    var sendRequest = function() {
+      request
+        .post('/boards/'+ id)
+        .send(obj)
+        .end(function(error, res){
+          console.log(error);
+      });
+    };
+
+    _.debounce(sendRequest, 1000)();
+
   },
 
   render: function() {
