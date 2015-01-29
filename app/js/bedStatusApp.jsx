@@ -25,9 +25,9 @@ var Cell = React.createClass({
   sendPost: function() {
     var value = this.refs.input.getInputDOMNode().value || null;
     request
-      .post('/boards/'+ this.props.room + '/' +  this.props.index + '/' + value)
+      .post('/boards/'+ this.props.id + '/' +  this.props.index + '/' + value)
       .end(function(error, res){
-        console.log(res);
+        console.log(error);
     });
   },
 
@@ -49,8 +49,9 @@ var Cell = React.createClass({
 
 
 var PatientRow = React.createClass({
-
   render: function() {
+    console.log(this.props.rowID);
+    var rowID = this.props.rowID;
     var roomKey = Object.keys(this.props.room);
     var roomProperty = [];
     for (var i = 0; i < roomKey.length; i++) {
@@ -58,7 +59,7 @@ var PatientRow = React.createClass({
     }
     var roomAttribute = roomProperty.map(function(key, index) {
       return (
-        <Cell roomProperty={roomProperty[index]} key={key} room={roomProperty[0]} index={roomKey[index]} />
+        <Cell roomProperty={roomProperty[index]} key={key} id={rowID} index={roomKey[index]} />
         );
     });
     return (
@@ -86,11 +87,10 @@ var MainViewBox = React.createClass({
 
   render: function() {
     var objKey;
-
     var roomData = this.props.data.map(function(key, index) {
-      objKey = Object.keys(key);
+      objKey = Object.keys(key.data);
       return (
-        <PatientRow room={key} key={index} />
+        <PatientRow room={key.data} key={index} rowID={key._id}/>
         );
     });
 
@@ -114,6 +114,6 @@ var MainViewBox = React.createClass({
 
 });
 
-React.render(<MainViewBox data={data.MedSurg1} />, document.getElementById('reactRoot'));
+React.render(<MainViewBox data={data} />, document.getElementById('reactRoot'));
 
 module.exports = MainViewBox;
