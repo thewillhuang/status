@@ -16,21 +16,14 @@ var Cell = React.createClass({
     };
   },
 
-  handleChange: function() {
-    this.setState({
-      value: this.refs.input.getInputDOMNode().value
-    });
-    this.sendPost();
-  },
-
-  sendPost: function() {
+  debounceChange: function() {
     var value = this.refs.input.getInputDOMNode().value || null;
     var index = this.props.index;
     var id = this.props.id;
     var obj = {};
-    obj[index] = value;
 
     var sendRequest = function() {
+      obj[index] = value;
       request
         .post('/boards/'+ id)
         .send(obj)
@@ -39,8 +32,20 @@ var Cell = React.createClass({
       });
     };
 
-    _.debounce(sendRequest, 1000)();
+    var debounce = _.debounce(sendRequest, 1000, {'trailing': true});
 
+    debounce();
+
+  },
+
+  handleChange: function() {
+    var value = this.refs.input.getInputDOMNode().value || null;
+
+    this.setState({
+      value: value
+    });
+
+    this.debounceChange();
   },
 
   render: function() {
