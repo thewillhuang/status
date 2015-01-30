@@ -8,6 +8,7 @@ var data  = require('../data/data.json');
 var request = require('superagent');
 var React = require('react');
 var _ = require('lodash');
+var vow = require('vow');
 
 var Cell = React.createClass({
   getInitialState: function() {
@@ -16,36 +17,76 @@ var Cell = React.createClass({
     };
   },
 
-  debounceChange: function() {
+  // debounceChange: function() {
+  //   var value = this.refs.input.getInputDOMNode().value || null;
+  //   var index = this.props.index;
+  //   var id = this.props.id;
+  //   var obj = {};
+
+  //   var sendRequest = function() {
+  //     obj[index] = value;
+  //     console.log(obj);
+  //     request
+  //       .post('/boards/'+ id)
+  //       .send(obj)
+  //       .end(function(error, res){
+  //         console.log(error);
+  //     });
+  //   };
+
+  //   var debounce = _.debounce(sendRequest, 1000, {'trailing': true});
+
+  //   debounce();
+
+  // },
+
+  debouncedChange: function (name) {
+    var dfd = vow.defer();
+
+    var timerId = this.timerId;
+    var self = this;
+    if (timerId) {
+      clearTimeout(timerId);
+    }
+    timerId = setTimeout((function (innerName) {
+      return function () {
+        dfd.resolve(innerName);
+      };
+    })(name), 1000);
+    this.timerId = timerId;
+
+    return dfd.promise();
+  },
+
+  handleChange: function() {
+
     var value = this.refs.input.getInputDOMNode().value || null;
     var index = this.props.index;
     var id = this.props.id;
     var obj = {};
 
-    var sendRequest = function() {
-      obj[index] = value;
-      request
-        .post('/boards/'+ id)
-        .send(obj)
-        .end(function(error, res){
-          console.log(error);
-      });
-    };
+    this.debouncedChange(value).then(function(result){
 
-    var debounce = _.debounce(sendRequest, 1000, {'trailing': true});
+      var sendRequest = function() {
+        obj[index] = result;
+        console.log(obj);
+        request
+          .post('/boards/'+ id)
+          .send(obj)
+          .end(function(error, res){
+            console.log(error);
+        });
+      };
 
-    debounce();
+      sendRequest();
 
-  },
-
-  handleChange: function() {
-    var value = this.refs.input.getInputDOMNode().value || null;
+    });
 
     this.setState({
       value: value
     });
 
-    this.debounceChange();
+    // this.debounceChange();
   },
 
   render: function() {
