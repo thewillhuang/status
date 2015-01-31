@@ -21,7 +21,7 @@
 }
 /*** Base Elements ***/
 body {
-  font-family: 'Open Sans';
+  font-family: 'Open Sans Bold';
   // min-height: px;
   padding-top: 67px;
 }
@@ -38,7 +38,9 @@ body {
 }
 
 .table-head {
+  font-family: 'Open Sans Bold';
   text-align: center;
+  font-size: 1.2em;
 }
 
 /*** Footer ***/
@@ -48,3 +50,6 @@ body {
   opacity: 0.8;
 }
 
+.table-striped > tbody > tr:nth-of-type(odd) {
+  background-color: #f3f3f3;
+}
