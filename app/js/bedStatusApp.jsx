@@ -86,7 +86,7 @@ var TableHead = React.createClass({
 
   render: function() {
     return (
-      <th>
+      <th className="table-head">
       {this.props.head}
       </th>
     );
