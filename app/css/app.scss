@@ -2,3 +2,31 @@
 @import "neat";
 @import "./bootstrap";
 @import "./bootstrap-theme";
+
+/*** Base Elements ***/
+body {
+  min-height: 2000px;
+  padding-top: 70px;
+}
+
+/*** Chart ***/
+.form-group {
+  margin: 10px 0;
+}
+.form-control {
+  background-color: transparent !important;
+  border: none !important;
+  text-align: center;
+}
+
+.table-head {
+  text-align: center;
+}
+
+/*** Footer ***/
+.footer {
+  height: 200px;
+  background-color: black;
+  opacity: 0.8;
+}
+
