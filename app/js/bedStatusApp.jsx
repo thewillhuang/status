@@ -12,21 +12,6 @@ var vow = require('vow');
 
 var Cell = React.createClass({
 
-  handleKeyDown: function (event) {
-    if (event.keyCode >= 37 && event.keyCode <= 40) {
-      event.preventDefault();
-      console.log('key pressed');
-    }
-  },
-
-  componentDidMount: function () {
-    window.addEventListener('keydown', this.handleKeyDown);
-  },
-
-  componentWillUnmount: function () {
-    window.removeEventListener('keydown', this.handleKeyDown);
-  },
-
   getInitialState: function() {
     return {
       value: this.props.roomProperty
@@ -108,12 +93,20 @@ var PatientRow = React.createClass({
     var rowID = this.props.rowID;
     var roomKey = Object.keys(this.props.room);
     var roomProperty = [];
+    var prevID = this.props.prevID;
+    var nextID = this.props.nextID;
     for (var i = 0; i < roomKey.length; i++) {
       roomProperty.push(this.props.room[roomKey[i]]);
     }
     var roomAttribute = roomProperty.map(function(key, index) {
       return (
-        <Cell roomProperty={roomProperty[index]} key={key} id={rowID} index={roomKey[index]} />
+        <Cell
+        roomProperty={roomProperty[index]}
+        key={key}
+        id={rowID}
+        index={roomKey[index]}
+        prevID={prevID}
+        nextID={nextID} />
         );
     });
     return (
@@ -139,16 +132,50 @@ var TableHead = React.createClass({
 
 var MainViewBox = React.createClass({
 
+  handleKeyDown: function (event) {
+    if (event.keyCode >= 37 && event.keyCode <= 40) {
+      event.preventDefault();
+      if (event)
+      console.log('key pressed');
+    }
+  },
+
+  componentDidMount: function () {
+    window.addEventListener('keydown', this.handleKeyDown);
+  },
+
+  componentWillUnmount: function () {
+    window.removeEventListener('keydown', this.handleKeyDown);
+  },
+
   render: function() {
-    var objKey;
+    var headerKey;
+
+    var idKey = this.props.data.map(function(key){
+      return key._id;
+    });
+
+    var assignID = function(array, index) {
+      if (!array[index]) {
+        return null;
+      } else {
+        return array[index];
+      }
+    };
+
     var roomData = this.props.data.map(function(key, index) {
-      objKey = Object.keys(key.data);
+      headerKey = Object.keys(key.data);
       return (
-        <PatientRow room={key.data} key={index} rowID={key._id}/>
+        <PatientRow
+        room={key.data}
+        key={index}
+        rowID={key._id}
+        prevID={assignID(idKey, index - 1)}
+        nextID={assignID(idKey, index + 1)}/>
         );
     });
 
-    var tableHead = objKey.map(function(key, index) {
+    var tableHead = headerKey.map(function(key, index) {
       return(
         <TableHead head={key} key={index} />
         );
