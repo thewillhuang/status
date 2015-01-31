@@ -10,6 +10,9 @@ body {
 }
 
 /*** Chart ***/
+.form-group {
+  margin: 10px 0;
+}
 .form-control {
   background-color: transparent !important;
   border: none !important;
@@ -24,5 +27,6 @@ body {
 .footer {
   height: 200px;
   background-color: black;
+  opacity: 0.8;
 }
 
