@@ -4,6 +4,7 @@ var Input = require('react-bootstrap/Input');
 var Col   = require('react-bootstrap/Col');
 var Row   = require('react-bootstrap/Row');
 var Table = require('react-bootstrap/Table');
+var Grid = require('react-bootstrap/Grid');
 var data  = require('../data/data.json');
 var request = require('superagent');
 var React = require('react');
@@ -182,14 +183,16 @@ var MainViewBox = React.createClass({
     });
 
     return (
+      <Grid fluid>
         <Row>
           <Col xs={18} md={12}>
-            <Table striped condensed bordered hover>
+            <Table striped condensed responsive hover>
               {tableHead}
               {roomData}
             </Table>
           </Col>
         </Row>
+      </Grid>
     );
   }
 
