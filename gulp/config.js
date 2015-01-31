@@ -29,7 +29,7 @@ module.exports = {
     }
   },
   copy: {
-    src: [src + '/**/*', '!' + src + '/{img,img/**/*}', '!' + src + '/{js,js/**/*}', '!' + src + '/{css,css/**/*}'], // '!' must be a string
+    src: [src + '/**/*', '!' + src + '/{img,img/**/*}', '!' + src + '/{js,js/**/*}', '!' + src + '/{css,css/**/*}', '!' + src + '/*.html'], // '!' must be a string
     dest: dest
   },
   gulp: {
