@@ -1,1 +1,1 @@
-require('./bedStatusApp.jsx');
+require('./bedStatusView.jsx');
