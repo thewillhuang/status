@@ -78,9 +78,7 @@ var Cell = React.createClass({
       type="text"
       value={this.state.value}
       onChange={this.handleChange}
-      onKeyDown={this.keyDown}
       ref="input"
-      submit={this.handleChange}
       placeholder={this.state.value} />
       </td>
     );
@@ -137,7 +135,7 @@ var MainViewBox = React.createClass({
     if (event.keyCode >= 37 && event.keyCode <= 40) {
       event.preventDefault();
       if (event)
-      console.log('key pressed');
+      console.log('arrow key pressed');
     }
   },
 

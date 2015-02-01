@@ -30,17 +30,28 @@ body {
 .form-group {
   min-height: 100;
   margin: 10px 0;
+  white-space: nowrap;
 }
 .form-control {
   background-color: transparent !important;
   border: none !important;
   text-align: center;
+  white-space: nowrap;
+  white-space: nowrap;
+  overflow: visible;
+  // text-overflow: ellipsis;
 }
 
 .table-head {
   font-family: 'Open Sans';
   text-align: center;
   font-size: 1.2em;
+  white-space: nowrap;
+  white-space: nowrap;
+  overflow: hidden;
+  padding:0px;
+  margin:0px;
+  // text-overflow: ellipsis;
 }
 
 /*** Footer ***/
@@ -52,4 +63,18 @@ body {
 
 .table-striped > tbody > tr:nth-of-type(odd) {
   background-color: #f3f3f3;
+}
+
+td {
+  width: 1px;
+  white-space: nowrap;
+}
+th {
+  width: 1px;
+  white-space: nowrap;
+}
+
+tr {
+  width: 1px;
+  white-space: nowrap;
 }
