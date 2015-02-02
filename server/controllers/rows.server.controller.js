@@ -11,7 +11,10 @@ var mongoose = require('mongoose'),
  */
 exports.list = function(req, res) {
 
-  Row.find({'isActive':'true'}).and(req.params).sort('-updated').populate('user', 'displayName').exec(function(err, rows) {
+  var floor = req.params.floor;
+  var limit = req.params.limit;
+
+  Row.find({'isActive':'true'}).and({'floor': floor}).sort('data.room').limit(limit).exec(function(err, rows) {
     if (err) {
       return res.status(400).send({
         message: errorHandler.getErrorMessage(err)
@@ -105,6 +108,9 @@ exports.hasAuthorization = function(req, res, next) {
   row = _.extend(row, req.body);
 
   row.isActive = false;
+  row.data = "";
+  row.order = 0;
+  row.floor = 0;
 
   row.save(function(err) {
     if (err) {
@@ -123,4 +129,48 @@ exports.hasAuthorization = function(req, res, next) {
 
  exports.search = function(req, res){
 
+  var roomNumber = parseInt(req.params.query);
+
+  if (roomNumber) {
+
+    Row.find({'data': { 'room': req.params.query}}).exec(function(err, rows) {
+      if (err) {
+        return res.status(400).send({
+          message: errorHandler.getErrorMessage(err)
+        });
+      } else {
+        res.json(rows);
+      }
+    });
+  } else {
+
+    Row.find({'data': { 'Doctor Name': req.params.query}}).exec(function(err, rows) {
+      if (err) {
+        return res.status(400).send({
+          message: errorHandler.getErrorMessage(err)
+        });
+      } else {
+        res.json(rows);
+      }
+    });
+  }
+
+  // if (typeof req.params.query === 'number'){
+  //   console.log('num');
+  // }
+
+  // if (typeof req.params.query === 'string'){
+  //   console.log('string');
+  // }
+
+
+  Row.find({'data': { 'room': req.params.query}}).exec(function(err, rows) {
+    if (err) {
+      return res.status(400).send({
+        message: errorHandler.getErrorMessage(err)
+      });
+    } else {
+      res.json(rows);
+    }
+  });
  };

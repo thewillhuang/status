@@ -8,7 +8,7 @@ module.exports = function(app) {
 
   // get route to pull all isActive from a specific floor with params to limit by number,
   // sort by asending, pull from certain room order and up returns array of objects
-  app.route('/rows/:floor').get(rows.list);
+  app.route('/rows/:floor/:limit').get(rows.list);
 
   // post route to update a row given a specific JSON.data
   app.route('/row/:rowId').put(rows.update);
