@@ -100,7 +100,21 @@ exports.hasAuthorization = function(req, res, next) {
  */
 
  exports.changeStatus = function(req, res){
+  var row = req.row;
 
+  row = _.extend(row, req.body);
+
+  row.isActive = false;
+
+  row.save(function(err) {
+    if (err) {
+      return res.status(400).send({
+        message: errorHandler.getErrorMessage(err)
+      });
+    } else {
+      res.json(row);
+    }
+  });
  };
 
  /**
