@@ -5,8 +5,8 @@
   "data":
   {
     "Room":100,
-    "Patient": "Jessica Lee",
-    "Doctor": "Dr. Paul Liu",
+    "Patient Name": "Jessica Lee",
+    "Doctor Name": "Dr. Paul Liu",
     "Nurse": "Mary",
     "CNA": "Jack",
     "Code": 1,
@@ -25,8 +25,8 @@
   "data":
   {
     "Room":101,
-    "Patient": "Monica Davidson",
-    "Doctor": "Dr. Mike Lee",
+    "Patient Name": "Monica Davidson",
+    "Doctor Name": "Dr. Mike Lee",
     "Nurse": "Jack",
     "CNA": "Jose",
     "Code": 1,
@@ -45,8 +45,8 @@
   "data":
   {
     "Room":102,
-    "Patient": "Mark Sandburg",
-    "Doctor": "Dr. Kennith O'nell",
+    "Patient Name": "Mark Sandburg",
+    "Doctor Name": "Dr. Kennith O'nell",
     "Nurse": "Wilson",
     "CNA": "Jack",
     "Code": 1,
@@ -65,8 +65,8 @@
   "data":
   {
     "Room":103,
-    "Patient": "Max Williams",
-    "Doctor": "Dr. Kenny Jackson",
+    "Patient Name": "Max Williams",
+    "Doctor Name": "Dr. Kenny Jackson",
     "Nurse": "Mary",
     "CNA": "Jackie",
     "Code": 1,
@@ -85,8 +85,8 @@
   "data":
   {
     "Room":104,
-    "Patient": "Adam C",
-    "Doctor": "Dr. Lief Michaelson",
+    "Patient Name": "Adam C",
+    "Doctor Name": "Dr. Lief Michaelson",
     "Nurse": "Mary",
     "CNA": "Jack",
     "Code": 1,
@@ -105,8 +105,8 @@
   "data":
   {
     "Room":105,
-    "Patient": "Conor breadwinner",
-    "Doctor": "Dr. Tommy Singer",
+    "Patient Name": "Conor breadwinner",
+    "Doctor Name": "Dr. Tommy Singer",
     "Nurse": "Mike",
     "CNA": "Jack",
     "Code": 1,
@@ -125,8 +125,8 @@
   "data":
   {
     "Room":106,
-    "Patient": "Nelson Lewis",
-    "Doctor": "Dr. Paul Liu",
+    "Patient Name": "Nelson Lewis",
+    "Doctor Name": "Dr. Paul Liu",
     "Nurse": "Mary",
     "CNA": "Jack",
     "Code": 1,
