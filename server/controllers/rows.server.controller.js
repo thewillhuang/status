@@ -5,6 +5,23 @@ var mongoose = require('mongoose'),
     Row = mongoose.model('Row'),
     _ = require('lodash');
 
+
+/**
+ * List of rows
+ */
+exports.list = function(req, res) {
+
+  Row.find({'isActive':'true'}).and(req.params).sort('-updated').populate('user', 'displayName').exec(function(err, rows) {
+    if (err) {
+      return res.status(400).send({
+        message: errorHandler.getErrorMessage(err)
+      });
+    } else {
+      res.json(rows);
+    }
+  });
+};
+
 /**
  * Create a row
  */
@@ -25,13 +42,6 @@ exports.create = function(req, res) {
 };
 
 /**
- * Show the current row
- */
-exports.read = function(req, res) {
-  res.json(req.row);
-};
-
-/**
  * Update a row
  */
 exports.update = function(req, res) {
@@ -46,38 +56,6 @@ exports.update = function(req, res) {
       });
     } else {
       res.json(row);
-    }
-  });
-};
-
-/**
- * Delete a row
- */
-exports.delete = function(req, res) {
-  var row = req.row;
-
-  row.remove(function(err) {
-    if (err) {
-      return res.status(400).send({
-        message: errorHandler.getErrorMessage(err)
-      });
-    } else {
-      res.json(row);
-    }
-  });
-};
-
-/**
- * List of rows
- */
-exports.list = function(req, res) {
-  Row.find({'isActive':'true'}).sort('-updated').populate('user', 'displayName').exec(function(err, rows) {
-    if (err) {
-      return res.status(400).send({
-        message: errorHandler.getErrorMessage(err)
-      });
-    } else {
-      res.json(rows);
     }
   });
 };
@@ -116,3 +94,19 @@ exports.hasAuthorization = function(req, res, next) {
   }
   next();
 };
+
+/**
+ * Row Change Status
+ */
+
+ exports.changeStatus = function(req, res){
+
+ };
+
+ /**
+ * Row Search Query
+ */
+
+ exports.search = function(req, res){
+
+ };

@@ -5,22 +5,32 @@ var users = require('../../server/controllers/users.server.controller'),
 
 module.exports = function(app) {
   // Row Routes
-  app.route('/rows')
-    .get(rows.list) // pull all isActive data
-    .post(rows.create); // post route to update a new row given a specific JSON data
 
-    // temporality comment out login required
-    // .post(users.requiresLogin, rows.create);
+  // get route to pull all isActive from a specific floor with params to limit by number,
+  // sort by asending, pull from certain room order and up returns array of objects
+  app.route('/rows/:floor').get(rows.list);
 
-  app.route('/rows/:rowId')
-    .get(rows.read)
-    .put(rows.update) // update a row
-    .delete(rows.delete);
+  // post route to update a row given a specific JSON.data
+  app.route('/row/:rowId').put(rows.update);
 
-    // temporality comment out login required
-    // .put(users.requiresLogin, rows.hasAuthorization, rows.update)
-    // .delete(users.requiresLogin, rows.hasAuthorization, rows.delete);
+  // post route to create a new row given a specific JSON.data
+  app.route('/rows').post(rows.create);
+
+  // post route to change a board's status from isActive true to false given an _id and
+  // {history: String} returns a new row with the JSON.data same key but blank value
+  app.route('/status/:rowId').post(rows.changeStatus);
+
+  // get route to return an array of JSON given a String of search query on data.
+  // example: "100" returns last 2 days, every single patient that was in room 100 and
+  // their history, last update, and updated by who. "Paul Liu" returns any patient,
+  // that has the name or Doctor of Paul Liu, any spelling variation not case sensitive
+  app.route('/search/:query').get(rows.search);
 
   // Finish by binding the row middleware
   app.param('rowId', rows.rowByID);
 };
+
+// temporality comment out login required
+// .post(users.requiresLogin, rows.create);
+// .put(users.requiresLogin, rows.hasAuthorization, rows.update)
+// .delete(users.requiresLogin, rows.hasAuthorization, rows.delete);
