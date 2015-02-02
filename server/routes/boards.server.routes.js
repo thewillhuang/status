@@ -6,7 +6,7 @@ var users = require('../../server/controllers/users.server.controller'),
 module.exports = function(app) {
   // Board Routes
   app.route('/boards')
-    .get(boards.list)
+    .get(boards.list) // pull all isActive
     .post(boards.create);
 
     // temporality comment out login required

@@ -9,7 +9,8 @@ var BoardSchema = new Schema({
     default: ''
   },
   order: {
-   type: Number
+   type: Number,
+   default: 0
   },
   data: Schema.Types.Mixed,
   updated: {
@@ -18,7 +19,7 @@ var BoardSchema = new Schema({
   },
   isActive: {
     type: Boolean,
-    default: ''
+    default: true
   },
   history: {
     type: String,

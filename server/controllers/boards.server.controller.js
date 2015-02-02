@@ -9,8 +9,10 @@ var mongoose = require('mongoose'),
  * Create a board
  */
 exports.create = function(req, res) {
+  console.log('this is the req', req.body);
   var board = new Board(req.body);
   board.user = req.user;
+
 
   board.save(function(err) {
     if (err) {
@@ -70,7 +72,7 @@ exports.delete = function(req, res) {
  * List of Boards
  */
 exports.list = function(req, res) {
-  Board.find().sort('-created').populate('user', 'displayName').exec(function(err, boards) {
+  Board.find({'isActive':'true'}).sort('-created').populate('user', 'displayName').exec(function(err, boards) {
     if (err) {
       return res.status(400).send({
         message: errorHandler.getErrorMessage(err)
