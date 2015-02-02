@@ -34,7 +34,6 @@ h2 {
 /*** Navbar ***/
 #navbar-container {
   background: #8FBBBB;
-
 }
 
 .navbar-brand {
@@ -85,6 +84,7 @@ h2 {
   font-family: 'Open Sans';
   text-align: center;
   font-size: 1.2em;
+  font-weight: bolder;
   white-space: nowrap;
   white-space: nowrap;
   overflow: hidden;
@@ -92,6 +92,10 @@ h2 {
   margin: 0px;
   /*text-overflow: ellipsis;*/
 }
+
+/*table {
+  background-color: #FFEDDB;
+}*/
 
 td {
   width: 1px;
@@ -106,12 +110,6 @@ tr {
 .table-striped > tbody > tr:nth-of-type(odd) {
   /*background-color: #f3f3f3;*/
   /*background-color: blue;*/
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #8FBBBB), color-stop(1, #DFF2F2));
-  background: -o-linear-gradient(bottom, #8FBBBB 0%, #DFF2F2 100%);
-  background: -moz-linear-gradient(bottom, #8FBBBB 0%, #DFF2F2 100%);
-  background: -webkit-linear-gradient(bottom, #8FBBBB 0%, #DFF2F2 100%);
-  background: -ms-linear-gradient(bottom, #8FBBBB 0%, #DFF2F2 100%);
-  background: linear-gradient(to bottom, #8FBBBB 0%, #DFF2F2 100%);
 }
 
 /*** Search Bar ***/
