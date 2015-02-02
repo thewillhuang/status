@@ -22,24 +22,33 @@
 /*** Base Elements ***/
 body {
   font-family: 'Open Sans';
-  // min-height: px;
   padding-top: 67px;
+}
+
+h2 {
+  font-size: 20px;
+  font-weight: 900;
+}
+/*** Navbar ***/
+.dropdown {
+  position: relative;
 }
 
 /*** Chart ***/
 .form-group {
   min-height: 100;
-  margin: 10px 0;
+  margin: -8px 0;
   white-space: nowrap;
 }
 .form-control {
   background-color: transparent !important;
   border: none !important;
+  box-shadow: transparent !important;
   text-align: center;
   white-space: nowrap;
   white-space: nowrap;
   overflow: visible;
-  // text-overflow: ellipsis;
+  /*text-overflow: ellipsis;*/
 }
 
 .table-head {
@@ -51,25 +60,10 @@ body {
   overflow: hidden;
   padding:0px;
   margin:0px;
-  // text-overflow: ellipsis;
-}
-
-/*** Footer ***/
-.footer {
-  height: 19px;
-  // background-color: black;
-  opacity: 0.8;
-}
-
-.table-striped > tbody > tr:nth-of-type(odd) {
-  background-color: #f3f3f3;
+  /*text-overflow: ellipsis;*/
 }
 
 td {
-  width: 1px;
-  white-space: nowrap;
-}
-th {
   width: 1px;
   white-space: nowrap;
 }
@@ -79,11 +73,23 @@ tr {
   white-space: nowrap;
 }
 
+.table-striped > tbody > tr:nth-of-type(odd) {
+  background-color: #f3f3f3;
+}
+
 /*** Search Bar ***/
 .form-control {
   padding-right: 30px;
   margin: 5px 0;
 }
+
+/*#search-form {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  text-align: center;
+  margin: auto;
+}*/
 
 .form-control + .glyphicon {
   position: absolute;
@@ -91,3 +97,13 @@ tr {
   padding: 14px 27px;
 }
 
+/*** Footer ***/
+.footer {
+  height: 19px;
+  opacity: 0.8;
+}
+
+.footer-info {
+  font-size: 12px;
+  text-align: center;
+}
