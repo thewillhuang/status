@@ -3,7 +3,7 @@
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
-var BoardSchema = new Schema({
+var RowSchema = new Schema({
   floor: {
     type: String,
     default: ''
@@ -31,4 +31,4 @@ var BoardSchema = new Schema({
   }
 });
 
-mongoose.model('Board', BoardSchema);
+mongoose.model('Row', RowSchema);

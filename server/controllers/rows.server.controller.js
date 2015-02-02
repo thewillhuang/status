@@ -2,115 +2,114 @@
 
 var mongoose = require('mongoose'),
     errorHandler = require('./errors.server.controller'),
-    Board = mongoose.model('Board'),
+    Row = mongoose.model('Row'),
     _ = require('lodash');
 
 /**
- * Create a board
+ * Create a row
  */
 exports.create = function(req, res) {
-  console.log('this is the req', req.body);
-  var board = new Board(req.body);
-  board.user = req.user;
+  var row = new Row(req.body);
+  row.user = req.user;
 
 
-  board.save(function(err) {
+  row.save(function(err) {
     if (err) {
       return res.status(400).send({
         message: errorHandler.getErrorMessage(err)
       });
     } else {
-      res.json(board);
+      res.json(row);
     }
   });
 };
 
 /**
- * Show the current board
+ * Show the current row
  */
 exports.read = function(req, res) {
-  res.json(req.board);
+  res.json(req.row);
 };
 
 /**
- * Update a board
+ * Update a row
  */
 exports.update = function(req, res) {
-  var board = req.board;
+  var row = req.row;
 
-  board = _.extend(board, req.body);
+  row = _.extend(row, req.body);
 
-  board.save(function(err) {
+  row.save(function(err) {
     if (err) {
       return res.status(400).send({
         message: errorHandler.getErrorMessage(err)
       });
     } else {
-      res.json(board);
+      res.json(row);
     }
   });
 };
 
 /**
- * Delete a board
+ * Delete a row
  */
 exports.delete = function(req, res) {
-  var board = req.board;
+  var row = req.row;
 
-  board.remove(function(err) {
+  row.remove(function(err) {
     if (err) {
       return res.status(400).send({
         message: errorHandler.getErrorMessage(err)
       });
     } else {
-      res.json(board);
+      res.json(row);
     }
   });
 };
 
 /**
- * List of Boards
+ * List of rows
  */
 exports.list = function(req, res) {
-  Board.find({'isActive':'true'}).sort('-created').populate('user', 'displayName').exec(function(err, boards) {
+  Row.find({'isActive':'true'}).sort('-updated').populate('user', 'displayName').exec(function(err, rows) {
     if (err) {
       return res.status(400).send({
         message: errorHandler.getErrorMessage(err)
       });
     } else {
-      res.json(boards);
+      res.json(rows);
     }
   });
 };
 
 /**
- * Board middleware
+ * Row middleware
  */
-exports.boardByID = function(req, res, next, id) {
+exports.rowByID = function(req, res, next, id) {
 
   if (!mongoose.Types.ObjectId.isValid(id)) {
     return res.status(400).send({
-      message: 'Board is invalid'
+      message: 'Row is invalid'
     });
   }
 
-  Board.findById(id).populate('user', 'displayName').exec(function(err, board) {
+  Row.findById(id).populate('user', 'displayName').exec(function(err, row) {
     if (err) return next(err);
-    if (!board) {
+    if (!row) {
       return res.status(404).send({
-          message: 'Board not found'
+          message: 'Row not found'
         });
     }
-    req.board = board;
+    req.row = row;
     next();
   });
 };
 
 /**
- * Board authorization middleware
+ * Row authorization middleware
  */
 exports.hasAuthorization = function(req, res, next) {
-  if (req.board.user.id !== req.user.id) {
+  if (req.row.user.id !== req.user.id) {
     return res.status(403).send({
       message: 'User is not authorized'
     });
