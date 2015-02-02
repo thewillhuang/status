@@ -10,6 +10,7 @@ var BoardSchema = new Schema({
   updated: {type: Date, default: Date.now},
   isActive: Boolean,
   history: String,
+  updateBy: String
 });
 
 mongoose.model('Board', BoardSchema);
