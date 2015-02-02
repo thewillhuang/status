@@ -75,6 +75,7 @@ var Cell = React.createClass({
     return (
       <td>
       <Input
+      className="table-input"
       type="text"
       value={this.state.value}
       onChange={this.handleChange}
