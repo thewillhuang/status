@@ -144,7 +144,7 @@ exports.hasAuthorization = function(req, res, next) {
     });
   } else {
 
-    Row.find({'data': { 'Doctor Name': req.params.query}}).exec(function(err, rows) {
+    Row.find({'data': { 'Doctor Name': new RegExp(req.params.query, 'i')}}).exec(function(err, rows) {
       if (err) {
         return res.status(400).send({
           message: errorHandler.getErrorMessage(err)
@@ -154,14 +154,6 @@ exports.hasAuthorization = function(req, res, next) {
       }
     });
   }
-
-  // if (typeof req.params.query === 'number'){
-  //   console.log('num');
-  // }
-
-  // if (typeof req.params.query === 'string'){
-  //   console.log('string');
-  // }
 
 
   Row.find({'data': { 'room': req.params.query}}).exec(function(err, rows) {
