@@ -110,7 +110,7 @@ var PatientRow = React.createClass({
         );
     });
     return (
-      <tr>
+      <tr className="tr-title">
       {roomAttribute}
       </tr>
     );

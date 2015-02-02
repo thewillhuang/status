@@ -24,6 +24,7 @@
 body {
   font-family: 'Open Sans';
   padding-top: 67px;
+  color: #5A5D67;
 }
 
 h2 {
@@ -31,6 +32,11 @@ h2 {
   font-weight: 900;
 }
 /*** Navbar ***/
+#navbar-container {
+  background: #8FBBBB;
+
+}
+
 .navbar-brand {
   position: absolute;
   left: 16px;
@@ -39,6 +45,23 @@ h2 {
 .navbar-right {
   position: absolute;
   right: 16px;
+}
+
+.navbar-brand {
+  color: #fff !important;
+}
+.navbar-default .navbar-nav > li > a {
+  color: #fff;
+}
+
+.navbar-default .navbar-nav > li > a:hover {
+  background: transparent;
+  color: #5A5D67;
+}
+
+.navbar-default .navbar-nav > li > a:focus {
+  background: transparent;
+  color: #5A5D67;
 }
 
 /*** Chart ***/
@@ -81,13 +104,22 @@ tr {
 }
 
 .table-striped > tbody > tr:nth-of-type(odd) {
-  background-color: #f3f3f3;
+  /*background-color: #f3f3f3;*/
+  /*background-color: blue;*/
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #8FBBBB), color-stop(1, #DFF2F2));
+  background: -o-linear-gradient(bottom, #8FBBBB 0%, #DFF2F2 100%);
+  background: -moz-linear-gradient(bottom, #8FBBBB 0%, #DFF2F2 100%);
+  background: -webkit-linear-gradient(bottom, #8FBBBB 0%, #DFF2F2 100%);
+  background: -ms-linear-gradient(bottom, #8FBBBB 0%, #DFF2F2 100%);
+  background: linear-gradient(to bottom, #8FBBBB 0%, #DFF2F2 100%);
 }
 
 /*** Search Bar ***/
 .form-control {
   margin: 8px 0;
+  border-radius: 8px;
 }
+
 
 .form-control + .glyphicon {
   position: absolute;
@@ -99,6 +131,8 @@ tr {
 .footer {
   height: 19px;
   opacity: 0.8;
+  background-color: #8FBBBB;
+  color: #fff;
 }
 
 .footer-info {
