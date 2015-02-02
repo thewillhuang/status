@@ -82,11 +82,12 @@ tr {
 /*** Search Bar ***/
 .form-control {
   padding-right: 30px;
+  margin: 5px 0;
 }
 
 .form-control + .glyphicon {
   position: absolute;
   right: 0;
-  padding: 8px 27px;
+  padding: 14px 27px;
 }
 
