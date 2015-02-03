@@ -129,34 +129,11 @@ exports.hasAuthorization = function(req, res, next) {
 
  exports.search = function(req, res){
 
-  var roomNumber = parseInt(req.params.query);
+  var query = {};
 
-  if (roomNumber) {
+  query[req.params.key] = req.params.query;
 
-    Row.find({'data': { 'room': req.params.query}}).exec(function(err, rows) {
-      if (err) {
-        return res.status(400).send({
-          message: errorHandler.getErrorMessage(err)
-        });
-      } else {
-        res.json(rows);
-      }
-    });
-  } else {
-
-    Row.find({'data': { 'Doctor Name': new RegExp(req.params.query, 'i')}}).exec(function(err, rows) {
-      if (err) {
-        return res.status(400).send({
-          message: errorHandler.getErrorMessage(err)
-        });
-      } else {
-        res.json(rows);
-      }
-    });
-  }
-
-
-  Row.find({'data': { 'room': req.params.query}}).exec(function(err, rows) {
+  Row.find({'data': query}).exec(function(err, rows) {
     if (err) {
       return res.status(400).send({
         message: errorHandler.getErrorMessage(err)

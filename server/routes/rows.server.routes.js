@@ -24,7 +24,7 @@ module.exports = function(app) {
   // example: "100" returns last 2 days, every single patient that was in room 100 and
   // their history, last update, and updated by who. "Paul Liu" returns any patient,
   // that has the name or Doctor of Paul Liu, any spelling variation not case sensitive
-  app.route('/search/:query').get(rows.search);
+  app.route('/search/:key/:query').get(rows.search);
 
   // Finish by binding the row middleware
   app.param('rowId', rows.rowByID);
