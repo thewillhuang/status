@@ -20,10 +20,7 @@ module.exports = function(app) {
   // {history: String} returns a new row with the JSON.data same key but blank value
   app.route('/status/:rowId').post(rows.changeStatus);
 
-  // get route to return an array of JSON given a String of search query on data.
-  // example: "100" returns last 2 days, every single patient that was in room 100 and
-  // their history, last update, and updated by who. "Paul Liu" returns any patient,
-  // that has the name or Doctor of Paul Liu, any spelling variation not case sensitive
+  // get route to return an array of json given a string of search query, data.key, limit
   app.route('/search/:key/:query/:page').get(rows.search);
 
   // Finish by binding the row middleware
