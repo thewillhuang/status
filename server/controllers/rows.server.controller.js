@@ -133,7 +133,9 @@ exports.hasAuthorization = function(req, res, next) {
 
   query[req.params.key] = req.params.query;
 
-  Row.find({'data': query}).exec(function(err, rows) {
+  var page = (req.params.page * 10) - 10;
+
+  Row.find({'data': query}).skip(page).limit(10).sort('-updated').exec(function(err, rows) {
     if (err) {
       return res.status(400).send({
         message: errorHandler.getErrorMessage(err)
