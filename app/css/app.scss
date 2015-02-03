@@ -49,6 +49,7 @@ h2 {
 .navbar-brand {
   color: #fff !important;
 }
+
 .navbar-default .navbar-nav > li > a {
   color: #fff;
 }
@@ -93,10 +94,6 @@ h2 {
   /*text-overflow: ellipsis;*/
 }
 
-/*table {
-  background-color: #FFEDDB;
-}*/
-
 td {
   width: 1px;
   white-space: nowrap;
@@ -113,11 +110,12 @@ tr {
 }
 
 /*** Search Bar ***/
-.form-control {
-  margin: 8px 0;
+#search-control {
   border-radius: 8px;
+  margin: 8px 0;
+  width: 200px;
+  text-align: left;
 }
-
 
 .form-control + .glyphicon {
   position: absolute;
@@ -136,4 +134,26 @@ tr {
 .footer-info {
   font-size: 12px;
   text-align: center;
+}
+
+@media screen and (max-width: 767px) {
+  #search-control {
+    position: relative;
+    right: 68px;
+    top: -58px;
+  }
+
+  .form-control + .glyphicon {
+    padding: 17px 7px;
+    position: relative;
+    right: -100px;
+    top: -106px;
+  }
+
+  .dropdown {
+    color: blue;
+    position: absolute;
+    left: -55px;
+    top: -40px;
+  }
 }
