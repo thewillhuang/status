@@ -83,6 +83,7 @@ h2 {
   overflow: visible;
 }
 
+
 .table-head {
   font-family: 'Open Sans Bold';
   text-align: center;
@@ -105,6 +106,14 @@ tr {
   width: 1px;
   white-space: nowrap;
 }
+
+input[type=text]:focus, textarea:focus {
+  box-shadow: 0 0 5px rgba(81, 203, 238, 1) !important;
+  padding: 3px 3px 3px 3px !important;
+  margin: 5px 1px 3px 0px !important;
+  border: 1px solid rgba(81, 203, 238, 1) !important;
+}
+
 
 .table-striped > tbody > tr:nth-of-type(odd) {
   /*background-color: #f3f3f3;*/

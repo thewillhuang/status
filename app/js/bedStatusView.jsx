@@ -13,6 +13,22 @@ var vow = require('vow');
 
 var Cell = React.createClass({
 
+  handleKeyDown: function (event) {
+    if (event.keyCode >= 37 && event.keyCode <= 40) {
+      event.preventDefault();
+      if (event)
+      console.log(event);
+    }
+  },
+
+  componentDidMount: function () {
+    window.addEventListener('keydown', this.handleKeyDown);
+  },
+
+  componentWillUnmount: function () {
+    window.removeEventListener('keydown', this.handleKeyDown);
+  },
+
   getInitialState: function() {
     return {
       value: this.props.roomProperty
@@ -64,11 +80,10 @@ var Cell = React.createClass({
     this.setState({
       value: value
     });
-
   },
 
-  keydown: function() {
-    this.refs.input.getDOMNode().focus();
+  handleFocus: function() {
+
   },
 
   render: function() {
@@ -80,7 +95,8 @@ var Cell = React.createClass({
       value={this.state.value}
       onChange={this.handleChange}
       ref="input"
-      placeholder={this.state.value} />
+      placeholder={this.state.value}
+      onFocus={this.handleFocus} />
       </td>
     );
   }
@@ -95,6 +111,7 @@ var PatientRow = React.createClass({
     var roomProperty = [];
     var prevID = this.props.prevID;
     var nextID = this.props.nextID;
+    var keyArray = this.props.keyArray;
     for (var i = 0; i < roomKey.length; i++) {
       roomProperty.push(this.props.room[roomKey[i]]);
     }
@@ -106,7 +123,8 @@ var PatientRow = React.createClass({
         id={rowID}
         index={roomKey[index]}
         prevID={prevID}
-        nextID={nextID} />
+        nextID={nextID}
+        keyArray={keyArray} />
         );
     });
     return (
@@ -132,22 +150,6 @@ var TableHead = React.createClass({
 
 var MainViewBox = React.createClass({
 
-  handleKeyDown: function (event) {
-    if (event.keyCode >= 37 && event.keyCode <= 40) {
-      event.preventDefault();
-      if (event)
-      console.log('arrow key pressed');
-    }
-  },
-
-  componentDidMount: function () {
-    window.addEventListener('keydown', this.handleKeyDown);
-  },
-
-  componentWillUnmount: function () {
-    window.removeEventListener('keydown', this.handleKeyDown);
-  },
-
   render: function() {
     var headerKey;
 
@@ -171,7 +173,8 @@ var MainViewBox = React.createClass({
         key={index}
         rowID={key._id}
         prevID={assignID(idKey, index - 1)}
-        nextID={assignID(idKey, index + 1)}/>
+        nextID={assignID(idKey, index + 1)}
+        keyArray={headerKey} />
         );
     });
 
