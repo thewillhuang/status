@@ -43,8 +43,13 @@ var Cell = React.createClass({
     }
   },
 
-  componentDidMount: function() {
-    window.addEventListener('keydown', this.setFocus);
+  componentDidUpdate: function() {
+    this.setFocus();
+  },
+
+  shouldComponentUpdate: function(focusRow) {
+    // console.log(focusRow);
+    return focusRow !== this.focusRow;
   },
 
   getInitialState: function() {
@@ -82,12 +87,12 @@ var Cell = React.createClass({
 
       var sendRequest = function() {
         obj[index] = result;
-        console.log(obj);
+        // console.log(obj);
         request
-          .post('/boards/'+ id)
-          .send(obj)
-          .end(function(error, res){
-            console.log(error);
+        .post('/boards/'+ id)
+        .send(obj)
+        .end(function(error, res){
+          // console.log(error);
         });
       };
 
@@ -109,10 +114,9 @@ var Cell = React.createClass({
       value={this.state.value}
       onChange={this.handleChange}
       ref="input"
-      placeholder={this.state.value}
       onFocus={this.handleFocus} />
       </td>
-    );
+      );
   }
 
 });
@@ -150,7 +154,7 @@ var PatientRow = React.createClass({
       <tr>
       {roomAttribute}
       </tr>
-    );
+      );
   }
 
 });
@@ -162,7 +166,7 @@ var TableHead = React.createClass({
       <th className="table-head">
       {this.props.head}
       </th>
-    );
+      );
   }
 
 });
@@ -174,43 +178,47 @@ var MainViewBox = React.createClass({
       event.preventDefault();
       //down
       if (event.keyCode === 40 ) {
-        console.log(this.state.focusinfo);
+        // console.log(this.state.focusinfo);
         this.setState({
           focusRow:this.state.focusinfo.nextID,
           focusCol:this.state.focusinfo.currentCol
         });
         // console.log(this.state.focusRow);
         // console.log(this.state.focusCol);
+        this.forceUpdate();
       }
       //up
       if (event.keyCode === 38 ) {
-        console.log(this.state.focusinfo);
+        // console.log(this.state.focusinfo);
         this.setState({
           focusRow:this.state.focusinfo.prevID,
           focusCol:this.state.focusinfo.currentCol
         });
         // console.log(this.state.focusRow);
         // console.log(this.state.focusCol);
+        this.forceUpdate();
       }
       //left
       if (event.keyCode === 37 ) {
-        console.log(this.state.focusinfo);
+        // console.log(this.state.focusinfo);
         this.setState({
           focusRow:this.state.focusinfo.currentRowID,
           focusCol:this.state.focusinfo.left
         });
         // console.log(this.state.focusRow);
         // console.log(this.state.focusCol);
+        this.forceUpdate();
       }
       //right
       if (event.keyCode === 39 ) {
-        console.log(this.state.focusinfo);
+        // console.log(this.state.focusinfo);
         this.setState({
           focusRow:this.state.focusinfo.currentRowID,
           focusCol:this.state.focusinfo.right
         });
         // console.log(this.state.focusRow);
         // console.log(this.state.focusCol);
+        this.forceUpdate();
       }
     }
   },
@@ -219,9 +227,7 @@ var MainViewBox = React.createClass({
     // console.log(event.detail);
     var detail = event.detail;
     this.setState({
-      focusinfo:detail,
-      focusRow:'',
-      focusCol:''
+      focusinfo:detail
     });
   },
 
@@ -232,6 +238,7 @@ var MainViewBox = React.createClass({
       focusinfo:''
     };
   },
+
   componentDidMount: function () {
     window.addEventListener('keydown', this.handleKeyDown);
     window.addEventListener('address', this.handleAddress, false);
@@ -285,16 +292,16 @@ var MainViewBox = React.createClass({
 
     return (
       <Grid fluid>
-        <Row>
-          <Col xs={18} md={12}>
-            <Table striped condensed responsive hover>
-              {tableHead}
-              {roomData}
-            </Table>
-          </Col>
-        </Row>
+      <Row>
+      <Col xs={18} md={12}>
+      <Table striped condensed responsive hover>
+      {tableHead}
+      {roomData}
+      </Table>
+      </Col>
+      </Row>
       </Grid>
-    );
+      );
   }
 
 });
