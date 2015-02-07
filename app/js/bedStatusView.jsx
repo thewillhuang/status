@@ -7,12 +7,19 @@ var Table = require('react-bootstrap/Table');
 var Grid = require('react-bootstrap/Grid');
 var data  = require('../data/data.json');
 var request = require('superagent');
-// var React = require('react/addons');
 var React = require('react');
-// var PureRenderMixin = require('react').addons.PureRenderMixin;
-
+var $ = require('jquery');
 var _ = require('lodash');
 var vow = require('vow');
+
+//text selection on focus
+$(function() {
+    $("input:text").focus(function() { $(this).select(); } );
+});
+
+//purerendermixin for optimization won't work because of the way the props are working in this version
+// var React = require('react/addons');
+// var PureRenderMixin = require('react').addons.PureRenderMixin;
 
 var Cell = React.createClass({
 
@@ -24,6 +31,8 @@ var Cell = React.createClass({
     var nextID = this.props.nextID;
     var left = this.props.keyArray[this.props.keyArrayIndex -1] || null;
     var right = this.props.keyArray[this.props.keyArrayIndex + 1] || null;
+    var first = this.props.keyArray[0];
+    var allID = this.props.allID;
     var current = this.props.keyArray[this.props.keyArrayIndex];
     var myEvent = new CustomEvent('address', {
       detail:{
@@ -32,7 +41,9 @@ var Cell = React.createClass({
        'nextID': nextID,
        'currentCol': current,
        'left': left,
-       'right': right
+       'right': right,
+       'firstCol': first,
+       'allID': allID
      }
    });
 
@@ -52,10 +63,11 @@ var Cell = React.createClass({
     this.setFocus();
   },
 
+  //this works
   shouldComponentUpdate: function(nextProps) {
-    if (nextProps.focusRow === this.props.id && nextProps.focusCol === this.props.keyArray[this.props.keyArrayIndex]) {
+    if (nextProps.focusRow === this.props.id && nextProps.focusCol === this.props.keyArray[this.props.keyArrayIndex])
       return true;
-    } else return false;
+    return false;
   },
 
   getInitialState: function() {
@@ -116,11 +128,13 @@ var Cell = React.createClass({
       <td>
       <Input
       className="table-input"
+      onfocus="this.select();"
       type="text"
       value={this.state.value}
       onChange={this.handleChange}
       ref="input"
-      onFocus={this.handleFocus} />
+      onFocus={this.handleFocus}
+      />
       </td>
       );
   }
@@ -138,6 +152,7 @@ var PatientRow = React.createClass({
     var keyArray = this.props.keyArray;
     var focusRow = this.props.focusRow;
     var focusCol = this.props.focusCol;
+    var allID = this.props.allID;
     for (var i = 0; i < roomKey.length; i++) {
       roomProperty.push(this.props.room[roomKey[i]]);
     }
@@ -150,6 +165,7 @@ var PatientRow = React.createClass({
         index={roomKey[index]}
         prevID={prevID}
         nextID={nextID}
+        allID={allID}
         keyArray={keyArray}
         focusRow={focusRow}
         focusCol={focusCol}
@@ -180,57 +196,65 @@ var TableHead = React.createClass({
 var MainViewBox = React.createClass({
 
   handleKeyDown: function (event) {
-    if (event.keyCode >= 37 && event.keyCode <= 40) {
+    if (event.keyCode >= 37 && event.keyCode <= 40 || event.keyCode === 9) {
       event.preventDefault();
       //down
       if (event.keyCode === 40 ) {
-        // console.log(this.state.focusinfo);
         this.setState({
           focusRow:this.state.focusinfo.nextID,
           focusCol:this.state.focusinfo.currentCol
         });
-        // console.log(this.state.focusRow);
-        // console.log(this.state.focusCol);
-        this.forceUpdate();
       }
       //up
       if (event.keyCode === 38 ) {
-        // console.log(this.state.focusinfo);
         this.setState({
           focusRow:this.state.focusinfo.prevID,
           focusCol:this.state.focusinfo.currentCol
         });
-        // console.log(this.state.focusRow);
-        // console.log(this.state.focusCol);
-        this.forceUpdate();
       }
       //left
-      if (event.keyCode === 37 ) {
-        // console.log(this.state.focusinfo);
+      if (event.keyCode === 37) {
         this.setState({
           focusRow:this.state.focusinfo.currentRowID,
           focusCol:this.state.focusinfo.left
         });
-        // console.log(this.state.focusRow);
-        // console.log(this.state.focusCol);
-        this.forceUpdate();
+      }
+      //shift tab
+      if (event.shiftKey === true && event.keyCode === 9) {
+        this.setState({
+          focusRow:this.state.focusinfo.currentRowID,
+          focusCol:this.state.focusinfo.left
+        });
       }
       //right
-      if (event.keyCode === 39 ) {
-        // console.log(this.state.focusinfo);
+      if (event.keyCode === 39) {
         this.setState({
           focusRow:this.state.focusinfo.currentRowID,
           focusCol:this.state.focusinfo.right
         });
-        // console.log(this.state.focusRow);
-        // console.log(this.state.focusCol);
-        this.forceUpdate();
+      }
+      //tab goes right and moves onto next row or restart to first.
+      if (event.keyCode === 9) {
+        if (this.state.focusinfo.right === null && this.state.focusinfo.nextID === null) {
+          this.setState({
+            focusRow: this.state.focusinfo.allID[0],
+            focusCol: this.state.focusinfo.firstCol
+          });
+        } else if (this.state.focusinfo.right === null && this.state.focusinfo.nextID !== null) {
+          this.setState({
+            focusRow: this.state.focusinfo.nextID,
+            focusCol: this.state.focusinfo.firstCol
+          });
+        }
+        this.setState({
+          focusRow:this.state.focusinfo.currentRowID,
+          focusCol:this.state.focusinfo.right
+        });
       }
     }
   },
 
   handleAddress: function (event) {
-    // console.log(event.detail);
     var detail = event.detail;
     this.setState({
       focusinfo:detail
@@ -283,6 +307,7 @@ var MainViewBox = React.createClass({
         rowID={key._id}
         prevID={assignID(idKey, index - 1)}
         nextID={assignID(idKey, index + 1)}
+        allID = {idKey}
         keyArray={headerKey}
         focusRow={focusRow}
         focusCol={focusCol}
