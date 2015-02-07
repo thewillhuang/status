@@ -13,20 +13,22 @@ var vow = require('vow');
 
 var Cell = React.createClass({
 
-  handleKeyDown: function (event) {
-    if (event.keyCode >= 37 && event.keyCode <= 40) {
-      event.preventDefault();
-      if (event)
-      console.log(event);
-    }
-  },
-
-  componentDidMount: function () {
-    window.addEventListener('keydown', this.handleKeyDown);
-  },
-
-  componentWillUnmount: function () {
-    window.removeEventListener('keydown', this.handleKeyDown);
+  handleFocus: function() {
+    var id = this.props.id;
+    var prevID = this.props.prevID;
+    var nextID = this.props.nextID;
+    var left = this.props.keyArray[this.props.keyArrayIndex -1] || null;
+    var right = this.props.keyArray[this.props.keyArrayIndex + 1] || null;
+    var myEvent = new CustomEvent('address', {
+      detail:{
+       'currentRowID': id,
+       'prevID': prevID,
+       'nextID': nextID,
+       'left': left,
+       'right': right
+     }
+   });
+    window.dispatchEvent(myEvent);
   },
 
   getInitialState: function() {
@@ -82,10 +84,6 @@ var Cell = React.createClass({
     });
   },
 
-  handleFocus: function() {
-
-  },
-
   render: function() {
     return (
       <td>
@@ -124,7 +122,8 @@ var PatientRow = React.createClass({
         index={roomKey[index]}
         prevID={prevID}
         nextID={nextID}
-        keyArray={keyArray} />
+        keyArray={keyArray}
+        keyArrayIndex = {index}/>
         );
     });
     return (
@@ -149,6 +148,29 @@ var TableHead = React.createClass({
 });
 
 var MainViewBox = React.createClass({
+
+  handleKeyDown: function (event) {
+    if (event.keyCode >= 37 && event.keyCode <= 40) {
+      event.preventDefault();
+      if (event)
+        console.log(event);
+    }
+  },
+
+  handleAddress: function (event) {
+    console.log(event);
+    console.log(event.detail);
+  },
+
+  componentDidMount: function () {
+    window.addEventListener('keydown', this.handleKeyDown);
+    window.addEventListener('address', this.handleAddress, false);
+  },
+
+  componentWillUnmount: function () {
+    window.removeEventListener('keydown', this.handleKeyDown);
+    window.removeEventListener('address', this.handleAddress, false);
+  },
 
   render: function() {
     var headerKey;
