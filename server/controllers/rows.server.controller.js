@@ -14,7 +14,7 @@ exports.list = function(req, res) {
   var floor = req.params.floor;
   var limit = req.params.limit;
 
-  Row.find({'isActive':'true'}).and({'floor': floor}).sort('data.room').limit(limit).exec(function(err, rows) {
+  Row.find({'isActive':'true'}).and({'floor': floor}).sort('order').limit(limit).exec(function(err, rows) {
     if (err) {
       return res.status(400).send({
         message: errorHandler.getErrorMessage(err)
