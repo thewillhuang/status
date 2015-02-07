@@ -7,11 +7,16 @@ var Table = require('react-bootstrap/Table');
 var Grid = require('react-bootstrap/Grid');
 var data  = require('../data/data.json');
 var request = require('superagent');
+// var React = require('react/addons');
 var React = require('react');
+// var PureRenderMixin = require('react').addons.PureRenderMixin;
+
 var _ = require('lodash');
 var vow = require('vow');
 
 var Cell = React.createClass({
+
+  // mixins: [PureRenderMixin],
 
   handleFocus: function() {
     var id = this.props.id;
@@ -47,9 +52,10 @@ var Cell = React.createClass({
     this.setFocus();
   },
 
-  shouldComponentUpdate: function(focusRow) {
-    // console.log(focusRow);
-    return focusRow !== this.focusRow;
+  shouldComponentUpdate: function(nextProps) {
+    if (nextProps.focusRow === this.props.id && nextProps.focusCol === this.props.keyArray[this.props.keyArrayIndex]) {
+      return true;
+    } else return false;
   },
 
   getInitialState: function() {
