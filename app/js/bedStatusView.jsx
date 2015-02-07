@@ -19,16 +19,32 @@ var Cell = React.createClass({
     var nextID = this.props.nextID;
     var left = this.props.keyArray[this.props.keyArrayIndex -1] || null;
     var right = this.props.keyArray[this.props.keyArrayIndex + 1] || null;
+    var current = this.props.keyArray[this.props.keyArrayIndex];
     var myEvent = new CustomEvent('address', {
       detail:{
        'currentRowID': id,
        'prevID': prevID,
        'nextID': nextID,
+       'currentCol': current,
        'left': left,
        'right': right
      }
    });
+
     window.dispatchEvent(myEvent);
+
+  },
+
+  setFocus: function() {
+    if (this.props.focusRow === this.props.id) {
+      if (this.props.focusCol === this.props.keyArray[this.props.keyArrayIndex]) {
+        this.refs.input.getInputDOMNode().focus();
+      }
+    }
+  },
+
+  componentDidMount: function() {
+    window.addEventListener('keydown', this.setFocus);
   },
 
   getInitialState: function() {
@@ -110,6 +126,8 @@ var PatientRow = React.createClass({
     var prevID = this.props.prevID;
     var nextID = this.props.nextID;
     var keyArray = this.props.keyArray;
+    var focusRow = this.props.focusRow;
+    var focusCol = this.props.focusCol;
     for (var i = 0; i < roomKey.length; i++) {
       roomProperty.push(this.props.room[roomKey[i]]);
     }
@@ -123,6 +141,8 @@ var PatientRow = React.createClass({
         prevID={prevID}
         nextID={nextID}
         keyArray={keyArray}
+        focusRow={focusRow}
+        focusCol={focusCol}
         keyArrayIndex = {index}/>
         );
     });
@@ -152,16 +172,66 @@ var MainViewBox = React.createClass({
   handleKeyDown: function (event) {
     if (event.keyCode >= 37 && event.keyCode <= 40) {
       event.preventDefault();
-      if (event)
-        console.log(event);
+      //down
+      if (event.keyCode === 40 ) {
+        console.log(this.state.focusinfo);
+        this.setState({
+          focusRow:this.state.focusinfo.nextID,
+          focusCol:this.state.focusinfo.currentCol
+        });
+        // console.log(this.state.focusRow);
+        // console.log(this.state.focusCol);
+      }
+      //up
+      if (event.keyCode === 38 ) {
+        console.log(this.state.focusinfo);
+        this.setState({
+          focusRow:this.state.focusinfo.prevID,
+          focusCol:this.state.focusinfo.currentCol
+        });
+        // console.log(this.state.focusRow);
+        // console.log(this.state.focusCol);
+      }
+      //left
+      if (event.keyCode === 37 ) {
+        console.log(this.state.focusinfo);
+        this.setState({
+          focusRow:this.state.focusinfo.currentRowID,
+          focusCol:this.state.focusinfo.left
+        });
+        // console.log(this.state.focusRow);
+        // console.log(this.state.focusCol);
+      }
+      //right
+      if (event.keyCode === 39 ) {
+        console.log(this.state.focusinfo);
+        this.setState({
+          focusRow:this.state.focusinfo.currentRowID,
+          focusCol:this.state.focusinfo.right
+        });
+        // console.log(this.state.focusRow);
+        // console.log(this.state.focusCol);
+      }
     }
   },
 
   handleAddress: function (event) {
-    console.log(event);
-    console.log(event.detail);
+    // console.log(event.detail);
+    var detail = event.detail;
+    this.setState({
+      focusinfo:detail,
+      focusRow:'',
+      focusCol:''
+    });
   },
 
+  getInitialState: function() {
+    return {
+      focusRow:'',
+      focusCol:'',
+      focusinfo:''
+    };
+  },
   componentDidMount: function () {
     window.addEventListener('keydown', this.handleKeyDown);
     window.addEventListener('address', this.handleAddress, false);
@@ -173,6 +243,7 @@ var MainViewBox = React.createClass({
   },
 
   render: function() {
+
     var headerKey;
 
     var idKey = this.props.data.map(function(key){
@@ -187,6 +258,9 @@ var MainViewBox = React.createClass({
       }
     };
 
+    var focusRow = this.state.focusRow;
+    var focusCol = this.state.focusCol;
+
     var roomData = this.props.data.map(function(key, index) {
       headerKey = Object.keys(key.data);
       return (
@@ -196,7 +270,10 @@ var MainViewBox = React.createClass({
         rowID={key._id}
         prevID={assignID(idKey, index - 1)}
         nextID={assignID(idKey, index + 1)}
-        keyArray={headerKey} />
+        keyArray={headerKey}
+        focusRow={focusRow}
+        focusCol={focusCol}
+        />
         );
     });
 
