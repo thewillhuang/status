@@ -257,7 +257,7 @@ var MainViewBox = React.createClass({
   },
 
   handleAddress: function (event) {
-    console.log(event.detail);
+    // console.log(event.detail);
     this.setState({
       focusinfo:event.detail
     });
