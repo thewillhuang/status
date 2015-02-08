@@ -14,7 +14,7 @@ exports.list = function(req, res) {
   var floor = req.params.floor;
   var limit = req.params.limit;
 
-  Row.find({'isActive':'true'}).and({'floor': floor}).sort('order').limit(limit).exec(function(err, rows) {
+  Row.find({'isActive':'true'}).and({'floor': floor}).sort({'_id': -1}).limit(limit).exec(function(err, rows) {
     if (err) {
       return res.status(400).send({
         message: errorHandler.getErrorMessage(err)
@@ -109,7 +109,6 @@ exports.hasAuthorization = function(req, res, next) {
 
   row.isActive = false;
   row.data = "";
-  row.order = 0;
   row.floor = 0;
 
   row.save(function(err) {
@@ -135,7 +134,7 @@ exports.hasAuthorization = function(req, res, next) {
 
   var page = (req.params.page * 10) - 10;
 
-  Row.find({'data': query}).skip(page).limit(10).sort('-updated').exec(function(err, rows) {
+  Row.find({'data': query}).skip(page).limit(10).sort({'_id': -1}).exec(function(err, rows) {
     if (err) {
       return res.status(400).send({
         message: errorHandler.getErrorMessage(err)
