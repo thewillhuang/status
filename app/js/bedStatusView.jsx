@@ -14,9 +14,9 @@ var vow = require('vow');
 
 //text selection on focus
 $(function() {
-    $("input").focus(function() { $(this).select(); } );
+  $("input").focus(function() { $(this).select(); } );
 }).mouseup(function (e) {
-    e.preventDefault();
+  e.preventDefault();
 });
 
 //purerendermixin for optimization won't work because of the way the props are working in this version
@@ -67,16 +67,19 @@ var Cell = React.createClass({
 
   //this works
   shouldComponentUpdate: function(nextProps) {
-    if (nextProps.focusRow === this.props.id && nextProps.focusCol === this.props.keyArray[this.props.keyArrayIndex])
+    if (nextProps.focusRow === this.props.id &&
+      nextProps.focusCol === this.props.keyArray[this.props.keyArrayIndex]) {
       return true;
+  } else {
     return false;
-  },
+  }
+},
 
-  getInitialState: function() {
-    return {
-      value: this.props.roomProperty
-    };
-  },
+getInitialState: function() {
+  return {
+    value: this.props.roomProperty
+  };
+},
 
   //debounced to send the post request when changes are finished
   debouncedChange: function (name) {
@@ -130,13 +133,13 @@ var Cell = React.createClass({
     return (
       <td>
       <Input
-        className="table-input"
-        type="text"
-        value={this.state.value}
-        onChange={this.handleChange}
-        ref="input"
-        onFocus={this.handleFocus}
-        onfocus="this.select()" />
+      className="table-input"
+      type="text"
+      value={this.state.value}
+      onChange={this.handleChange}
+      ref="input"
+      onFocus={this.handleFocus}
+      onfocus="this.select()" />
       </td>
       );
   }
@@ -172,7 +175,7 @@ var PatientRow = React.createClass({
         focusRow={focusRow}
         focusCol={focusCol}
         keyArrayIndex = {index} />
-      );
+        );
     });
     return (
       <tr>
