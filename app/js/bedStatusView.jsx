@@ -14,7 +14,9 @@ var vow = require('vow');
 
 //text selection on focus
 $(function() {
-    $("input:text").focus(function() { $(this).select(); } );
+  $("input").focus(function() { $(this).select(); } );
+}).mouseup(function (e) {
+  e.preventDefault();
 });
 
 //purerendermixin for optimization won't work because of the way the props are working in this version
@@ -65,17 +67,21 @@ var Cell = React.createClass({
 
   //this works
   shouldComponentUpdate: function(nextProps) {
-    if (nextProps.focusRow === this.props.id && nextProps.focusCol === this.props.keyArray[this.props.keyArrayIndex])
+    if (nextProps.focusRow === this.props.id &&
+      nextProps.focusCol === this.props.keyArray[this.props.keyArrayIndex]) {
       return true;
+  } else {
     return false;
-  },
+  }
+},
 
-  getInitialState: function() {
-    return {
-      value: this.props.roomProperty
-    };
-  },
+getInitialState: function() {
+  return {
+    value: this.props.roomProperty
+  };
+},
 
+  //debounced to send the post request when changes are finished
   debouncedChange: function (name) {
     var dfd = vow.defer();
 
@@ -128,13 +134,12 @@ var Cell = React.createClass({
       <td>
       <Input
       className="table-input"
-      onfocus="this.select();"
       type="text"
       value={this.state.value}
       onChange={this.handleChange}
       ref="input"
       onFocus={this.handleFocus}
-      />
+      onfocus="this.select()" />
       </td>
       );
   }
@@ -169,7 +174,7 @@ var PatientRow = React.createClass({
         keyArray={keyArray}
         focusRow={focusRow}
         focusCol={focusCol}
-        keyArrayIndex = {index}/>
+        keyArrayIndex = {index} />
         );
     });
     return (
@@ -255,9 +260,9 @@ var MainViewBox = React.createClass({
   },
 
   handleAddress: function (event) {
-    var detail = event.detail;
+    // console.log(event.detail);
     this.setState({
-      focusinfo:detail
+      focusinfo:event.detail
     });
   },
 
@@ -310,8 +315,7 @@ var MainViewBox = React.createClass({
         allID = {idKey}
         keyArray={headerKey}
         focusRow={focusRow}
-        focusCol={focusCol}
-        />
+        focusCol={focusCol} />
         );
     });
 
