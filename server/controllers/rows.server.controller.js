@@ -97,48 +97,4 @@ exports.hasAuthorization = function(req, res, next) {
   next();
 };
 
-/**
- * Row Change Status
- */
 
- exports.changeStatus = function(req, res){
-  var row = req.row;
-
-  row = _.extend(row, req.body);
-
-  row.data = "";
-  row.floor = 0;
-
-  row.save(function(err) {
-    if (err) {
-      return res.status(400).send({
-        message: errorHandler.getErrorMessage(err)
-      });
-    } else {
-      res.json(row);
-    }
-  });
- };
-
- /**
- * Row Search Query
- */
-
- exports.search = function(req, res){
-
-  var query = {};
-
-  query[req.params.key] = req.params.query;
-
-  var page = (req.params.page * 10) - 10;
-
-  Row.find({'data': query}).skip(page).limit(10).sort({'_id': -1}).exec(function(err, rows) {
-    if (err) {
-      return res.status(400).send({
-        message: errorHandler.getErrorMessage(err)
-      });
-    } else {
-      res.json(rows);
-    }
-  });
- };

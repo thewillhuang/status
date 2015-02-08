@@ -118,3 +118,27 @@ exports.hasAuthorization = function(req, res, next) {
   }
   next();
 };
+
+
+ /**
+ * Record Search Query
+ */
+
+ exports.search = function(req, res){
+
+  var query = {};
+
+  query[req.params.key] = req.params.query;
+
+  var page = (req.params.page * 10) - 10;
+
+  Record.find({'data': query}).skip(page).limit(10).sort({'_id': -1}).exec(function(err, records) {
+    if (err) {
+      return res.status(400).send({
+        message: errorHandler.getErrorMessage(err)
+      });
+    } else {
+      res.json(records);
+    }
+  });
+ };
