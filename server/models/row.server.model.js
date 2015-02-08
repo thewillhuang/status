@@ -13,14 +13,6 @@ var RowSchema = new Schema({
     type: Date,
     default: Date.now
   },
-  isActive: {
-    type: Boolean,
-    default: true
-  },
-  history: {
-    type: String,
-    default: ''
-  },
   updateBy: {
     type: Schema.ObjectId,
     ref: 'User'
