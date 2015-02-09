@@ -14,7 +14,7 @@ exports.list = function(req, res) {
   var floor = req.params.floor;
   var limit = req.params.limit;
 
-  Row.find({'isActive':'true'}).and({'floor': floor}).sort('data.room').limit(limit).exec(function(err, rows) {
+  Row.find({'floor': floor}).sort({'_id': -1}).limit(limit).exec(function(err, rows) {
     if (err) {
       return res.status(400).send({
         message: errorHandler.getErrorMessage(err)
@@ -31,7 +31,6 @@ exports.list = function(req, res) {
 exports.create = function(req, res) {
   var row = new Row(req.body);
   row.user = req.user;
-
 
   row.save(function(err) {
     if (err) {
@@ -98,50 +97,4 @@ exports.hasAuthorization = function(req, res, next) {
   next();
 };
 
-/**
- * Row Change Status
- */
 
- exports.changeStatus = function(req, res){
-  var row = req.row;
-
-  row = _.extend(row, req.body);
-
-  row.isActive = false;
-  row.data = "";
-  row.order = 0;
-  row.floor = 0;
-
-  row.save(function(err) {
-    if (err) {
-      return res.status(400).send({
-        message: errorHandler.getErrorMessage(err)
-      });
-    } else {
-      res.json(row);
-    }
-  });
- };
-
- /**
- * Row Search Query
- */
-
- exports.search = function(req, res){
-
-  var query = {};
-
-  query[req.params.key] = req.params.query;
-
-  var page = (req.params.page * 10) - 10;
-
-  Row.find({'data': query}).skip(page).limit(10).sort('-updated').exec(function(err, rows) {
-    if (err) {
-      return res.status(400).send({
-        message: errorHandler.getErrorMessage(err)
-      });
-    } else {
-      res.json(rows);
-    }
-  });
- };

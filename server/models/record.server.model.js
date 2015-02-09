@@ -1,9 +1,15 @@
 'use strict';
 
+/**
+ * Module dependencies.
+ */
 var mongoose = require('mongoose'),
-    Schema = mongoose.Schema;
+  Schema = mongoose.Schema;
 
-var RowSchema = new Schema({
+/**
+ * Record Schema
+ */
+var RecordSchema = new Schema({
   floor: {
     type: String,
     default: ''
@@ -19,4 +25,4 @@ var RowSchema = new Schema({
   }
 });
 
-mongoose.model('Row', RowSchema);
+mongoose.model('Record', RecordSchema);
