@@ -24,7 +24,7 @@
 
 /*** Base Elements ***/
 body {
-  font-family: 'Open Sans Bold';
+  font-family: 'Open Sans Bold' !important;
   padding-top: 67px;
   color: #5A5D67;
 }
@@ -108,12 +108,12 @@ tr {
 }
 
 //boarder select blue color
-input[type=text]:focus, textarea:focus {
-  box-shadow: 0 0 5px rgba(81, 203, 238, 1) !important;
-  padding: 3px 3px 3px 3px !important;
-  margin: 5px 1px 3px 0px !important;
-  border: 1px solid rgba(81, 203, 238, 1) !important;
-}
+// input[type=text]:focus, textarea:focus {
+//   box-shadow: 0 0 5px rgba(81, 203, 238, 1) !important;
+//   padding: 3px 3px 3px 3px !important;
+//   margin: 5px 1px 3px 0px !important;
+//   border: 1px solid rgba(81, 203, 238, 1) !important;
+// }
 
 //darker stripe colors
 .table-striped > tbody > tr:nth-of-type(odd) {

@@ -11,6 +11,9 @@ var React = require('react');
 var $ = require('jquery');
 var _ = require('lodash');
 var vow = require('vow');
+var a11y = require('react-a11y');
+var ENV = 'development';
+if (ENV === 'development') a11y();
 
 //text selection on focus
 $(function() {
@@ -69,8 +72,10 @@ var Cell = React.createClass({
   shouldComponentUpdate: function(nextProps) {
     if (nextProps.focusRow === this.props.id &&
       nextProps.focusCol === this.props.keyArray[this.props.keyArrayIndex]) {
+      // console.log('rerender');
       return true;
   } else {
+    // console.log('did not rerender');
     return false;
   }
 },
@@ -138,8 +143,7 @@ getInitialState: function() {
       value={this.state.value}
       onChange={this.handleChange}
       ref="input"
-      onFocus={this.handleFocus}
-      onfocus="this.select()" />
+      onFocus={this.handleFocus} />
       </td>
       );
   }
