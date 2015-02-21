@@ -3,8 +3,8 @@
 /**
  * Module dependencies.
  */
-var users = require('../../app/controllers/users.server.controller'),
-  records = require('../../app/controllers/records.server.controller');
+var users = require('../../server/controllers/users.server.controller'),
+  records = require('../../server/controllers/records.server.controller');
 
 module.exports = function(app) {
   // record Routes
