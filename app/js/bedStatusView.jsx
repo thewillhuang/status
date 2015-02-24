@@ -14,6 +14,7 @@ var vow = require('vow');
 var a11y = require('react-a11y');
 var ENV = 'development';
 if (ENV === 'development') a11y();
+var HeaderMain = require('./headerView.jsx');
 
 //text selection on focus
 $(function() {
@@ -330,6 +331,8 @@ var MainViewBox = React.createClass({
     });
 
     return (
+      <div>
+      <HeaderMain />
       <Grid fluid>
       <Row>
       <Col xs={18} md={12}>
@@ -340,6 +343,7 @@ var MainViewBox = React.createClass({
       </Col>
       </Row>
       </Grid>
+      </div>
       );
   }
 

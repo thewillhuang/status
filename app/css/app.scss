@@ -5,6 +5,10 @@
 @import "./bootstrap";
 @import "./bootstrap-theme";
 
+// body.portrait {
+//   -webkit-transform: rotate(90deg);
+// }
+
 @font-face {
   font-family: 'Open Sans';
   font-style: normal;
@@ -25,7 +29,7 @@
 /*** Base Elements ***/
 body {
   font-family: 'Open Sans Bold' !important;
-  padding-top: 67px;
+  // padding-top: 67px;
   color: #5A5D67;
 }
 
@@ -34,8 +38,9 @@ h2 {
   font-weight: 900;
 }
 /*** Navbar ***/
-#navbar-container {
-  background: #8FBBBB;
+
+.navbar-default {
+  background-image: linear-gradient(to bottom, #fff 0%, #8FBBBB 100%);
 }
 
 .navbar-brand {
@@ -49,7 +54,7 @@ h2 {
 }
 
 .navbar-brand {
-  color: #fff !important;
+  // color: #fff !important;
 }
 
 .navbar-default .navbar-nav > li > a {
@@ -64,6 +69,16 @@ h2 {
 .navbar-default .navbar-nav > li > a:focus {
   background: transparent;
   color: #5A5D67;
+}
+
+.floorNameInput {
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  text-align: center;
+  white-space: nowrap;
+  white-space: nowrap;
+  overflow: visible;
 }
 
 /*** Table ***/
@@ -82,7 +97,6 @@ h2 {
   white-space: nowrap;
   overflow: visible;
 }
-
 
 .table-head {
   font-family: 'Open Sans Bold';
