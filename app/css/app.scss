@@ -46,6 +46,7 @@ h2 {
 .navbar-brand {
   position: absolute;
   left: 16px;
+  margin: -8px;
 }
 
 .navbar-right {
@@ -54,8 +55,8 @@ h2 {
   top: -5px;
 }
 
-.navbar-brand {
-  // color: #fff !important;
+.navbar {
+  margin-bottom: 16px;
 }
 
 .navbar-default .navbar-nav > li > a {
@@ -86,7 +87,7 @@ h2 {
 /*** Table ***/
 .form-group {
   min-height: 100;
-  margin: -8px 0;
+  margin: -9px 0;
   white-space: nowrap;
 }
 
@@ -172,7 +173,7 @@ tr {
   }
 
   .form-control + .glyphicon {
-    padding: 17px 7px;
+    padding: 0px 7px;
     position: relative;
     right: -100px;
     top: -106px;

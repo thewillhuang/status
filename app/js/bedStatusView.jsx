@@ -10,10 +10,6 @@ var React = require('react');
 var $ = require('jquery');
 var _ = require('lodash');
 var vow = require('vow');
-var a11y = require('react-a11y');
-var ENV = 'development';
-if (ENV === 'development') a11y();
-var HeaderMain = require('./headerView.jsx');
 
 //text selection on focus
 $(function() {

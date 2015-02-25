@@ -25,6 +25,13 @@ var HeaderMain = React.createClass({
   },
 
   render: function() {
+    console.log(this.props.floors);
+    var floors = this.props.floors.map(function(key, index){
+      return (
+        <MenuItem eventKey={index} key={key}>{key}</MenuItem>
+        );
+    });
+    console.log(floors);
     var navbarInstance = (
         <Navbar>
           <Nav>
@@ -36,13 +43,16 @@ var HeaderMain = React.createClass({
             ref="input"
             className="floorNameInput" />
             </NavItem>
-            <NavItem eventKey={1} href="#">Floors</NavItem>
-            <DropdownButton eventKey={3} title={'Welcome, ' + this.props.user}>
-              <MenuItem eventKey="1">Action</MenuItem>
-              <MenuItem eventKey="2">Another action</MenuItem>
-              <MenuItem eventKey="3">Something else here</MenuItem>
+            <DropdownButton eventKey={1} title="Floors">
+            {floors}
+            </DropdownButton>
+            <DropdownButton eventKey={2} title={'Welcome, ' + this.props.user}>
+              <MenuItem eventKey="1">Edit Column</MenuItem>
+              <MenuItem eventKey="2">Edit Floors</MenuItem>
+              <MenuItem eventKey="3">Staff Optimizer</MenuItem>
               <MenuItem divider />
-              <MenuItem eventKey="4">Separated link</MenuItem>
+              <MenuItem eventKey="6">Preference</MenuItem>
+              <MenuItem eventKey="7">Log In</MenuItem>
             </DropdownButton>
           </Nav>
         </Navbar>
