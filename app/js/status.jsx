@@ -15,7 +15,7 @@ var MainView = React.createClass({
     // console.log(this.props.data);
     return (
       <div>
-        <HeaderMain floorName={this.props.floorName} floors={this.props.floors}user={this.props.user} />
+        <HeaderMain floorName={this.props.floorName} floors={this.props.floors} user={this.props.user} />
         <TableBox data={this.props.data} />
       </div>
     );
