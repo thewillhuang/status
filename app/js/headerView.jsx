@@ -25,13 +25,11 @@ var HeaderMain = React.createClass({
   },
 
   render: function() {
-    console.log(this.props.floors);
     var floors = this.props.floors.map(function(key, index){
       return (
         <MenuItem eventKey={index} key={key}>{key}</MenuItem>
         );
     });
-    console.log(floors);
     var navbarInstance = (
         <Navbar>
           <Nav>
@@ -54,6 +52,10 @@ var HeaderMain = React.createClass({
               <MenuItem eventKey="6">Preference</MenuItem>
               <MenuItem eventKey="7">Log In</MenuItem>
             </DropdownButton>
+            <NavItem eventKey={4}>
+            <input type="search" placeholder="search" />
+            <span class="glyphicon glyphicon-search"></span>
+            </NavItem>
           </Nav>
         </Navbar>
       );
