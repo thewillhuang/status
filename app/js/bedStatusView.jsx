@@ -5,7 +5,6 @@ var Col   = require('react-bootstrap/Col');
 var Row   = require('react-bootstrap/Row');
 var Table = require('react-bootstrap/Table');
 var Grid = require('react-bootstrap/Grid');
-var data  = require('../data/data.json');
 var request = require('superagent');
 var React = require('react');
 var $ = require('jquery');
@@ -203,13 +202,13 @@ var TableHead = React.createClass({
 
 });
 
-var MainViewBox = React.createClass({
+var TableBox = React.createClass({
 
   handleKeyDown: function (event) {
-    if (event.keyCode >= 37 && event.keyCode <= 40 || event.keyCode === 9) {
+    if (event.keyCode >= 37 && event.keyCode <= 40 || event.keyCode === 9 || event.keyCode === 13) {
       event.preventDefault();
       //down
-      if (event.keyCode === 40 ) {
+      if (event.keyCode === 40 || event.keyCode === 13) {
         this.setState({
           focusRow:this.state.focusinfo.nextID,
           focusCol:this.state.focusinfo.currentCol
@@ -332,7 +331,6 @@ var MainViewBox = React.createClass({
 
     return (
       <div>
-      <HeaderMain />
       <Grid fluid>
       <Row>
       <Col xs={18} md={12}>
@@ -349,6 +347,4 @@ var MainViewBox = React.createClass({
 
 });
 
-React.render(<MainViewBox data={data} />, document.getElementById('reactRoot'));
-
-module.exports = MainViewBox;
+module.exports = TableBox;

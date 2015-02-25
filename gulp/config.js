@@ -64,7 +64,7 @@ module.exports = {
     //   // external: ['jquery', 'underscore']
     // },
     {
-      entries: src + '/js/status.js',
+      entries: src + '/js/status.jsx',
       dest: dest,
       outputName: 'status.js'
     },
