@@ -1,11 +1,18 @@
 'use strict';
+// react components
 var TableBox = require('./bedStatusView.jsx');
 var HeaderMain = require('./headerView.jsx');
-var data  = require('../data/data.json');
-var a11y = require('react-a11y');
-var ENV = 'development';
-if (ENV === 'development') a11y();
 
+// data.json
+var data  = require('../data/data.json');
+
+//react router components
+var Router = require('react-router');
+var Route = Router.Route;
+var NotFoundRoute = Router.NotFoundRoute;
+var DefaultRoute = Router.DefaultRoute;
+var Link = Router.Link;
+var RouteHandler = Router.RouteHandler;
 
 var React = require('react');
 
