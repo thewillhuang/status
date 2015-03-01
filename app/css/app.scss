@@ -51,11 +51,11 @@ h2 {
   margin: -8px;
 }
 
-.navbar-right {
-  position: absolute;
-  right: 16px;
-  top: -5px;
-}
+// .navbar-right {
+//   position: absolute;
+//   right: 16px;
+//   top: -5px;
+// }
 
 .navbar {
   //nav bar to table spacing
@@ -185,7 +185,11 @@ tr {
   .dropdown {
     color: blue;
     position: absolute;
-    left: -55px;
-    top: -40px;
+    // left: -55px;
+    // top: -40px;
   }
+}
+
+.navbar-collapse {
+  overflow: hidden;
 }
