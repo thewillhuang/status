@@ -1,22 +1,14 @@
 'use strict';
 var React = require('react');
-var Input = require('react-bootstrap/Input');
-var Col   = require('react-bootstrap/Col');
-var Row   = require('react-bootstrap/Row');
-var Table = require('react-bootstrap/Table');
-var Grid = require('react-bootstrap/Grid');
+var Input = require('react-bootstrap/lib/Input');
+var Col   = require('react-bootstrap/lib/Col');
+var Row   = require('react-bootstrap/lib/Row');
+var Table = require('react-bootstrap/lib/Table');
+var Grid = require('react-bootstrap/lib/Grid');
 var request = require('superagent');
 var React = require('react');
-var $ = require('jquery');
 var _ = require('lodash');
 var vow = require('vow');
-
-//text selection on focus
-$(function() {
-  $("input").focus(function() { $(this).select(); } );
-}).mouseup(function (e) {
-  e.preventDefault();
-});
 
 //purerendermixin for optimization won't work because of the way the props are working in this version
 // var React = require('react/addons');
@@ -27,6 +19,8 @@ var Cell = React.createClass({
   // mixins: [PureRenderMixin],
 
   handleFocus: function() {
+    this.refs.input.getInputDOMNode().select();
+
     var id = this.props.id;
     var prevID = this.props.prevID;
     var nextID = this.props.nextID;
@@ -112,12 +106,12 @@ getInitialState: function() {
 
       var sendRequest = function() {
         obj[index] = result;
-        // console.log(obj);
+        console.log(obj);
         request
         .post('/boards/'+ id)
         .send(obj)
         .end(function(error, res){
-          // console.log(error);
+          console.log(error);
         });
       };
 

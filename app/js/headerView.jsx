@@ -1,13 +1,14 @@
 'use strict';
-var React = require('react');
-var Navbar = require('react-bootstrap/Navbar');
-var Nav = require('react-bootstrap/Nav');
-var NavItem = require('react-bootstrap/NavItem');
-var MenuItem = require('react-bootstrap/MenuItem');
-var Input = require('react-bootstrap/Input');
-var DropdownButton = require('react-bootstrap/DropdownButton');
+var vow = require('vow');
+var request = require('superagent');
 
 var React = require('react');
+var Navbar = require('react-bootstrap/lib/Navbar');
+var Nav = require('react-bootstrap/lib/Nav');
+var NavItem = require('react-bootstrap/lib/NavItem');
+var MenuItem = require('react-bootstrap/lib/MenuItem');
+var Input = require('react-bootstrap/lib/Input');
+var DropdownButton = require('react-bootstrap/lib/DropdownButton');
 
 var HeaderMain = React.createClass({
 
@@ -17,32 +18,78 @@ var HeaderMain = React.createClass({
     };
   },
 
+   //debounced to send the post request when changes are finished
+  debouncedChange: function (name) {
+    var dfd = vow.defer();
+
+    var timerId = this.timerId;
+    var self = this;
+    if (timerId) {
+      clearTimeout(timerId);
+    }
+    timerId = setTimeout((function (innerName) {
+      return function () {
+        dfd.resolve(innerName);
+      };
+    })(name), 2000);
+    this.timerId = timerId;
+
+    return dfd.promise();
+  },
+
   handleChange: function() {
     var value = this.refs.input.getInputDOMNode().value || null;
+    var obj = {};
+    var id = this.props.id;
+
+    this.debouncedChange(value).then(function(result){
+
+      var sendRequest = function() {
+        obj.floor = result;
+        console.log(obj);
+        request
+        .post('/floor/' + id)
+        .send(obj)
+        .end(function(error, res){
+          console.log(error);
+        });
+      };
+
+      sendRequest();
+
+    });
+
     this.setState({
       value: value
     });
   },
 
+  handleFocus: function() {
+    this.refs.input.getInputDOMNode().select();
+  },
+
   render: function() {
     var floors = this.props.floors.map(function(key, index){
+      // console.log(key);
       return (
-        <MenuItem eventKey={index} key={key}>{key}</MenuItem>
+        <MenuItem
+        eventKey={index} key={key} > {key} </MenuItem>
         );
     });
     var navbarInstance = (
         <Navbar>
           <Nav>
             <NavItem eventKey={0} href="#">
-            <Input
-            type="text"
-            value={this.state.value}
-            onChange={this.handleChange}
-            ref="input"
-            className="floorNameInput" />
+              <Input
+              type="text"
+              value={this.state.value}
+              onChange={this.handleChange}
+              onFocus={this.handleFocus}
+              ref="input"
+              className="floorNameInput" />
             </NavItem>
             <DropdownButton eventKey={1} title="Floors">
-            {floors}
+              {floors}
             </DropdownButton>
             <DropdownButton eventKey={2} title={'Welcome, ' + this.props.user}>
               <MenuItem eventKey="1">Edit Column</MenuItem>
@@ -53,12 +100,13 @@ var HeaderMain = React.createClass({
               <MenuItem eventKey="7">Log In</MenuItem>
             </DropdownButton>
             <NavItem eventKey={4}>
-            <input type="search" placeholder="search" />
-            <span class="glyphicon glyphicon-search"></span>
+              <input type="search" placeholder="search" />
+              <span className="glyphicon glyphicon-search"></span>
             </NavItem>
           </Nav>
         </Navbar>
       );
+
     return (
       navbarInstance
     );
