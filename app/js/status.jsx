@@ -13,7 +13,6 @@ var React = require('react');
 var MainView = React.createClass({
 
   render: function() {
-    console.log(event);
     return (
       <div>
         <HeaderMain floorName={this.props.floorName} floors={this.props.floors} user={this.props.user} id={this.props.id} />

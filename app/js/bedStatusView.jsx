@@ -19,7 +19,7 @@ var Cell = React.createClass({
   // mixins: [PureRenderMixin],
 
   handleFocus: function() {
-    // this.refs.input.getInputDOMNode().focus();
+    this.refs.input.getInputDOMNode().focus();
     this.refs.input.getInputDOMNode().select();
 
     var id = this.props.id;

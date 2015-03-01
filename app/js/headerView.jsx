@@ -10,15 +10,17 @@ var MenuItem = require('react-bootstrap/lib/MenuItem');
 var Input = require('react-bootstrap/lib/Input');
 var DropdownButton = require('react-bootstrap/lib/DropdownButton');
 
-var HeaderMain = React.createClass({
+var React = require('react');
+
+var FloorNameInput = React.createClass({
 
   getInitialState: function() {
     return {
-      value: this.props.floorName
+      value:this.props.floorName
     };
   },
 
-   //debounced to send the post request when changes are finished
+     //debounced to send the post request when changes are finished
   debouncedChange: function (name) {
     var dfd = vow.defer();
 
@@ -69,6 +71,24 @@ var HeaderMain = React.createClass({
   },
 
   render: function() {
+    return (
+      <div>
+      <Input
+        type="text"
+        value={this.state.value}
+        onChange={this.handleChange}
+        onFocus={this.handleFocus}
+        ref="input"
+        className="floorNameInput" />
+      </div>
+    );
+  }
+
+});
+
+var HeaderMain = React.createClass({
+
+  render: function() {
     var floors = this.props.floors.map(function(key, index){
       // console.log(key);
       return (
@@ -76,18 +96,15 @@ var HeaderMain = React.createClass({
         eventKey={index} key={key} > {key} </MenuItem>
         );
     });
+
     var navbarInstance = (
-        <Navbar toggleNavKey={0} defaultNavExpanded={false}>
+        <Navbar brand={
+            <FloorNameInput floorName={this.props.floorName} id={this.props.id} />
+          }
+          toggleNavKey={0}
+          defaultNavExpanded={false}>
+
           <Nav right eventKey={0}>
-            <NavItem eventKey={1} href="#">
-              <Input
-              type="text"
-              value={this.state.value}
-              onChange={this.handleChange}
-              onFocus={this.handleFocus}
-              ref="input"
-              className="floorNameInput" />
-            </NavItem>
 
             <DropdownButton eventKey={2} title="Floors">
               {floors}
