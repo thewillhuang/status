@@ -65,17 +65,17 @@ var Cell = React.createClass({
       nextProps.focusCol === this.props.keyArray[this.props.keyArrayIndex]) {
       // console.log('rerender');
       return true;
-  } else {
-    // console.log('did not rerender');
-    return false;
-  }
-},
+    } else {
+      // console.log('did not rerender');
+      return false;
+    }
+  },
 
-getInitialState: function() {
-  return {
-    value: this.props.roomProperty
-  };
-},
+  getInitialState: function() {
+    return {
+      value: this.props.roomProperty
+    };
+  },
 
   //debounced to send the post request when changes are finished
   debouncedChange: function (name) {

@@ -77,9 +77,9 @@ var HeaderMain = React.createClass({
         );
     });
     var navbarInstance = (
-        <Navbar>
-          <Nav>
-            <NavItem eventKey={0} href="#">
+        <Navbar toggleNavKey={0} defaultNavExpanded={false}>
+          <Nav right eventKey={0}>
+            <NavItem eventKey={1} href="#">
               <Input
               type="text"
               value={this.state.value}
@@ -88,10 +88,12 @@ var HeaderMain = React.createClass({
               ref="input"
               className="floorNameInput" />
             </NavItem>
-            <DropdownButton eventKey={1} title="Floors">
+
+            <DropdownButton eventKey={2} title="Floors">
               {floors}
             </DropdownButton>
-            <DropdownButton eventKey={2} title={'Welcome, ' + this.props.user}>
+
+            <DropdownButton eventKey={3} title={'Welcome, ' + this.props.user}>
               <MenuItem eventKey="1">Edit Column</MenuItem>
               <MenuItem eventKey="2">Edit Floors</MenuItem>
               <MenuItem eventKey="3">Staff Optimizer</MenuItem>
@@ -99,10 +101,12 @@ var HeaderMain = React.createClass({
               <MenuItem eventKey="6">Preference</MenuItem>
               <MenuItem eventKey="7">Log In</MenuItem>
             </DropdownButton>
+
             <NavItem eventKey={4}>
               <input type="search" placeholder="search" />
               <span className="glyphicon glyphicon-search"></span>
             </NavItem>
+
           </Nav>
         </Navbar>
       );
