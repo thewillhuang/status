@@ -1,7 +1,4 @@
 @import "normalize";
-// @import "bourbon";
-// @import "./base";
-// @import "neat";
 @import "./bootstrap";
 @import "./bootstrap-theme";
 
@@ -28,8 +25,7 @@
 
 /*** Base Elements ***/
 body {
-  font-family: 'Open Sans Bold' !important;
-  // padding-top: 67px;
+  font-family: 'Open Sans' !important;
   color: #5A5D67;
 }
 
@@ -81,10 +77,12 @@ h2 {
   color: #5A5D67;
 }
 
+//wapper to move the position of floor name input
 .floornamewrapper{
   margin-top: 19px;
 }
 
+//to remove the box next to the input
 .floorNameInput {
   background-color: transparent !important;
   border: none !important;
@@ -93,6 +91,7 @@ h2 {
   white-space: nowrap;
   overflow: visible;
   color: #363636;
+  font-size: 1.5em;
 }
 
 /*** Table ***/
@@ -112,7 +111,7 @@ h2 {
 }
 
 .table-head {
-  font-family: 'Open Sans Bold';
+  font-family: 'Open Sans';
   text-align: center;
   font-size: 1.2em;
   font-weight: bolder;
