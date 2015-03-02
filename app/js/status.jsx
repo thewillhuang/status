@@ -1,9 +1,10 @@
 'use strict';
-// require('bootstrap');
 
 // react components
 var TableBox = require('./bedStatusView.jsx');
 var HeaderMain = require('./headerView.jsx');
+var request = require('superagent');
+
 
 // data.json
 var data  = require('../data/data.json');
@@ -11,6 +12,7 @@ var data  = require('../data/data.json');
 var React = require('react');
 
 var MainView = React.createClass({
+
 
   render: function() {
     return (

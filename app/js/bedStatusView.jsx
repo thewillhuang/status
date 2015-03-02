@@ -19,6 +19,7 @@ var Cell = React.createClass({
   // mixins: [PureRenderMixin],
 
   handleFocus: function() {
+
     this.refs.input.getInputDOMNode().focus();
     this.refs.input.getInputDOMNode().select();
 
@@ -44,6 +45,7 @@ var Cell = React.createClass({
    });
 
     window.dispatchEvent(myEvent);
+
 
   },
 
@@ -103,6 +105,10 @@ var Cell = React.createClass({
     var id = this.props.id;
     var obj = {};
 
+    this.setState({
+      value: value
+    });
+
     this.debouncedChange(value).then(function(result){
 
       var sendRequest = function() {
@@ -119,10 +125,6 @@ var Cell = React.createClass({
       sendRequest();
 
     });
-
-    this.setState({
-      value: value
-    });
   },
 
   render: function() {
@@ -133,8 +135,8 @@ var Cell = React.createClass({
       type="text"
       value={this.state.value}
       onChange={this.handleChange}
-      ref="input"
-      onFocus={this.handleFocus} />
+      onFocus={this.handleFocus}
+      ref="input" />
       </td>
       );
   }
