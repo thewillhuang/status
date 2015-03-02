@@ -9,19 +9,19 @@ var request = require('superagent');
 var React = require('react');
 var _ = require('lodash');
 var vow = require('vow');
+var $ = require('jquery');
 
-//purerendermixin for optimization won't work because of the way the props are working in this version
-// var React = require('react/addons');
-// var PureRenderMixin = require('react').addons.PureRenderMixin;
+
+// $(function() {
+//   $("input").focus(function() { $(this).select(); } );
+// }).mouseup(function (e) {
+//   e.preventDefault();
+// });
+
 
 var Cell = React.createClass({
 
-  // mixins: [PureRenderMixin],
-
   handleFocus: function() {
-
-    this.refs.input.getInputDOMNode().focus();
-    this.refs.input.getInputDOMNode().select();
 
     var id = this.props.id;
     var prevID = this.props.prevID;
@@ -46,6 +46,7 @@ var Cell = React.createClass({
 
     window.dispatchEvent(myEvent);
 
+    this.refs.input.getInputDOMNode().select();
 
   },
 
@@ -62,7 +63,11 @@ var Cell = React.createClass({
   },
 
   //this works
-  shouldComponentUpdate: function(nextProps) {
+  //this is where the bug is
+  shouldComponentUpdate: function(nextProps, nextState) {
+    if (nextState.value !== this.state.value) {
+      return true;
+    }
     if (nextProps.focusRow === this.props.id &&
       nextProps.focusCol === this.props.keyArray[this.props.keyArrayIndex]) {
       // console.log('rerender');
@@ -253,6 +258,8 @@ var TableBox = React.createClass({
           focusCol:this.state.focusinfo.right
         });
       }
+    } else {
+        // event.preventDefault();
     }
   },
 

@@ -99,11 +99,12 @@ var HeaderMain = React.createClass({
 
     var navbarInstance = (
         <Navbar brand={
-            <FloorNameInput floorName={this.props.floorName} id={this.props.id} />
-          }
+            <FloorNameInput
+            floorName={this.props.floorName}
+            id={this.props.id} />}
           toggleNavKey={0}
           defaultNavExpanded={false}
-          fluid>
+          fluid >
 
           <Nav right eventKey={0}>
 
