@@ -45,6 +45,11 @@ h2 {
   background-image: linear-gradient(to bottom, #fff 0%, #8FBBBB 100%);
 }
 
+//for navbar collapase to work in mobile
+.navbar-collapse {
+  overflow: hidden;
+}
+
 // .navbar-brand {
 //   position: absolute;
 //   left: 16px;
@@ -76,15 +81,18 @@ h2 {
   color: #5A5D67;
 }
 
+.floornamewrapper{
+  margin-top: 19px;
+}
+
 .floorNameInput {
   background-color: transparent !important;
   border: none !important;
   box-shadow: none !important;
   text-align: center;
   white-space: nowrap;
-  white-space: nowrap;
   overflow: visible;
-  color: white;
+  color: #363636;
 }
 
 /*** Table ***/
@@ -100,7 +108,6 @@ h2 {
   box-shadow: none !important;
   text-align: center;
   white-space: nowrap;
-  white-space: nowrap;
   overflow: visible;
 }
 
@@ -109,7 +116,6 @@ h2 {
   text-align: center;
   font-size: 1.2em;
   font-weight: bolder;
-  white-space: nowrap;
   white-space: nowrap;
   overflow: hidden;
   padding: 0px;
@@ -127,13 +133,6 @@ tr {
   white-space: nowrap;
 }
 
-//boarder select blue color
-// input[type=text]:focus, textarea:focus {
-//   box-shadow: 0 0 5px rgba(81, 203, 238, 1) !important;
-//   padding: 3px 3px 3px 3px !important;
-//   margin: 5px 1px 3px 0px !important;
-//   border: 1px solid rgba(81, 203, 238, 1) !important;
-// }
 
 //darker stripe colors
 .table-striped > tbody > tr:nth-of-type(odd) {

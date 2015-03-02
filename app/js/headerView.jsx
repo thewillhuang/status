@@ -72,7 +72,7 @@ var FloorNameInput = React.createClass({
 
   render: function() {
     return (
-      <div>
+      <div className="floornamewrapper">
       <Input
         type="text"
         value={this.state.value}
@@ -102,7 +102,8 @@ var HeaderMain = React.createClass({
             <FloorNameInput floorName={this.props.floorName} id={this.props.id} />
           }
           toggleNavKey={0}
-          defaultNavExpanded={false}>
+          defaultNavExpanded={false}
+          fluid>
 
           <Nav right eventKey={0}>
 
