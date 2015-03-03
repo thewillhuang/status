@@ -82,6 +82,79 @@ h2 {
   white-space: nowrap;
 }
 
+#floor {
+  left: -20px;
+  padding-left: 50px;
+  position: relative;
+}
+
+#login {
+  left: -20px;
+  position: relative;
+}
+/*#floor {
+  left: 600px;
+  position: relative;
+  top: -30px;
+}
+
+#floor > .dropdown-menu {
+  left: 600px;
+  position: relative;
+  top: 10px;
+}
+
+#login {
+  left: 607px;
+  position: relative;
+  top: -30px;
+}*/
+
+.navbar-nav > li > .dropdown-menu {
+
+}
+
+/*** Search Bar ***/
+#custom-search-input {
+  margin:0;
+  margin-top: -8px;
+  margin-bottom: -7px;
+  padding: 0;
+/*  position: relative;
+  left: 615px;
+  top: -29px;*/
+  /*width: 50%;*/
+}
+
+#custom-search-input .search-query {
+  border-radius: 4px;
+  margin-bottom: 0;
+  -moz-border-radius: 3px;
+  padding-left: 3px;
+  padding-right: 3px;
+  position: relative;
+  -webkit-border-radius: 3px;
+}
+
+/*#custom-search-input button {
+  background: none;
+  border: 0;
+  border-radius: 4px;
+  color:#D9230F;
+  left: -25px;
+  margin-bottom: 0;
+  margin-top: 2px;
+  -moz-border-radius: 3px;
+  padding: 2px 5px;
+  position: relative;
+  -webkit-border-radius: 3px;
+  z-index: 3;
+}
+
+.search-query:focus + button {
+  z-index: 3;
+}*/
+
 /*** Table ***/
 .form-group {
   min-height: 100;
@@ -125,46 +198,6 @@ tr {
 .table-striped > tbody > tr:nth-of-type(odd) {
   background-color: #f3f3f3;
   /*background-color: blue;*/
-}
-
-/*** Search Bar ***/
-#custom-search-input {
-  margin:0;
-  margin-top: -9.3px;
-  padding: 0;
-  width: 40%;
-}
-
-#custom-search-input .search-query {
-  border-radius: 4px;
-  left: 8px;
-  margin-bottom: 0;
-  -moz-border-radius: 3px;
-  padding-left: 3px;
-  /*padding-left: 4px \9;*/
-  padding-right: 3px;
-  /*padding-right: 4px \9;*/
-  position: relative;
-  -webkit-border-radius: 3px;
-}
-
-#custom-search-input button {
-  background: none;
-  border: 0;
-  border-radius: 4px;
-  color:#D9230F;
-  left: -25px;
-  margin-bottom: 0;
-  margin-top: 2px;
-  -moz-border-radius: 3px;
-  padding: 2px 5px;
-  position: relative;
-  -webkit-border-radius: 3px;
-  z-index: 3;
-}
-
-.search-query:focus + button {
-  z-index: 3;
 }
 
 /*** Footer ***/
