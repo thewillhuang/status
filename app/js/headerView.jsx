@@ -102,35 +102,33 @@ var HeaderMain = React.createClass({
         );
     });
 
+                  // <span className="input-group-btn">
+                  //   <button className="btn btn-danger" type="button">
+                  //     <span className="glyphicon glyphicon-search"></span>
+                  //   </button>
+                  // </span>
     var navbarInstance = (
         <Navbar brand={
-            <FloorNameInput
+          <FloorNameInput
             floorName={this.props.floorName}
             id={this.props.id} />}
           toggleNavKey={0}
           defaultNavExpanded={false}
           fluid >
 
-          <br />
-
-          <Nav onSelect={this.handleSelect} right eventKey={0}>
+          <Nav onSelect={this.handleSelect} eventKey={0} right>
 
             <NavItem eventKey="search" id="custom-search-input">
               <div className="input-group">
                 <input type="search" className="search-query form-control" placeholder="Search" />
-                  <span className="input-group-btn">
-                    <button className="btn btn-danger" type="button">
-                      <span className="glyphicon glyphicon-search"></span>
-                    </button>
-                  </span>
               </div>
             </NavItem>
 
-            <DropdownButton eventKey="floors" title="Floors">
+            <DropdownButton eventKey="floors" title="Floors" id="floor">
               {floors}
             </DropdownButton>
 
-            <DropdownButton eventKey="welcome" title={'Login, ' + this.props.user}>
+            <DropdownButton eventKey="welcome" title={'Login, ' + this.props.user} id="login">
               <MenuItem eventKey="editColumn">Edit Column</MenuItem>
               <MenuItem eventKey="editFloors">Edit Floors</MenuItem>
               <MenuItem eventKey="optimizer">Staff Optimizer</MenuItem>
