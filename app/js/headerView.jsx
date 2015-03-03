@@ -111,6 +111,8 @@ var HeaderMain = React.createClass({
           defaultNavExpanded={false}
           fluid >
 
+          <br />
+
           <Nav onSelect={this.handleSelect} right eventKey={0}>
 
             <NavItem eventKey="search" id="custom-search-input">
@@ -138,7 +140,6 @@ var HeaderMain = React.createClass({
             </DropdownButton>
 
           </Nav>
-        <EditColumn />
         </Navbar>
       );
 
