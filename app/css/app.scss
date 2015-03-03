@@ -137,12 +137,13 @@ h2 {
   width: 400px;
 }
 
-/*#custom-search-input button {
+#search-button {
   background: none;
   border: 0;
   border-radius: 4px;
-  color:#D9230F;
+  color: #8FBBBB;
   left: -25px;
+  top: 6px;
   margin-bottom: 0;
   margin-top: 2px;
   -moz-border-radius: 3px;
@@ -151,10 +152,6 @@ h2 {
   -webkit-border-radius: 3px;
   z-index: 3;
 }
-
-.search-query:focus + button {
-  z-index: 3;
-}*/
 
 /*** Table ***/
 .form-group {

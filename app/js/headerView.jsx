@@ -102,11 +102,6 @@ var HeaderMain = React.createClass({
         );
     });
 
-                  // <span className="input-group-btn">
-                  //   <button className="btn btn-danger" type="button">
-                  //     <span className="glyphicon glyphicon-search"></span>
-                  //   </button>
-                  // </span>
     var navbarInstance = (
         <Navbar brand={
           <FloorNameInput
@@ -121,6 +116,7 @@ var HeaderMain = React.createClass({
             <NavItem eventKey="search" id="custom-search-input">
               <div className="input-group">
                 <input type="search" className="search-query form-control" placeholder="Search" />
+                <button className="glyphicon glyphicon-search" id="search-button"></button>
               </div>
             </NavItem>
 
