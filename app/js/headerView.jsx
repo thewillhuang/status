@@ -113,23 +113,29 @@ var HeaderMain = React.createClass({
 
           <Nav onSelect={this.handleSelect} right eventKey={0}>
 
+            <NavItem eventKey="search" id="custom-search-input">
+              <div className="input-group">
+                <input type="search" className="search-query form-control" placeholder="Search" />
+                  <span className="input-group-btn">
+                    <button className="btn btn-danger" type="button">
+                      <span className="glyphicon glyphicon-search"></span>
+                    </button>
+                  </span>
+              </div>
+            </NavItem>
+
             <DropdownButton eventKey="floors" title="Floors">
               {floors}
             </DropdownButton>
 
-            <DropdownButton eventKey="welcome" title={'Welcome, ' + this.props.user}>
+            <DropdownButton eventKey="welcome" title={'Login, ' + this.props.user}>
               <MenuItem eventKey="editColumn">Edit Column</MenuItem>
               <MenuItem eventKey="editFloors">Edit Floors</MenuItem>
               <MenuItem eventKey="optimizer">Staff Optimizer</MenuItem>
               <MenuItem divider />
               <MenuItem eventKey="pref">Preference</MenuItem>
-              <MenuItem eventKey="login">Log In</MenuItem>
+              <MenuItem eventKey="login">Log Out</MenuItem>
             </DropdownButton>
-
-            <NavItem eventKey="search">
-              <input type="search" placeholder="search" />
-              <span className="glyphicon glyphicon-search"></span>
-            </NavItem>
 
           </Nav>
         <EditColumn />
