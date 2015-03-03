@@ -62,18 +62,18 @@ var Cell = React.createClass({
     this.setFocus();
   },
 
-  //this works
-  //this is where the bug is
+  //optimizations
   shouldComponentUpdate: function(nextProps, nextState) {
     if (nextState.value !== this.state.value) {
+      // console.log('update state');
       return true;
     }
     if (nextProps.focusRow === this.props.id &&
       nextProps.focusCol === this.props.keyArray[this.props.keyArrayIndex]) {
-      // console.log('rerender');
+      // console.log('update props');
       return true;
     } else {
-      // console.log('did not rerender');
+      // console.log('do not re-render');
       return false;
     }
   },
@@ -118,18 +118,24 @@ var Cell = React.createClass({
 
       var sendRequest = function() {
         obj[index] = result;
-        console.log(obj);
+        // console.log(obj);
         request
         .post('/boards/'+ id)
         .send(obj)
         .end(function(error, res){
-          console.log(error);
+          // console.log(error);
         });
       };
 
       sendRequest();
 
     });
+  },
+
+  handleClick: function(){
+    // console.log(this.refs.input.getInputDOMNode().value);
+    this.refs.input.getInputDOMNode().focus();
+    this.refs.input.getInputDOMNode().select();
   },
 
   render: function() {
@@ -141,6 +147,7 @@ var Cell = React.createClass({
       value={this.state.value}
       onChange={this.handleChange}
       onFocus={this.handleFocus}
+      onClick={this.handleClick}
       ref="input" />
       </td>
       );
@@ -258,8 +265,6 @@ var TableBox = React.createClass({
           focusCol:this.state.focusinfo.right
         });
       }
-    } else {
-        // event.preventDefault();
     }
   },
 
