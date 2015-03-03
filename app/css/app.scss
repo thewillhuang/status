@@ -34,8 +34,6 @@ h2 {
   font-weight: 900;
 }
 /*** Navbar ***/
-
-
 .navbar-default {
   //nav bar color
   background-image: linear-gradient(to bottom, #fff 0%, #8FBBBB 100%);
@@ -75,11 +73,13 @@ h2 {
   background-color: transparent !important;
   border: none !important;
   box-shadow: none !important;
-  text-align: center;
-  white-space: nowrap;
-  overflow: visible;
   color: #363636;
   font-size: 1.5em;
+  left: -50px;
+  overflow: visible;
+  position: relative;
+  text-align: center;
+  white-space: nowrap;
 }
 
 /*** Table ***/
@@ -128,17 +128,44 @@ tr {
 }
 
 /*** Search Bar ***/
-#search-control {
-  border-radius: 8px;
-  margin: 8px 0;
-  width: 200px;
-  text-align: left;
+#custom-search-input {
+  margin:0;
+  margin-top: 10px;
+  padding: 0;
+  width: 40%;
 }
 
-.form-control + .glyphicon {
-  position: absolute;
-  right: 0;
-  padding: 17px 7px;
+#custom-search-input .search-query {
+  border-radius: 4px;
+  left: 8px;
+  margin-top: -2.5px;
+  margin-bottom: 0;
+  -moz-border-radius: 3px;
+  padding-left: 3px;
+  /*padding-left: 4px \9;*/
+  padding-right: 3px;
+  /*padding-right: 4px \9;*/
+  position: relative;
+  -webkit-border-radius: 3px;
+}
+
+#custom-search-input button {
+  background: none;
+  border: 0;
+  border-radius: 4px;
+  color:#D9230F;
+  left: -25px;
+  margin-bottom: 0;
+  margin-top: 2px;
+  -moz-border-radius: 3px;
+  padding: 2px 5px;
+  position: relative;
+  -webkit-border-radius: 3px;
+  z-index: 3;
+}
+
+.search-query:focus + button {
+  z-index: 3;
 }
 
 /*** Footer ***/
@@ -171,8 +198,8 @@ tr {
   .dropdown {
     color: blue;
     position: absolute;
-    // left: -55px;
-    // top: -40px;
+/*    // left: -55px;
+    // top: -40px;*/
   }
 }
 
