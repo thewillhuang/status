@@ -3,6 +3,7 @@
 // react components
 var TableBox = require('./bedStatusView.jsx');
 var HeaderMain = require('./headerView.jsx');
+var 
 var request = require('superagent');
 
 
