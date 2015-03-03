@@ -9,15 +9,6 @@ var request = require('superagent');
 var React = require('react');
 var _ = require('lodash');
 var vow = require('vow');
-var $ = require('jquery');
-
-
-// $(function() {
-//   $("input").focus(function() { $(this).select(); } );
-// }).mouseup(function (e) {
-//   e.preventDefault();
-// });
-
 
 var Cell = React.createClass({
 

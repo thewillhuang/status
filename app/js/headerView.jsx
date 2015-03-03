@@ -9,6 +9,7 @@ var NavItem = require('react-bootstrap/lib/NavItem');
 var MenuItem = require('react-bootstrap/lib/MenuItem');
 var Input = require('react-bootstrap/lib/Input');
 var DropdownButton = require('react-bootstrap/lib/DropdownButton');
+var EditColumn = require('./editColumn.jsx');
 
 var React = require('react');
 
@@ -88,12 +89,16 @@ var FloorNameInput = React.createClass({
 
 var HeaderMain = React.createClass({
 
+  handleSelect: function(eventKey) {
+    console.log(eventKey,'pressed');
+  },
+
   render: function() {
     var floors = this.props.floors.map(function(key, index){
       // console.log(key);
       return (
         <MenuItem
-        eventKey={index} key={key} > {key} </MenuItem>
+        eventKey={key} key={index} > {key} </MenuItem>
         );
     });
 
@@ -106,27 +111,28 @@ var HeaderMain = React.createClass({
           defaultNavExpanded={false}
           fluid >
 
-          <Nav right eventKey={0}>
+          <Nav onSelect={this.handleSelect} right eventKey={0}>
 
-            <DropdownButton eventKey={2} title="Floors">
+            <DropdownButton eventKey="floors" title="Floors">
               {floors}
             </DropdownButton>
 
-            <DropdownButton eventKey={3} title={'Welcome, ' + this.props.user}>
-              <MenuItem eventKey="1">Edit Column</MenuItem>
-              <MenuItem eventKey="2">Edit Floors</MenuItem>
-              <MenuItem eventKey="3">Staff Optimizer</MenuItem>
+            <DropdownButton eventKey="welcome" title={'Welcome, ' + this.props.user}>
+              <MenuItem eventKey="editColumn">Edit Column</MenuItem>
+              <MenuItem eventKey="editFloors">Edit Floors</MenuItem>
+              <MenuItem eventKey="optimizer">Staff Optimizer</MenuItem>
               <MenuItem divider />
-              <MenuItem eventKey="6">Preference</MenuItem>
-              <MenuItem eventKey="7">Log In</MenuItem>
+              <MenuItem eventKey="pref">Preference</MenuItem>
+              <MenuItem eventKey="login">Log In</MenuItem>
             </DropdownButton>
 
-            <NavItem eventKey={4}>
+            <NavItem eventKey="search">
               <input type="search" placeholder="search" />
               <span className="glyphicon glyphicon-search"></span>
             </NavItem>
 
           </Nav>
+        <EditColumn />
         </Navbar>
       );
 
