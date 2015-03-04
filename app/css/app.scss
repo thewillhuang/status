@@ -45,7 +45,7 @@ h2 {
 }
 
 .navbar {
-  //nav bar to table spacing
+  //navbar to table spacing size
   margin-bottom: 16px;
 }
 
@@ -65,7 +65,7 @@ h2 {
 
 //wapper to move the position of floor name input
 .floornamewrapper{
-  margin-top: 17px;
+  margin-top: 14px;
 }
 
 //to remove the box next to the input
@@ -82,16 +82,16 @@ h2 {
   white-space: nowrap;
 }
 
-#floor {
-  left: -20px;
-  margin-left: 50px;
-  position: relative;
-}
+// #floor {
+//   left: -20px;
+//   margin-left: 50px;
+//   position: relative;
+// }
 
-#login {
-  left: -20px;
-  position: relative;
-}
+// #login {
+//   left: -20px;
+//   position: relative;
+// }
 /*#floor {
   left: 600px;
   position: relative;
@@ -117,7 +117,7 @@ h2 {
 /*** Search Bar ***/
 #custom-search-input {
   margin:0;
-  margin-top: -8px;
+  margin-top: 1px;
   margin-bottom: -7px;
   padding: 0;
 /*  position: relative;
@@ -127,14 +127,19 @@ h2 {
 }
 
 #custom-search-input .search-query {
-  border-radius: 4px;
-  margin-bottom: 0;
-  -moz-border-radius: 3px;
-  padding-left: 3px;
-  padding-right: 3px;
-  position: relative;
-  -webkit-border-radius: 3px;
-  width: 400px;
+  // border-radius: 4px;
+  // margin-bottom: 0;
+  // -moz-border-radius: 3px;
+  // padding-left: 3px;
+  // padding-right: 3px;
+  // position: relative;
+  // -webkit-border-radius: 3px;
+  width: 300px;
+}
+
+//input text height, (how many rows to fit per view)
+.form-control {
+  height:35px;
 }
 
 #search-button {
@@ -201,9 +206,9 @@ tr {
 /*** Footer ***/
 .footer {
   height: 19px;
-  opacity: 0.8;
-  background-color: #8FBBBB;
-  color: #fff;
+  // opacity: 0.8;
+  background-image: linear-gradient(to bottom, #8FBBBB 0%, #fff 100%);
+  color: black;
 }
 
 .footer-info {

@@ -116,9 +116,13 @@ var HeaderMain = React.createClass({
 
             <NavItem eventKey="search" id="custom-search-input">
               <div className="input-group">
-                <input type="search" className="search-query form-control" placeholder="Search" addonAfter={<Glyphicon glyph="search" />} />
+                <Input type="search" className="search-query form-control" placeholder="Search" addonAfter={<Glyphicon glyph="search" />} />
               </div>
             </NavItem>
+
+            <DropdownButton eventKey="views" title="Views" id="view">
+              {floors}
+            </DropdownButton>
 
             <DropdownButton eventKey="floors" title="Floors" id="floor">
               {floors}
