@@ -10,6 +10,7 @@ var MenuItem = require('react-bootstrap/lib/MenuItem');
 var Input = require('react-bootstrap/lib/Input');
 var DropdownButton = require('react-bootstrap/lib/DropdownButton');
 var EditColumn = require('./editColumn.jsx');
+var Glyphicon = require('react-bootstrap/lib/glyphicon');
 
 var React = require('react');
 
@@ -115,8 +116,7 @@ var HeaderMain = React.createClass({
 
             <NavItem eventKey="search" id="custom-search-input">
               <div className="input-group">
-                <input type="search" className="search-query form-control" placeholder="Search" />
-                <button className="glyphicon glyphicon-search" id="search-button"></button>
+                <input type="search" className="search-query form-control" placeholder="Search" addonAfter={<Glyphicon glyph="search" />} />
               </div>
             </NavItem>
 
@@ -124,9 +124,9 @@ var HeaderMain = React.createClass({
               {floors}
             </DropdownButton>
 
-            <DropdownButton eventKey="welcome" title={'Login, ' + this.props.user} id="login">
+            <DropdownButton eventKey="settings" title={<Glyphicon glyph="cog" />} id="login">
               <MenuItem eventKey="editColumn">Edit Column</MenuItem>
-              <MenuItem eventKey="editFloors">Edit Floors</MenuItem>
+              <MenuItem eventKey="editViews">Edit Views</MenuItem>
               <MenuItem eventKey="optimizer">Staff Optimizer</MenuItem>
               <MenuItem divider />
               <MenuItem eventKey="pref">Preference</MenuItem>
