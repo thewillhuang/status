@@ -103,6 +103,14 @@ var HeaderMain = React.createClass({
         );
     });
 
+    var views = this.props.views.map(function(key, index){
+      // console.log(key);
+      return (
+        <MenuItem
+        eventKey={key} key={index} > {key} </MenuItem>
+        );
+    });
+
     var navbarInstance = (
         <Navbar brand={
           <FloorNameInput
@@ -116,12 +124,12 @@ var HeaderMain = React.createClass({
 
             <NavItem eventKey="search" id="custom-search-input">
               <div className="input-group">
-                <Input type="search" className="search-query form-control" placeholder="Search" addonAfter={<Glyphicon glyph="search" />} />
+                <Input type="search" className="search-query form-control" placeholder="Search Doctor or patient" addonAfter={<Glyphicon glyph="search" />} />
               </div>
             </NavItem>
 
             <DropdownButton eventKey="views" title="Views" id="view">
-              {floors}
+              {views}
             </DropdownButton>
 
             <DropdownButton eventKey="floors" title="Floors" id="floor">
@@ -129,7 +137,8 @@ var HeaderMain = React.createClass({
             </DropdownButton>
 
             <DropdownButton eventKey="settings" title={<Glyphicon glyph="cog" />} id="login">
-              <MenuItem eventKey="editColumn">Edit Column</MenuItem>
+              <MenuItem eventKey="editTables">Edit Table</MenuItem>
+              <MenuItem eventKey="editFloors">Edit Floors</MenuItem>
               <MenuItem eventKey="editViews">Edit Views</MenuItem>
               <MenuItem eventKey="optimizer">Staff Optimizer</MenuItem>
               <MenuItem divider />

@@ -6,7 +6,6 @@ var Row   = require('react-bootstrap/lib/Row');
 var Table = require('react-bootstrap/lib/Table');
 var Grid = require('react-bootstrap/lib/Grid');
 var request = require('superagent');
-var React = require('react');
 var _ = require('lodash');
 var vow = require('vow');
 
