@@ -20,7 +20,7 @@ var MainView = React.createClass({
   render: function() {
     return (
       <div>
-        <HeaderMain headerData={this.props.headerData} />
+        <HeaderMain tableData={this.props.tableData} headerData={this.props.headerData} />
       </div>
     );
   }

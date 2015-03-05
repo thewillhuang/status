@@ -13,7 +13,6 @@ var EditColumn = require('./editColumn.jsx');
 var Glyphicon = require('react-bootstrap/lib/glyphicon');
 
 var TableBox = require('./bedStatusView.jsx');
-var data  = require('../data/data.json');
 
 var React = require('react');
 
@@ -95,6 +94,7 @@ var HeaderMain = React.createClass({
 
   componentDidMount: function() {
     var data;
+
     request
       .get('/header/init')
       .end(function(err, res){
@@ -110,6 +110,18 @@ var HeaderMain = React.createClass({
       });
     }
 
+    var tableData;
+    request
+      .get('/table/init')
+      .end(function(err, res){
+        tableData = res.body;
+      });
+
+    if (tableData) {
+      this.setState({
+        tableData : tableData
+      });
+    }
   },
 
   getInitialState: function() {
@@ -117,7 +129,8 @@ var HeaderMain = React.createClass({
       unit:this.props.headerData.unit,
       views:this.props.headerData.views,
       id:this.props.headerData.id,
-      unitName:this.props.headerData.unitName
+      unitName:this.props.headerData.unitName,
+      tableData:this.props.tableData
     };
   },
 
@@ -126,6 +139,7 @@ var HeaderMain = React.createClass({
   },
 
   render: function() {
+
     var floors = this.state.unit.map(function(key, index){
       // console.log(key);
       return (
@@ -181,7 +195,7 @@ var HeaderMain = React.createClass({
 
           </Nav>
         </Navbar>
-        <TableBox data={data} />
+        <TableBox data={this.state.tableData} />
         </div>
       );
 
