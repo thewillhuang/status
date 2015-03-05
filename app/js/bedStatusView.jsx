@@ -325,7 +325,6 @@ var TableBox = React.createClass({
     });
 
     return (
-      <div>
       <Grid fluid>
       <Row>
       <Col xs={18} md={12}>
@@ -336,7 +335,6 @@ var TableBox = React.createClass({
       </Col>
       </Row>
       </Grid>
-      </div>
       );
   }
 

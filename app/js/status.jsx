@@ -3,6 +3,8 @@
 // react components
 var TableBox = require('./bedStatusView.jsx');
 var HeaderMain = require('./headerView.jsx');
+
+//superagent
 var request = require('superagent');
 
 
@@ -18,7 +20,6 @@ var MainView = React.createClass({
     return (
       <div>
         <HeaderMain floorName={this.props.floorName} views={this.props.views} floors={this.props.floors} user={this.props.user} id={this.props.id} />
-        <TableBox data={this.props.data} />
       </div>
     );
   }

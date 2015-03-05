@@ -12,6 +12,9 @@ var DropdownButton = require('react-bootstrap/lib/DropdownButton');
 var EditColumn = require('./editColumn.jsx');
 var Glyphicon = require('react-bootstrap/lib/glyphicon');
 
+var TableBox = require('./bedStatusView.jsx');
+var data  = require('../data/data.json');
+
 var React = require('react');
 
 var FloorNameInput = React.createClass({
@@ -90,6 +93,19 @@ var FloorNameInput = React.createClass({
 
 var HeaderMain = React.createClass({
 
+  componentDidMount: function() {
+    request
+      .get('/header/init')
+      .end(function(err, res){
+        this.setState({
+          floors:res.body.floors,
+          views:res.body.views,
+          id:res.body.id,
+          floorname:res.body.floorName,
+        }).bind(this);
+      });
+  },
+
   handleSelect: function(eventKey) {
     console.log(eventKey,'pressed');
   },
@@ -112,6 +128,7 @@ var HeaderMain = React.createClass({
     });
 
     var navbarInstance = (
+      <div>
         <Navbar brand={
           <FloorNameInput
             floorName={this.props.floorName}
@@ -148,6 +165,8 @@ var HeaderMain = React.createClass({
 
           </Nav>
         </Navbar>
+        <TableBox data={data} />
+        </div>
       );
 
     return (
