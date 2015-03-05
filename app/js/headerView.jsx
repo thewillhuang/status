@@ -94,16 +94,31 @@ var FloorNameInput = React.createClass({
 var HeaderMain = React.createClass({
 
   componentDidMount: function() {
+    var data;
     request
       .get('/header/init')
       .end(function(err, res){
-        this.setState({
-          floors:res.body.floors,
-          views:res.body.views,
-          id:res.body.id,
-          floorname:res.body.floorName,
-        }).bind(this);
+        data = res.body;
       });
+
+    if (data) {
+      this.setState({
+        unit : data.unit,
+        views : data.views,
+        id : data.id,
+        unitName : data.unitName,
+      });
+    }
+
+  },
+
+  getInitialState: function() {
+    return {
+      unit:this.props.headerData.unit,
+      views:this.props.headerData.views,
+      id:this.props.headerData.id,
+      unitName:this.props.headerData.unitName
+    };
   },
 
   handleSelect: function(eventKey) {
@@ -111,7 +126,7 @@ var HeaderMain = React.createClass({
   },
 
   render: function() {
-    var floors = this.props.floors.map(function(key, index){
+    var floors = this.state.unit.map(function(key, index){
       // console.log(key);
       return (
         <MenuItem
@@ -119,7 +134,7 @@ var HeaderMain = React.createClass({
         );
     });
 
-    var views = this.props.views.map(function(key, index){
+    var views = this.state.views.map(function(key, index){
       // console.log(key);
       return (
         <MenuItem
@@ -131,11 +146,12 @@ var HeaderMain = React.createClass({
       <div>
         <Navbar brand={
           <FloorNameInput
-            floorName={this.props.floorName}
-            id={this.props.id} />}
-          toggleNavKey={0}
-          defaultNavExpanded={false}
-          fluid >
+            floorName={this.state.unitName}
+            id={this.state.id} />}
+            toggleNavKey={0}
+            defaultNavExpanded={false}
+            fluid
+          >
 
           <Nav onSelect={this.handleSelect} eventKey={0} right>
 
