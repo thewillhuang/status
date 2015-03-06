@@ -171,7 +171,9 @@ var HeaderMain = React.createClass({
 
             <NavItem eventKey="search" id="custom-search-input">
               <div className="input-group">
-                <Input type="search" className="search-query form-control" placeholder="Search Doctor or patient" addonAfter={<Glyphicon glyph="search" />} />
+                <Input type="search" className="search-query form-control"
+                  placeholder="Search Doctor or patient"
+                  addonAfter={<Glyphicon glyph="search" />} />
               </div>
             </NavItem>
 
@@ -183,7 +185,9 @@ var HeaderMain = React.createClass({
               {floors}
             </DropdownButton>
 
-            <DropdownButton eventKey="settings" title={<Glyphicon glyph="cog" />} id="login">
+            <DropdownButton eventKey="settings"
+              title={<Glyphicon glyph="cog" />}
+              id="login">
               <MenuItem eventKey="editTables">Edit Table</MenuItem>
               <MenuItem eventKey="editFloors">Edit Floors</MenuItem>
               <MenuItem eventKey="editViews">Edit Views</MenuItem>

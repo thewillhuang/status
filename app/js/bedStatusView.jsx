@@ -229,12 +229,14 @@ var Cell = React.createClass({
           }
           //tab goes right and moves onto next row or restart to first.
           if (event.keyCode === 9) {
-            if (this.state.focusinfo.right === null && this.state.focusinfo.nextID === null) {
+            if (this.state.focusinfo.right === null &&
+              this.state.focusinfo.nextID === null) {
               this.setState({
                 focusRow: this.state.focusinfo.allID[0],
                 focusCol: this.state.focusinfo.firstCol
               });
-            } else if (this.state.focusinfo.right === null && this.state.focusinfo.nextID !== null) {
+            } else if (this.state.focusinfo.right === null &&
+              this.state.focusinfo.nextID !== null) {
               this.setState({
                 focusRow: this.state.focusinfo.nextID,
                 focusCol: this.state.focusinfo.firstCol
