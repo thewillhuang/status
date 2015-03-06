@@ -54,18 +54,13 @@ var Cell = React.createClass({
 
   //optimizations
   shouldComponentUpdate: function(nextProps, nextState) {
-    if (nextState.value !== this.state.value) {
-      // console.log('update state');
-      return true;
-    }
-    if (nextProps.focusRow === this.props.id &&
+    if (nextState.value !== this.state.value ||
+      nextProps.focusRow === this.props.id &&
       nextProps.focusCol === this.props.keyArray[this.props.keyArrayIndex]) {
       // console.log('update props');
       return true;
-    } else {
-      // console.log('do not re-render');
+    }// console.log('do not re-render');
       return false;
-    }
   },
 
   getInitialState: function() {
@@ -122,12 +117,6 @@ var Cell = React.createClass({
     });
   },
 
-  handleClick: function(){
-    // console.log(this.refs.input.getInputDOMNode().value);
-    this.refs.input.getInputDOMNode().focus();
-    this.refs.input.getInputDOMNode().select();
-  },
-
   render: function() {
     return (
       <td>
@@ -137,7 +126,6 @@ var Cell = React.createClass({
       value={this.state.value}
       onChange={this.handleChange}
       onFocus={this.handleFocus}
-      onClick={this.handleClick}
       ref="input" />
       </td>
       );
@@ -145,7 +133,7 @@ var Cell = React.createClass({
 
 });
 
-
+//row component
 var PatientRow = React.createClass({
   render: function() {
     var rowID = this.props.rowID;
@@ -173,7 +161,7 @@ var PatientRow = React.createClass({
         keyArray={keyArray}
         focusRow={focusRow}
         focusCol={focusCol}
-        keyArrayIndex = {index} />
+        keyArrayIndex ={index} />
         );
     });
     return (
@@ -200,8 +188,10 @@ var TableHead = React.createClass({
 var TableBox = React.createClass({
 
   handleKeyDown: function (event) {
-    if (event.keyCode >= 37 && event.keyCode <= 40 || event.keyCode === 9 || event.keyCode === 13) {
+    if (event.keyCode >= 37 && event.keyCode <= 40 ||
+      event.keyCode === 9 || event.keyCode === 13) {
       event.preventDefault();
+
       //down
       if (event.keyCode === 40 || event.keyCode === 13) {
         this.setState({
@@ -287,6 +277,7 @@ var TableBox = React.createClass({
 
     var headerKey;
 
+    //parses the keyID out of the data object for each row.
     var idKey = this.props.data.map(function(key){
       return key._id;
     });
@@ -302,8 +293,15 @@ var TableBox = React.createClass({
     var focusRow = this.state.focusRow;
     var focusCol = this.state.focusCol;
 
+    // pass in the properties to the row constructor
     var roomData = this.props.data.map(function(key, index) {
+
       headerKey = Object.keys(key.data);
+
+      // if (key._id !== focusRow){
+      //   focusRow = "";
+      // }
+
       return (
         <PatientRow
         room={key.data}
@@ -318,12 +316,14 @@ var TableBox = React.createClass({
         );
     });
 
+    //table head component constructor
     var tableHead = headerKey.map(function(key, index) {
       return(
         <TableHead head={key} key={index} />
         );
     });
 
+    // builds the table with the header and the data
     return (
       <Grid fluid>
       <Row>

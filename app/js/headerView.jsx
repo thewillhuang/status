@@ -52,12 +52,12 @@ var FloorNameInput = React.createClass({
 
       var sendRequest = function() {
         obj.floor = result;
-        console.log(obj);
+        // console.log(obj);
         request
         .post('/floor/' + id)
         .send(obj)
         .end(function(error, res){
-          console.log(error);
+          // console.log(error);
         });
       };
 
@@ -195,7 +195,9 @@ var HeaderMain = React.createClass({
 
           </Nav>
         </Navbar>
+
         <TableBox data={this.state.tableData} />
+
         </div>
       );
 
