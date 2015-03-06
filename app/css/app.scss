@@ -76,9 +76,9 @@ h2 {
   color: #363636;
   font-size: 1.5em;
   left: -50px;
-  overflow: visible;
-  position: relative;
-  text-align: center;
+  overflow: hidden;
+  /* position: relative; */
+  text-align: left;
   white-space: nowrap;
 }
 
@@ -171,7 +171,7 @@ h2 {
   box-shadow: none !important;
   text-align: center;
   white-space: nowrap;
-  overflow: visible;
+  overflow: hidden;
 }
 
 .table-head {
@@ -183,7 +183,7 @@ h2 {
   overflow: hidden;
   padding: 0px;
   margin: 0px;
-  /*text-overflow: ellipsis;*/
+  text-overflow: ellipsis;
 }
 
 td {

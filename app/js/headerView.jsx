@@ -54,7 +54,7 @@ var FloorNameInput = React.createClass({
         obj.floor = result;
         // console.log(obj);
         request
-        .post('/floor/' + id)
+        .post('/unit/' + id)
         .send(obj)
         .end(function(error, res){
           // console.log(error);

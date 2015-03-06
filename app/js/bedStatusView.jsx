@@ -61,7 +61,8 @@ var Cell = React.createClass({
       nextProps.focusCol === this.props.keyArray[this.props.keyArrayIndex]) {
         // console.log('update props');
         return true;
-      }// console.log('do not re-render');
+      }
+      // console.log('no update');
       return false;
     },
 
