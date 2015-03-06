@@ -40,6 +40,8 @@ var Cell = React.createClass({
 
   },
 
+  //suspect this is where the bug that makes moving focus from key to key
+  //not work with mouse click... possibl solutions, on mouse click set focus
   setFocus: function() {
     if (this.props.focusRow === this.props.id) {
       if (this.props.focusCol === this.props.keyArray[this.props.keyArrayIndex]) {
@@ -117,6 +119,11 @@ var Cell = React.createClass({
       });
     },
 
+    handleClick: function() {
+      this.handleFocus();
+      this.refs.input.getInputDOMNode().focus();
+    },
+
     render: function() {
       return (
         <td>
@@ -126,6 +133,7 @@ var Cell = React.createClass({
             value={this.state.value}
             onChange={this.handleChange}
             onFocus={this.handleFocus}
+            onClick={this.handleClick}
             ref="input" />
         </td>
       );
