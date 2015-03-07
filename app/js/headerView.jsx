@@ -19,8 +19,9 @@ var React = require('react');
 var FloorNameInput = React.createClass({
 
   getInitialState: function() {
+    // console.log(this.props);
     return {
-      value:this.props.floorName
+      value:this.props.unitName
     };
   },
 
@@ -103,10 +104,10 @@ var HeaderMain = React.createClass({
 
     if (data) {
       this.setState({
-        unit : data.unit,
+        units : data.units,
         views : data.views,
         id : data.id,
-        unitName : data.unitName,
+        name : data.name,
       });
     }
 
@@ -126,11 +127,11 @@ var HeaderMain = React.createClass({
 
   getInitialState: function() {
     return {
-      units:this.props.headerData.units,
-      views:this.props.headerData.views,
-      id:this.props.headerData.id,
-      unitName:this.props.headerData.unitName,
-      tableData:this.props.tableData
+      units : this.props.headerData.units,
+      views : this.props.headerData.views,
+      id : this.props.headerData.id,
+      name : this.props.headerData.name,
+      tableData : this.props.tableData
     };
   },
 
@@ -144,7 +145,7 @@ var HeaderMain = React.createClass({
       // console.log(key);
       return (
         <MenuItem
-        eventKey={key} key={index} > {key.name} </MenuItem>
+        eventKey={key._id} key={index} > {key.name} </MenuItem>
         );
     });
 
@@ -152,7 +153,7 @@ var HeaderMain = React.createClass({
       // console.log(key);
       return (
         <MenuItem
-        eventKey={key} key={index} > {key.name} </MenuItem>
+        eventKey={key._id} key={index} > {key.name} </MenuItem>
         );
     });
 
@@ -161,7 +162,7 @@ var HeaderMain = React.createClass({
         <Navbar
           brand={
           <FloorNameInput
-            floorName={this.state.unitName}
+            unitName={this.state.name}
             id={this.state.id} />
             }
             toggleNavKey={0}
