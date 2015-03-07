@@ -8,8 +8,10 @@ var Grid = require('react-bootstrap/lib/Grid');
 var request = require('superagent');
 var _ = require('lodash');
 var vow = require('vow');
+// var PureRenderMixin = require('react/addons').addons.PureRenderMixin;
 
 var Cell = React.createClass({
+  // mixins: [PureRenderMixin],
 
   handleFocus: function() {
 

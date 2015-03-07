@@ -137,6 +137,18 @@ var HeaderMain = React.createClass({
 
   handleSelect: function(eventKey) {
     console.log(eventKey,'pressed');
+    var tableData;
+    request
+      .get('table/' + eventKey)
+      .end(function(err, res){
+        tableData = res.body;
+      });
+
+    if (tableData) {
+      this.setState({
+        tableData : tableData
+      });
+    }
   },
 
   render: function() {
