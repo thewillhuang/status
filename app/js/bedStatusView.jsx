@@ -112,7 +112,7 @@ var Cell = React.createClass({
           obj[index] = result;
           // console.log(obj);
           request
-          .post('/boards/'+ id)
+          .post('/table/'+ id)
           .send(obj)
           .end(function(error, res){
             // console.log(error);

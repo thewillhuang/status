@@ -38,7 +38,7 @@ var FloorNameInput = React.createClass({
       return function () {
         dfd.resolve(innerName);
       };
-    })(name), 2000);
+    })(name), 1000);
     this.timerId = timerId;
 
     return dfd.promise();
