@@ -15,6 +15,8 @@ var Cell = React.createClass({
 
   handleFocus: function() {
 
+    this.refs.input.getInputDOMNode().select();
+
     var id = this.props.id;
     var prevID = this.props.prevID;
     var nextID = this.props.nextID;
@@ -38,18 +40,12 @@ var Cell = React.createClass({
 
     window.dispatchEvent(myEvent);
 
-    this.refs.input.getInputDOMNode().select();
-
   },
 
   //suspect this is where the bug that makes moving focus from key to key
   //not work with mouse click... possibl solutions, on mouse click set focus
   setFocus: function() {
-    if (this.props.focusRow === this.props.id) {
-      if (this.props.focusCol === this.props.keyArray[this.props.keyArrayIndex]) {
-        this.refs.input.getInputDOMNode().focus();
-      }
-    }
+    this.refs.input.getInputDOMNode().focus();
   },
 
   componentDidUpdate: function() {
@@ -58,17 +54,21 @@ var Cell = React.createClass({
 
   //optimizations
   shouldComponentUpdate: function(nextProps, nextState) {
-    if (nextProps.focusRow === this.props.id &&
-      nextProps.focusCol === this.props.keyArray[this.props.keyArrayIndex]) {
-        // console.log('update props');
+    // if the state is different, update it due to input changing
+    if (nextState.value !== this.state.value) {
+      return true;
+    }
+    // if this cell is the focus row
+    if (nextProps.focusRow === this.props.id) {
+      //then see if its the focus column
+      if (nextProps.focusCol === this.props.keyArray[this.props.keyArrayIndex]) {
         return true;
       }
-      if (nextState.value !== this.state.value) {
-        return true;
-      }
-      // console.log('no update');
-      return false;
-    },
+    }
+    // or else, don't update, nothing has changed.
+    // console.log('skip rendering');
+    return false;
+  },
 
     getInitialState: function() {
       return {
@@ -89,7 +89,7 @@ var Cell = React.createClass({
         return function () {
           dfd.resolve(innerName);
         };
-      })(name), 2000);
+      })(name), 1000);
       this.timerId = timerId;
 
       return dfd.promise();
@@ -124,11 +124,6 @@ var Cell = React.createClass({
       });
     },
 
-    handleClick: function() {
-      this.handleFocus();
-      // this.refs.input.getInputDOMNode().focus();
-    },
-
     render: function() {
       return (
         <td>
@@ -138,7 +133,6 @@ var Cell = React.createClass({
             value={this.state.value}
             onChange={this.handleChange}
             onFocus={this.handleFocus}
-            onClick={this.handleClick}
             ref="input" />
         </td>
       );

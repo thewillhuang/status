@@ -3,12 +3,12 @@
 // react components
 var TableBox = require('./bedStatusView.jsx');
 var HeaderMain = require('./headerView.jsx');
+var React = require('react');
+window.React = React;
 
 // data.json
 var data  = require('../data/data.json');
 var headerData = require('../data/header.json');
-
-var React = require('react');
 
 var MainView = React.createClass({
 

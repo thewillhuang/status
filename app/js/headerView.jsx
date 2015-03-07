@@ -53,7 +53,7 @@ var FloorNameInput = React.createClass({
 
       var sendRequest = function() {
         obj.unit = result;
-        // console.log(obj);
+        console.log(obj);
         request
         .post('/unit/' + id)
         .send(obj)
@@ -210,13 +210,13 @@ var HeaderMain = React.createClass({
             <DropdownButton eventKey="settings"
               title={<Glyphicon glyph="cog" />}
               id="login">
-              <MenuItem eventKey="editTables">Edit Table</MenuItem>
-              <MenuItem eventKey="editFloors">Edit Floors</MenuItem>
-              <MenuItem eventKey="editViews">Edit Views</MenuItem>
-              <MenuItem eventKey="optimizer">Staff Optimizer</MenuItem>
+              <MenuItem eventKey={1}>Edit Table</MenuItem>
+              <MenuItem eventKey={2}>Edit Floors</MenuItem>
+              <MenuItem eventKey={3}>Edit Views</MenuItem>
+              <MenuItem eventKey={4}>Staff Optimizer</MenuItem>
               <MenuItem divider />
-              <MenuItem eventKey="pref">Preference</MenuItem>
-              <MenuItem eventKey="login">Log Out</MenuItem>
+              <MenuItem eventKey={5}>Preference</MenuItem>
+              <MenuItem eventKey={6}>Log Out</MenuItem>
             </DropdownButton>
 
           </Nav>
