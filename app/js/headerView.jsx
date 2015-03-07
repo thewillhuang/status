@@ -135,11 +135,11 @@ var HeaderMain = React.createClass({
     };
   },
 
-  handleSelect: function(eventKey) {
-    console.log(eventKey,'pressed');
+
+  loadTable: function(key) {
     var tableData;
     request
-    .get('table/' + eventKey)
+    .get('table/' + key)
     .end(function(err, res){
       tableData = res.body;
     });
@@ -148,6 +148,13 @@ var HeaderMain = React.createClass({
       this.setState({
         tableData : tableData
       });
+    }
+  },
+
+  handleSelect: function(eventKey) {
+    console.log(eventKey,'pressed');
+    if (eventKey.length >= 20) {
+      this.loadTable(eventKey);
     }
   },
 
