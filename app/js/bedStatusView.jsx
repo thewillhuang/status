@@ -56,14 +56,16 @@ var Cell = React.createClass({
 
   //optimizations
   shouldComponentUpdate: function(nextProps, nextState) {
-    if (nextState.value !== this.state.value ||
-      nextProps.focusRow === this.props.id &&
+    if (nextProps.focusRow === this.props.id &&
       nextProps.focusCol === this.props.keyArray[this.props.keyArrayIndex]) {
-        // console.log('update props');
-        return true;
-      }
-      // console.log('no update');
-      return false;
+      // console.log('update props');
+      return true;
+    }
+    if (nextState.value !== this.state.value) {
+      return true;
+    }
+    // console.log('no update');
+    return false;
     },
 
     getInitialState: function() {
@@ -122,7 +124,7 @@ var Cell = React.createClass({
 
     handleClick: function() {
       this.handleFocus();
-      this.refs.input.getInputDOMNode().focus();
+      // this.refs.input.getInputDOMNode().focus();
     },
 
     render: function() {
