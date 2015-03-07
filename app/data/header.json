@@ -1,5 +1,5 @@
 {
-  "unit":["Med Surg","Tele","ICU","Rehab"],
+  "units":["Med Surg","Tele","ICU","Rehab"],
   "views":["View 1", "View 2", "View 3"],
   "id":"54aa32abe8beb379bfdfloor",
   "unitName":"ICU"

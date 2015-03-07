@@ -51,7 +51,7 @@ var FloorNameInput = React.createClass({
     this.debouncedChange(value).then(function(result){
 
       var sendRequest = function() {
-        obj.floor = result;
+        obj.unit = result;
         // console.log(obj);
         request
         .post('/unit/' + id)
@@ -126,7 +126,7 @@ var HeaderMain = React.createClass({
 
   getInitialState: function() {
     return {
-      unit:this.props.headerData.unit,
+      units:this.props.headerData.units,
       views:this.props.headerData.views,
       id:this.props.headerData.id,
       unitName:this.props.headerData.unitName,
@@ -140,7 +140,7 @@ var HeaderMain = React.createClass({
 
   render: function() {
 
-    var floors = this.state.unit.map(function(key, index){
+    var units = this.state.units.map(function(key, index){
       // console.log(key);
       return (
         <MenuItem
@@ -182,7 +182,7 @@ var HeaderMain = React.createClass({
             </DropdownButton>
 
             <DropdownButton eventKey="floors" title="Floors" id="floor">
-              {floors}
+              {units}
             </DropdownButton>
 
             <DropdownButton eventKey="settings"
