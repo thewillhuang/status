@@ -16,7 +16,7 @@ var TableBox = require('./bedStatusView.jsx');
 
 var React = require('react');
 
-var FloorNameInput = React.createClass({
+var UnitNameInput = React.createClass({
 
   getInitialState: function() {
     // console.log(this.props);
@@ -72,7 +72,7 @@ var FloorNameInput = React.createClass({
   },
 
   handleFocus: function() {
-    this.refs.input.getInputDOMNode().select();
+    this.refs.unit.getInputDOMNode().select();
   },
 
   render: function() {
@@ -83,7 +83,7 @@ var FloorNameInput = React.createClass({
           value={this.state.value}
           onChange={this.handleChange}
           onFocus={this.handleFocus}
-          ref="input"
+          ref="unit"
           className="floorNameInput" />
       </div>
     );
@@ -180,7 +180,7 @@ var HeaderMain = React.createClass({
       <div>
         <Navbar
           brand={
-            <FloorNameInput
+            <UnitNameInput
               unitName={this.state.name}
               id={this.state.id} />
           }
@@ -208,7 +208,8 @@ var HeaderMain = React.createClass({
             </DropdownButton>
 
             <DropdownButton eventKey="settings"
-              title={<Glyphicon glyph="cog" />}
+              title={
+                <Glyphicon glyph="cog" />}
               id="login">
               <MenuItem eventKey={1}>Edit Table</MenuItem>
               <MenuItem eventKey={2}>Edit Floors</MenuItem>

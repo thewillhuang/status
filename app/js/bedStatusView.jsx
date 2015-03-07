@@ -56,17 +56,20 @@ var Cell = React.createClass({
   shouldComponentUpdate: function(nextProps, nextState) {
     // if the state is different, update it due to input changing
     if (nextState.value !== this.state.value) {
+      // console.log('rerender cells on state change');
       return true;
     }
     // if this cell is the focus row
     if (nextProps.focusRow === this.props.id) {
       //then see if its the focus column
       if (nextProps.focusCol === this.props.keyArray[this.props.keyArrayIndex]) {
+        // console.log('rerender cells on prop change');
         return true;
       }
     }
     // or else, don't update, nothing has changed.
     // console.log('skip rendering');
+    // console.log('skip rendering cells');
     return false;
   },
 
@@ -142,6 +145,7 @@ var Cell = React.createClass({
 
   //row component
   var PatientRow = React.createClass({
+
     render: function() {
       var rowID = this.props.rowID;
       var roomKey = Object.keys(this.props.room);
