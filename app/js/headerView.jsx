@@ -57,8 +57,8 @@ var HeaderMain = React.createClass({
     return {
       units : this.props.headerData.units,
       views : this.props.headerData.views,
-      id : this.props.headerData.id,
-      name : this.props.headerData.name,
+      id : this.props.headerData.units[0]._id,
+      name : this.props.headerData.units[0].name,
       tableData : this.props.tableData
     };
   },
