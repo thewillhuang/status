@@ -3,93 +3,19 @@ var vow = require('vow');
 var request = require('superagent');
 
 var React = require('react');
+
 var Navbar = require('react-bootstrap/lib/Navbar');
 var Nav = require('react-bootstrap/lib/Nav');
 var NavItem = require('react-bootstrap/lib/NavItem');
 var MenuItem = require('react-bootstrap/lib/MenuItem');
 var Input = require('react-bootstrap/lib/Input');
 var DropdownButton = require('react-bootstrap/lib/DropdownButton');
-var EditColumn = require('./editColumn.jsx');
 var Glyphicon = require('react-bootstrap/lib/glyphicon');
 
+var EditColumn = require('./editColumn.jsx');
 var TableBox = require('./bedStatusView.jsx');
-
-var React = require('react');
-
-var UnitNameInput = React.createClass({
-
-  getInitialState: function() {
-    // console.log(this.props);
-    return {
-      value:this.props.unitName
-    };
-  },
-
-  //debounced to send the post request when changes are finished
-  debouncedChange: function (name) {
-    var dfd = vow.defer();
-
-    var timerId = this.timerId;
-    var self = this;
-    if (timerId) {
-      clearTimeout(timerId);
-    }
-    timerId = setTimeout((function (innerName) {
-      return function () {
-        dfd.resolve(innerName);
-      };
-    })(name), 1000);
-    this.timerId = timerId;
-
-    return dfd.promise();
-  },
-
-  handleChange: function() {
-    var value = this.refs.input.getInputDOMNode().value || null;
-    var obj = {};
-    var id = this.props.id;
-
-    this.debouncedChange(value).then(function(result){
-
-      var sendRequest = function() {
-        obj.unit = result;
-        console.log(obj);
-        request
-        .post('/unit/' + id)
-        .send(obj)
-        .end(function(error, res){
-          // console.log(error);
-        });
-      };
-
-      sendRequest();
-
-    });
-
-    this.setState({
-      value: value
-    });
-  },
-
-  handleFocus: function() {
-    this.refs.unit.getInputDOMNode().select();
-  },
-
-  render: function() {
-    return (
-      <div className="floornamewrapper">
-        <Input
-          type="text"
-          value={this.state.value}
-          onChange={this.handleChange}
-          onFocus={this.handleFocus}
-          ref="unit"
-          className="floorNameInput" />
-      </div>
-    );
-  }
-
-});
+var SearchInput = require('./searchinput.jsx');
+var UnitNameInput = require('./unitnameinput.jsx');
 
 var HeaderMain = React.createClass({
 
@@ -191,11 +117,9 @@ var HeaderMain = React.createClass({
 
           <Nav onSelect={this.handleSelect} eventKey={0} right>
 
-            <NavItem eventKey="search" id="custom-search-input">
+            <NavItem id="custom-search-input">
               <div className="input-group">
-                <Input type="search" className="search-query form-control"
-                  placeholder="Search Doctor or patient"
-                  addonAfter={<Glyphicon glyph="search" />} />
+                <SearchInput eventKey="search"/>
               </div>
             </NavItem>
 
@@ -221,6 +145,7 @@ var HeaderMain = React.createClass({
             </DropdownButton>
 
           </Nav>
+
         </Navbar>
 
         <TableBox data={this.state.tableData} />

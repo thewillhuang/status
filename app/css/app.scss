@@ -41,7 +41,7 @@ h2 {
 
 //for navbar collapase to work in mobile
 .navbar-collapse {
-  overflow: hidden;
+  // overflow: visible;
 }
 
 .navbar {
@@ -76,7 +76,7 @@ h2 {
   color: #363636;
   font-size: 1.5em;
   left: -50px;
-  overflow: hidden;
+  // overflow: visible;
   /* position: relative; */
   text-align: left;
   white-space: nowrap;
@@ -128,7 +128,7 @@ h2 {
   box-shadow: none !important;
   text-align: center;
   white-space: nowrap;
-  overflow: hidden;
+  // overflow: visible;
 }
 
 .table-head {
@@ -137,7 +137,7 @@ h2 {
   font-size: 1.2em;
   font-weight: bolder;
   white-space: nowrap;
-  overflow: hidden;
+  // overflow: hidden;
   padding: 0px;
   margin: 0px;
   text-overflow: ellipsis;
