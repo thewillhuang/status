@@ -14,7 +14,33 @@ var Glyphicon = require('react-bootstrap/lib/glyphicon');
 
 var TableBox = require('./bedStatusView.jsx');
 
+// for ReactRouter
+var Router = require('react-router');
+var DefaultRoute = Router.DefaultRoute;
+var Link = Router.Link;
+var Route = Router.Route;
+var RouteHandler = Router.RouteHandler;
+
 var React = require('react');
+
+
+var Navbar = React.createClass({
+  render: function () {
+    return (
+      <div>
+        <header>
+          <ul>
+            <li><Link to="megsurg">Med Surg</Link></li>
+            <li><Link to="icu">ICU</Link></li>
+            <li><Link to="telemetry">Telemetry</Link></li>
+            <li><Link to="rehab">Rehab</Link></li>
+          </ul>
+        </header>
+        <RouteHandler/>
+      </div>
+    );
+  }
+});
 
 var FloorNameInput = React.createClass({
 
@@ -199,6 +225,11 @@ var HeaderMain = React.createClass({
               </div>
             </NavItem>
 
+            // <NavItem>1</NavItem>
+            // <NavItem>2</NavItem>
+            // <NavItem>3</NavItem>
+            // <NavItem>4</NavItem>
+
             <DropdownButton eventKey="views" title="Views" id="view">
               {views}
             </DropdownButton>
@@ -234,4 +265,5 @@ var HeaderMain = React.createClass({
 
 });
 
-module.exports = HeaderMain;
+// module.exports = HeaderMain;
+module.exports = Navbar;
