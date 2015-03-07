@@ -158,10 +158,12 @@ var HeaderMain = React.createClass({
 
     var navbarInstance = (
       <div>
-        <Navbar brand={
+        <Navbar
+          brand={
           <FloorNameInput
             floorName={this.state.unitName}
-            id={this.state.id} />}
+            id={this.state.id} />
+            }
             toggleNavKey={0}
             defaultNavExpanded={false}
             fluid
