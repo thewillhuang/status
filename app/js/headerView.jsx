@@ -25,7 +25,7 @@ var FloorNameInput = React.createClass({
     };
   },
 
-     //debounced to send the post request when changes are finished
+  //debounced to send the post request when changes are finished
   debouncedChange: function (name) {
     var dfd = vow.defer();
 
@@ -78,13 +78,13 @@ var FloorNameInput = React.createClass({
   render: function() {
     return (
       <div className="floornamewrapper">
-      <Input
-        type="text"
-        value={this.state.value}
-        onChange={this.handleChange}
-        onFocus={this.handleFocus}
-        ref="input"
-        className="floorNameInput" />
+        <Input
+          type="text"
+          value={this.state.value}
+          onChange={this.handleChange}
+          onFocus={this.handleFocus}
+          ref="input"
+          className="floorNameInput" />
       </div>
     );
   }
@@ -97,10 +97,10 @@ var HeaderMain = React.createClass({
     var data;
 
     request
-      .get('/header/init')
-      .end(function(err, res){
-        data = res.body;
-      });
+    .get('/header/init')
+    .end(function(err, res){
+      data = res.body;
+    });
 
     if (data) {
       this.setState({
@@ -113,10 +113,10 @@ var HeaderMain = React.createClass({
 
     var tableData;
     request
-      .get('/table/init')
-      .end(function(err, res){
-        tableData = res.body;
-      });
+    .get('/table/init')
+    .end(function(err, res){
+      tableData = res.body;
+    });
 
     if (tableData) {
       this.setState({
@@ -139,10 +139,10 @@ var HeaderMain = React.createClass({
     console.log(eventKey,'pressed');
     var tableData;
     request
-      .get('table/' + eventKey)
-      .end(function(err, res){
-        tableData = res.body;
-      });
+    .get('table/' + eventKey)
+    .end(function(err, res){
+      tableData = res.body;
+    });
 
     if (tableData) {
       this.setState({
@@ -157,29 +157,29 @@ var HeaderMain = React.createClass({
       // console.log(key);
       return (
         <MenuItem
-        eventKey={key._id} key={index} > {key.name} </MenuItem>
-        );
+          eventKey={key._id} key={index} > {key.name} </MenuItem>
+      );
     });
 
     var views = this.state.views.map(function(key, index){
       // console.log(key);
       return (
         <MenuItem
-        eventKey={key._id} key={index} > {key.name} </MenuItem>
-        );
+          eventKey={key._id} key={index} > {key.name} </MenuItem>
+      );
     });
 
     var navbarInstance = (
       <div>
         <Navbar
           brand={
-          <FloorNameInput
-            unitName={this.state.name}
-            id={this.state.id} />
-            }
-            toggleNavKey={0}
-            defaultNavExpanded={false}
-            fluid
+            <FloorNameInput
+              unitName={this.state.name}
+              id={this.state.id} />
+          }
+          toggleNavKey={0}
+          defaultNavExpanded={false}
+          fluid
           >
 
           <Nav onSelect={this.handleSelect} eventKey={0} right>
@@ -217,8 +217,8 @@ var HeaderMain = React.createClass({
 
         <TableBox data={this.state.tableData} />
 
-        </div>
-      );
+      </div>
+    );
 
     return (
       navbarInstance
