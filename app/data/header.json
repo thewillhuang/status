@@ -1,6 +1,38 @@
 {
-  "units":["Med Surg","Tele","ICU","Rehab"],
-  "views":["View 1", "View 2", "View 3"],
+  "units":[
+    {
+      "_id":"54aa32abe8beflooridmedsurg",
+      "name":"Med Surg"
+    },
+    {
+      "_id":"54aa32abe8beflooridicuicu1",
+      "name":"ICU"
+    },
+    {
+      "_id":"54aa32abe8flooridtelemetry",
+      "name":"Telemetry"
+    },
+    {
+      "_id":"54aa32abfae8beflooridRehab",
+      "name":"Rehab"
+    }],
+  "views":[
+    {
+      "_id":"54aa32ade8beviewidmedsurg1",
+      "name":"Med Surg Monitor 1"
+    },
+    {
+      "_id":"54aa3dabe8beviewidmedsurg2",
+      "name":"Med Surg Monitor 2"
+    },
+    {
+      "_id":"54aa32adbe8beviewidtelewes",
+      "name":"Telemetry West"
+    },
+    {
+      "_id":"54aa32abe8beviewidteleeast",
+      "name":"Telemetry East"
+    }],
   "id":"54aa32abe8beb379bfdfloor",
-  "unitName":"ICU"
+  "name":"ICU"
 }

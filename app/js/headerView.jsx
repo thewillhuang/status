@@ -144,7 +144,7 @@ var HeaderMain = React.createClass({
       // console.log(key);
       return (
         <MenuItem
-        eventKey={key} key={index} > {key} </MenuItem>
+        eventKey={key} key={index} > {key.name} </MenuItem>
         );
     });
 
@@ -152,7 +152,7 @@ var HeaderMain = React.createClass({
       // console.log(key);
       return (
         <MenuItem
-        eventKey={key} key={index} > {key} </MenuItem>
+        eventKey={key} key={index} > {key.name} </MenuItem>
         );
     });
 
