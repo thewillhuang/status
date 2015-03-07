@@ -8,7 +8,7 @@ var Grid = require('react-bootstrap/lib/Grid');
 var request = require('superagent');
 var _ = require('lodash');
 var vow = require('vow');
-// var PureRenderMixin = require('react/addons').addons.PureRenderMixin;
+//  var PureRenderMixin = require('react/addons').addons.PureRenderMixin;
 
 var Cell = React.createClass({
   // mixins: [PureRenderMixin],
@@ -60,14 +60,14 @@ var Cell = React.createClass({
   shouldComponentUpdate: function(nextProps, nextState) {
     if (nextProps.focusRow === this.props.id &&
       nextProps.focusCol === this.props.keyArray[this.props.keyArrayIndex]) {
-      // console.log('update props');
-      return true;
-    }
-    if (nextState.value !== this.state.value) {
-      return true;
-    }
-    // console.log('no update');
-    return false;
+        // console.log('update props');
+        return true;
+      }
+      if (nextState.value !== this.state.value) {
+        return true;
+      }
+      // console.log('no update');
+      return false;
     },
 
     getInitialState: function() {
@@ -244,115 +244,115 @@ var Cell = React.createClass({
           if (event.keyCode === 9) {
             if (this.state.focusinfo.right === null &&
               this.state.focusinfo.nextID === null) {
-              this.setState({
-                focusRow: this.state.focusinfo.allID[0],
-                focusCol: this.state.focusinfo.firstCol
-              });
-            } else if (this.state.focusinfo.right === null &&
-              this.state.focusinfo.nextID !== null) {
-              this.setState({
-                focusRow: this.state.focusinfo.nextID,
-                focusCol: this.state.focusinfo.firstCol
-              });
+                this.setState({
+                  focusRow: this.state.focusinfo.allID[0],
+                  focusCol: this.state.focusinfo.firstCol
+                });
+              } else if (this.state.focusinfo.right === null &&
+                this.state.focusinfo.nextID !== null) {
+                  this.setState({
+                    focusRow: this.state.focusinfo.nextID,
+                    focusCol: this.state.focusinfo.firstCol
+                  });
+                }
+                this.setState({
+                  focusRow:this.state.focusinfo.currentRowID,
+                  focusCol:this.state.focusinfo.right
+                });
+              }
             }
+          },
+
+          handleAddress: function (event) {
+            // console.log(event.detail);
             this.setState({
-              focusRow:this.state.focusinfo.currentRowID,
-              focusCol:this.state.focusinfo.right
+              focusinfo:event.detail
             });
+          },
+
+          getInitialState: function() {
+            return {
+              focusRow:'',
+              focusCol:'',
+              focusinfo:''
+            };
+          },
+
+          componentDidMount: function () {
+            window.addEventListener('keydown', this.handleKeyDown);
+            window.addEventListener('address', this.handleAddress, false);
+          },
+
+          componentWillUnmount: function () {
+            window.removeEventListener('keydown', this.handleKeyDown);
+            window.removeEventListener('address', this.handleAddress, false);
+          },
+
+          render: function() {
+
+            var headerKey;
+
+            //parses the keyID out of the data object for each row.
+            var idKey = this.props.data.map(function(key){
+              return key._id;
+            });
+
+            var assignID = function(array, index) {
+              if (!array[index]) {
+                return null;
+              } else {
+                return array[index];
+              }
+            };
+
+            var focusRow = this.state.focusRow;
+            var focusCol = this.state.focusCol;
+
+            // pass in the properties to the row constructor
+            var roomData = this.props.data.map(function(key, index) {
+
+              headerKey = Object.keys(key.data);
+
+              // if (key._id !== focusRow){
+              //   focusRow = "";
+              // }
+
+              return (
+                <PatientRow
+                  room={key.data}
+                  key={index}
+                  rowID={key._id}
+                  prevID={assignID(idKey, index - 1)}
+                  nextID={assignID(idKey, index + 1)}
+                  allID = {idKey}
+                  keyArray={headerKey}
+                  focusRow={focusRow}
+                  focusCol={focusCol} />
+              );
+            });
+
+            //table head component constructor
+            var tableHead = headerKey.map(function(key, index) {
+              return(
+                <TableHead head={key} key={index} />
+              );
+            });
+
+            // builds the table with the header and the data
+            return (
+              <Grid fluid>
+                <Row>
+                  <Col xs={18} md={12}>
+                    <Table striped condensed responsive hover>
+                      {tableHead}
+                      {roomData}
+                    </Table>
+                  </Col>
+                </Row>
+              </Grid>
+            );
           }
-        }
-      },
 
-      handleAddress: function (event) {
-        // console.log(event.detail);
-        this.setState({
-          focusinfo:event.detail
-        });
-      },
-
-      getInitialState: function() {
-        return {
-          focusRow:'',
-          focusCol:'',
-          focusinfo:''
-        };
-      },
-
-      componentDidMount: function () {
-        window.addEventListener('keydown', this.handleKeyDown);
-        window.addEventListener('address', this.handleAddress, false);
-      },
-
-      componentWillUnmount: function () {
-        window.removeEventListener('keydown', this.handleKeyDown);
-        window.removeEventListener('address', this.handleAddress, false);
-      },
-
-      render: function() {
-
-        var headerKey;
-
-        //parses the keyID out of the data object for each row.
-        var idKey = this.props.data.map(function(key){
-          return key._id;
         });
 
-        var assignID = function(array, index) {
-          if (!array[index]) {
-            return null;
-          } else {
-            return array[index];
-          }
-        };
-
-        var focusRow = this.state.focusRow;
-        var focusCol = this.state.focusCol;
-
-        // pass in the properties to the row constructor
-        var roomData = this.props.data.map(function(key, index) {
-
-          headerKey = Object.keys(key.data);
-
-          // if (key._id !== focusRow){
-          //   focusRow = "";
-          // }
-
-          return (
-            <PatientRow
-              room={key.data}
-              key={index}
-              rowID={key._id}
-              prevID={assignID(idKey, index - 1)}
-              nextID={assignID(idKey, index + 1)}
-              allID = {idKey}
-              keyArray={headerKey}
-              focusRow={focusRow}
-              focusCol={focusCol} />
-          );
-        });
-
-        //table head component constructor
-        var tableHead = headerKey.map(function(key, index) {
-          return(
-            <TableHead head={key} key={index} />
-          );
-        });
-
-        // builds the table with the header and the data
-        return (
-          <Grid fluid>
-            <Row>
-              <Col xs={18} md={12}>
-                <Table striped condensed responsive hover>
-                  {tableHead}
-                  {roomData}
-                </Table>
-              </Col>
-            </Row>
-          </Grid>
-        );
-      }
-
-    });
-
-    module.exports = TableBox;
+        module.exports = TableBox;
