@@ -4,6 +4,7 @@ var request = require('superagent');
 
 var React = require('react');
 
+//react-bootstrap components
 var Navbar = require('react-bootstrap/lib/Navbar');
 var Nav = require('react-bootstrap/lib/Nav');
 var NavItem = require('react-bootstrap/lib/NavItem');
@@ -11,8 +12,9 @@ var MenuItem = require('react-bootstrap/lib/MenuItem');
 var Input = require('react-bootstrap/lib/Input');
 var DropdownButton = require('react-bootstrap/lib/DropdownButton');
 var Glyphicon = require('react-bootstrap/lib/glyphicon');
-
 var EditColumn = require('./editColumn.jsx');
+
+//components
 var TableBox = require('./bedStatusView.jsx');
 var SearchInput = require('./searchinput.jsx');
 var UnitNameInput = require('./unitnameinput.jsx');
@@ -78,8 +80,9 @@ var HeaderMain = React.createClass({
   },
 
   handleSelect: function(eventKey) {
-    console.log(eventKey,'pressed');
-    if (eventKey.length >= 20) {
+    var key = eventKey || 'none';
+    // console.log(key,'pressed');
+    if (key.length >= 20) {
       this.loadTable(eventKey);
     }
   },
@@ -119,7 +122,7 @@ var HeaderMain = React.createClass({
 
             <NavItem id="custom-search-input">
               <div className="input-group">
-                <SearchInput eventKey="search"/>
+                <SearchInput />
               </div>
             </NavItem>
 
