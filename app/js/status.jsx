@@ -8,6 +8,7 @@ window.React = React;
 
 // data.json
 var data  = require('../data/data.json');
+var mockdata  = require('../data/mockdata2.json');
 var headerData = require('../data/header.json');
 
 var MainView = React.createClass({
@@ -22,4 +23,4 @@ var MainView = React.createClass({
 
 });
 
-React.render(<MainView tableData={data} headerData={headerData}/>, document.getElementById('reactRoot'));
+React.render(<MainView tableData={mockdata} headerData={headerData}/>, document.getElementById('reactRoot'));

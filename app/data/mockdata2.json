@@ -1,0 +1,32 @@
+[{
+  "_id":"54aa32abe8beb379bfdfe100",
+  "data":
+  {
+    "Room":100,
+    "Patient Name": "Jessica Lee",
+    "Doctor Name": "Dr. Paul Liu",
+    "Nurse": "Mary",
+    "CNA": "Jack",
+    "Code": 1,
+    "Isolation": "TB",
+    "Misc": "dc",
+    "Acuity": 2
+  },
+  "updated":"2015-01-05T06:43:55.892Z"
+},
+{
+  "_id":"54aa32abe8beb379bfdfe101",
+  "data":
+  {
+    "Room":101,
+    "Patient Name": "Monica Davidson",
+    "Doctor Name": "Dr. Mike Lee",
+    "Nurse": "Jack",
+    "CNA": "Jose",
+    "Code": 1,
+    "Isolation": "ESBL",
+    "Misc": "dc",
+    "Acuity": 4
+  },
+  "updated":"2015-01-05T06:43:55.892Z"
+}]

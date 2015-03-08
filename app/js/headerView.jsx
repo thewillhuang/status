@@ -18,11 +18,17 @@ var EditColumn = require('./editColumn.jsx');
 var TableBox = require('./bedStatusView.jsx');
 var UnitNameInput = require('./unitnameinput.jsx');
 
+
+//mock data
+var mockdata  = require('../data/mockdata2.json');
+var mockdata2  = require('../data/data.json');
+
+
 var SearchInput = React.createClass({
 
   sendSearchData: function(obj) {
     var searchEvent = new CustomEvent('searchData', {
-      data:obj
+      detail: obj
     });
 
     window.dispatchEvent(searchEvent);
@@ -54,9 +60,9 @@ var SearchInput = React.createClass({
 
   handleChange: function() {
     var value = this.refs.search.getInputDOMNode().value || null;
+    var sendData = this.sendSearchData;
 
     this.debouncedChange(value).then(function(result){
-
 
       var sendRequest = function() {
         var searchResponseData;
@@ -67,11 +73,10 @@ var SearchInput = React.createClass({
             console.log(error);
           }
           console.log(res.body);
-          searchResponseData = 'test string'||res.body;
+          searchResponseData = res.body || mockdata2;
           console.log(searchResponseData);
-          console.log(this.sendSearchData);
-          this.sendSearchData(searchResponseData);
-        }).bind(null, this);
+          sendData(searchResponseData);
+        });
       };
 
       sendRequest();
@@ -104,6 +109,7 @@ var HeaderMain = React.createClass({
 
   handleSearch: function(data) {
     console.log(data);
+    this.loadTable(data.detail);
   },
 
   componentWillUnmount: function () {
@@ -150,7 +156,7 @@ var HeaderMain = React.createClass({
   loadTableById: function(id) {
     var tableData;
     request
-    .get('table/' + id)
+    .get('tables/' + id)
     .end(function(err, res){
       if (err) {
         console.log(err);
@@ -165,9 +171,9 @@ var HeaderMain = React.createClass({
     }
   },
 
-  loadTable: function(obj) {
+  loadTable: function(data) {
     this.setState({
-      tableData : obj
+      tableData : data
     });
   },
 
