@@ -17,9 +17,16 @@ var EditColumn = require('./editColumn.jsx');
 //components
 var TableBox = require('./bedStatusView.jsx');
 var UnitNameInput = require('./unitnameinput.jsx');
-var searchResponseData;
 
 var SearchInput = React.createClass({
+
+  sendSearchData: function(obj) {
+    var searchEvent = new CustomEvent('searchData', {
+      data:obj
+    });
+
+    window.dispatchEvent(searchEvent);
+  },
 
   getInitialState: function(){
     return {
@@ -60,8 +67,11 @@ var SearchInput = React.createClass({
             console.log(error);
           }
           console.log(res.body);
-          searchResponseData = res.body;
-        });
+          searchResponseData = 'test string'||res.body;
+          console.log(searchResponseData);
+          console.log(this.sendSearchData);
+          this.sendSearchData(searchResponseData);
+        }).bind(null, this);
       };
 
       sendRequest();
@@ -90,10 +100,20 @@ var SearchInput = React.createClass({
 
 });
 
-
 var HeaderMain = React.createClass({
 
+  handleSearch: function(data) {
+    console.log(data);
+  },
+
+  componentWillUnmount: function () {
+    window.removeEventListener('searchData', this.handleSearch);
+  },
+
   componentDidMount: function() {
+
+    window.addEventListener('searchData', this.handleSearch);
+
     var data;
 
     request
