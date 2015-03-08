@@ -16,8 +16,80 @@ var EditColumn = require('./editColumn.jsx');
 
 //components
 var TableBox = require('./bedStatusView.jsx');
-var SearchInput = require('./searchinput.jsx');
 var UnitNameInput = require('./unitnameinput.jsx');
+var searchResponseData;
+
+var SearchInput = React.createClass({
+
+  getInitialState: function(){
+    return {
+      value:""
+    };
+  },
+
+  debouncedChange: function (name) {
+    var dfd = vow.defer();
+
+    var timerId = this.timerId;
+    var self = this;
+    if (timerId) {
+      clearTimeout(timerId);
+    }
+    timerId = setTimeout((function (innerName) {
+      return function () {
+        dfd.resolve(innerName);
+      };
+    })(name), 1000);
+    this.timerId = timerId;
+
+    return dfd.promise();
+  },
+
+  handleChange: function() {
+    var value = this.refs.search.getInputDOMNode().value || null;
+
+    this.debouncedChange(value).then(function(result){
+
+
+      var sendRequest = function() {
+        var searchResponseData;
+        request
+        .get('/search/' + value)
+        .end(function(error, res){
+          if (error) {
+            console.log(error);
+          }
+          console.log(res.body);
+          searchResponseData = res.body;
+        });
+      };
+
+      sendRequest();
+
+    });
+
+    this.setState({
+      value: value
+    });
+
+  },
+
+  render: function() {
+    return (
+      <div>
+        <Input type="text"
+          className="search-query form-control"
+          placeholder="Search Doctor or patient"
+          onChange={this.handleChange}
+          value={this.state.value}
+          ref="search"
+          addonAfter={<Glyphicon glyph="search" />} />
+      </div>
+    );
+  }
+
+});
+
 
 var HeaderMain = React.createClass({
 
@@ -55,7 +127,7 @@ var HeaderMain = React.createClass({
   },
 
 
-  loadTable: function(id) {
+  loadTableById: function(id) {
     var tableData;
     request
     .get('table/' + id)
@@ -73,11 +145,17 @@ var HeaderMain = React.createClass({
     }
   },
 
+  loadTable: function(obj) {
+    this.setState({
+      tableData : obj
+    });
+  },
+
   handleSelect: function(eventKey) {
     var key = eventKey || 'none';
     // console.log(key,'pressed');
     if (key.length >= 20) {
-      this.loadTable(eventKey);
+      this.loadTableById(eventKey);
     }
   },
 

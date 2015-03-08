@@ -8,7 +8,7 @@
     "version": "node -v",
     "build": "gulp",
     "start": "node server.js",
-    "production": "NODE_ENV=production gulp production"
+    "production": "gulp production"
   },
   "repository": {
     "type": "git",
@@ -33,7 +33,7 @@
     ]
   },
   "devDependencies": {
-    "browser-sync": "~1.3.6",
+    "browser-sync": "^2.2.1",
     "browserify": "^9.0.3",
     "browserify-shim": "^3.8.3",
     "gulp": "^3.8.11",
