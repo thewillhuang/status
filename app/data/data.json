@@ -1,7 +1,5 @@
 [{
   "_id":"54aa32abe8beb379bfdfe100",
-  "floor": "Medical Surgical 1",
-  "order":1,
   "data":
   {
     "Room":100,
@@ -14,14 +12,10 @@
     "Misc": "dc",
     "Acuity": 2
   },
-  "updated":"2015-01-05T06:43:55.892Z",
-  "isActive":true,
-  "history":""
+  "updated":"2015-01-05T06:43:55.892Z"
 },
 {
   "_id":"54aa32abe8beb379bfdfe101",
-  "floor": "Medical Surgical 1",
-  "order":2,
   "data":
   {
     "Room":101,
@@ -34,14 +28,10 @@
     "Misc": "dc",
     "Acuity": 4
   },
-  "updated":"2015-01-05T06:43:55.892Z",
-  "isActive":true,
-  "history":""
+  "updated":"2015-01-05T06:43:55.892Z"
 },
 {
   "_id":"54aa32abe8beb379bfdfe102",
-  "floor": "Medical Surgical 1",
-  "order":3,
   "data":
   {
     "Room":102,
@@ -54,14 +44,10 @@
     "Misc": "dc",
     "Acuity": 5
   },
-  "updated":"2015-01-05T06:43:55.892Z",
-  "isActive":true,
-  "history":""
+  "updated":"2015-01-05T06:43:55.892Z"
 },
 {
   "_id":"54aa32abe8beb379bfdfe103",
-  "floor": "Medical Surgical 1",
-  "order":4,
   "data":
   {
     "Room":103,
@@ -74,14 +60,10 @@
     "Misc": "surgery",
     "Acuity": 3
   },
-  "updated":"2015-01-05T06:43:55.892Z",
-  "isActive":true,
-  "history":""
+  "updated":"2015-01-05T06:43:55.892Z"
 },
 {
   "_id":"54aa32abe8beb379bfdfe104",
-  "floor": "Medical Surgical 1",
-  "order":5,
   "data":
   {
     "Room":104,
@@ -94,14 +76,10 @@
     "Misc": "PT",
     "Acuity": 2
   },
-  "updated":"2015-01-05T06:43:55.892Z",
-  "isActive":true,
-  "history":""
+  "updated":"2015-01-05T06:43:55.892Z"
 },
 {
   "_id":"54aa32abe8beb379bfdfe105",
-  "floor": "Medical Surgical 1",
-  "order":6,
   "data":
   {
     "Room":105,
@@ -114,14 +92,10 @@
     "Misc": "transfer",
     "Acuity": 3
   },
-  "updated":"2015-01-05T06:43:55.892Z",
-  "isActive":true,
-  "history":""
+  "updated":"2015-01-05T06:43:55.892Z"
 },
 {
   "_id":"54aa32abe8beb379bfdfe106",
-  "floor": "Medical Surgical 1",
-  "order":7,
   "data":
   {
     "Room":106,
@@ -134,14 +108,10 @@
     "Misc": "cleaning",
     "Acuity": 4
   },
-  "updated":"2015-01-05T06:43:55.892Z",
-  "isActive":true,
-  "history":""
+  "updated":"2015-01-05T06:43:55.892Z"
 },
 {
   "_id":"54aa32abe8beb379bfdfe107",
-  "floor": "Medical Surgical 1",
-  "order":7,
   "data":
   {
     "Room":107,
@@ -154,14 +124,10 @@
     "Misc": "cleaning",
     "Acuity": 4
   },
-  "updated":"2015-01-05T06:43:55.892Z",
-  "isActive":true,
-  "history":""
+  "updated":"2015-01-05T06:43:55.892Z"
 },
 {
   "_id":"54aa32abe8beb379bfdfe108",
-  "floor": "Medical Surgical 1",
-  "order":7,
   "data":
   {
     "Room":108,
@@ -174,14 +140,10 @@
     "Misc": "cleaning",
     "Acuity": 4
   },
-  "updated":"2015-01-05T06:43:55.892Z",
-  "isActive":true,
-  "history":""
+  "updated":"2015-01-05T06:43:55.892Z"
 },
 {
   "_id":"54aa32abe8beb379bfdfe109",
-  "floor": "Medical Surgical 1",
-  "order":7,
   "data":
   {
     "Room":109,
@@ -194,9 +156,7 @@
     "Misc": "cleaning",
     "Acuity": 4
   },
-  "updated":"2015-01-05T06:43:55.892Z",
-  "isActive":true,
-  "history":""
+  "updated":"2015-01-05T06:43:55.892Z"
 },
 {
   "_id":"54aa32abe8beb379bfdfe110",
@@ -220,8 +180,6 @@
 },
 {
   "_id":"54aa32abe8beb379bfdfe111",
-  "floor": "Medical Surgical 1",
-  "order":7,
   "data":
   {
     "Room":111,
@@ -234,14 +192,10 @@
     "Misc": "cleaning",
     "Acuity": 4
   },
-  "updated":"2015-01-05T06:43:55.892Z",
-  "isActive":true,
-  "history":""
+  "updated":"2015-01-05T06:43:55.892Z"
 },
 {
   "_id":"54aa32abe8beb379bfdfe112",
-  "floor": "Medical Surgical 1",
-  "order":7,
   "data":
   {
     "Room":112,
@@ -254,14 +208,10 @@
     "Misc": "cleaning",
     "Acuity": 4
   },
-  "updated":"2015-01-05T06:43:55.892Z",
-  "isActive":true,
-  "history":""
+  "updated":"2015-01-05T06:43:55.892Z"
 },
 {
   "_id":"54aa32abe8beb379bfdfe113",
-  "floor": "Medical Surgical 1",
-  "order":7,
   "data":
   {
     "Room":113,
@@ -274,14 +224,10 @@
     "Misc": "cleaning",
     "Acuity": 4
   },
-  "updated":"2015-01-05T06:43:55.892Z",
-  "isActive":true,
-  "history":""
+  "updated":"2015-01-05T06:43:55.892Z"
 },
 {
   "_id":"54aa32abe8beb379bfdfe114",
-  "floor": "Medical Surgical 1",
-  "order":7,
   "data":
   {
     "Room":114,
@@ -294,14 +240,10 @@
     "Misc": "cleaning",
     "Acuity": 4
   },
-  "updated":"2015-01-05T06:43:55.892Z",
-  "isActive":true,
-  "history":""
+  "updated":"2015-01-05T06:43:55.892Z"
 },
 {
   "_id":"54aa32abe8beb379bfdfe115",
-  "floor": "Medical Surgical 1",
-  "order":7,
   "data":
   {
     "Room":115,
@@ -314,14 +256,10 @@
     "Misc": "cleaning",
     "Acuity": 4
   },
-  "updated":"2015-01-05T06:43:55.892Z",
-  "isActive":true,
-  "history":""
+  "updated":"2015-01-05T06:43:55.892Z"
 },
 {
   "_id":"54aa32abe8beb379bfdfe116",
-  "floor": "Medical Surgical 1",
-  "order":7,
   "data":
   {
     "Room":116,
@@ -334,14 +272,10 @@
     "Misc": "cleaning",
     "Acuity": 4
   },
-  "updated":"2015-01-05T06:43:55.892Z",
-  "isActive":true,
-  "history":""
+  "updated":"2015-01-05T06:43:55.892Z"
 },
 {
   "_id":"54aa32abe8beb379bfdfe117",
-  "floor": "Medical Surgical 1",
-  "order":7,
   "data":
   {
     "Room":117,
@@ -354,14 +288,10 @@
     "Misc": "cleaning",
     "Acuity": 4
   },
-  "updated":"2015-01-05T06:43:55.892Z",
-  "isActive":true,
-  "history":""
+  "updated":"2015-01-05T06:43:55.892Z"
 },
 {
   "_id":"54aa32abe8beb379bfdfe118",
-  "floor": "Medical Surgical 1",
-  "order":7,
   "data":
   {
     "Room":118,
@@ -374,14 +304,10 @@
     "Misc": "cleaning",
     "Acuity": 4
   },
-  "updated":"2015-01-05T06:43:55.892Z",
-  "isActive":true,
-  "history":""
+  "updated":"2015-01-05T06:43:55.892Z"
 },
 {
   "_id":"54aa32abe8beb379bfdfe119",
-  "floor": "Medical Surgical 1",
-  "order":7,
   "data":
   {
     "Room":119,
@@ -394,14 +320,10 @@
     "Misc": "cleaning",
     "Acuity": 4
   },
-  "updated":"2015-01-05T06:43:55.892Z",
-  "isActive":true,
-  "history":""
+  "updated":"2015-01-05T06:43:55.892Z"
 },
 {
   "_id":"54aa32abe8beb379bfdfe120",
-  "floor": "Medical Surgical 1",
-  "order":7,
   "data":
   {
     "Room":120,
@@ -414,7 +336,5 @@
     "Misc": "cleaning",
     "Acuity": 4
   },
-  "updated":"2015-01-05T06:43:55.892Z",
-  "isActive":true,
-  "history":""
+  "updated":"2015-01-05T06:43:55.892Z"
 }]

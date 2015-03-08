@@ -25,8 +25,11 @@ var HeaderMain = React.createClass({
     var data;
 
     request
-    .get('/header/init')
+    .get('/header')
     .end(function(err, res){
+      if (err) {
+        console.log(err);
+      }
       data = res.body;
     });
 
@@ -34,23 +37,11 @@ var HeaderMain = React.createClass({
       this.setState({
         units : data.units,
         views : data.views,
-        id : data.id,
-        name : data.name,
+        id : data.units[0]._id,
+        name : data.units[0].name,
       });
     }
 
-    var tableData;
-    request
-    .get('/table/init')
-    .end(function(err, res){
-      tableData = res.body;
-    });
-
-    if (tableData) {
-      this.setState({
-        tableData : tableData
-      });
-    }
   },
 
   getInitialState: function() {
@@ -64,11 +55,14 @@ var HeaderMain = React.createClass({
   },
 
 
-  loadTable: function(key) {
+  loadTable: function(id) {
     var tableData;
     request
-    .get('table/' + key)
+    .get('table/' + id)
     .end(function(err, res){
+      if (err) {
+        console.log(err);
+      }
       tableData = res.body;
     });
 

@@ -34,14 +34,19 @@ var  SearchInput= React.createClass({
 
   handleChange: function() {
     var value = this.refs.search.getInputDOMNode().value || null;
+    var responseData;
 
     this.debouncedChange(value).then(function(result){
 
+
       var sendRequest = function() {
         request
-        .post('/search/' + value)
+        .get('/search/' + value)
         .end(function(error, res){
-          // console.log(error);
+          if (error) {
+            console.log(error);
+          }
+          responseData = res.body;
         });
       };
 
@@ -52,6 +57,7 @@ var  SearchInput= React.createClass({
     this.setState({
       value: value
     });
+
   },
 
   render: function() {
