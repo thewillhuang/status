@@ -3,29 +3,30 @@ var vow = require('vow');
 var request = require('superagent');
 
 var React = require('react');
+
+//react-bootstrap components
 var Navbar = require('react-bootstrap/lib/Navbar');
 var Nav = require('react-bootstrap/lib/Nav');
 var NavItem = require('react-bootstrap/lib/NavItem');
 var MenuItem = require('react-bootstrap/lib/MenuItem');
 var Input = require('react-bootstrap/lib/Input');
 var DropdownButton = require('react-bootstrap/lib/DropdownButton');
-var EditColumn = require('./editColumn.jsx');
 var Glyphicon = require('react-bootstrap/lib/glyphicon');
+var EditColumn = require('./editColumn.jsx');
 
+//components
 var TableBox = require('./bedStatusView.jsx');
+var UnitNameInput = require('./unitnameinput.jsx');
+var searchResponseData;
 
-var React = require('react');
+var SearchInput = React.createClass({
 
-var FloorNameInput = React.createClass({
-
-  getInitialState: function() {
-    // console.log(this.props);
+  getInitialState: function(){
     return {
-      value:this.props.unitName
+      value:""
     };
   },
 
-  //debounced to send the post request when changes are finished
   debouncedChange: function (name) {
     var dfd = vow.defer();
 
@@ -45,20 +46,21 @@ var FloorNameInput = React.createClass({
   },
 
   handleChange: function() {
-    var value = this.refs.input.getInputDOMNode().value || null;
-    var obj = {};
-    var id = this.props.id;
+    var value = this.refs.search.getInputDOMNode().value || null;
 
     this.debouncedChange(value).then(function(result){
 
+
       var sendRequest = function() {
-        obj.unit = result;
-        console.log(obj);
+        var searchResponseData;
         request
-        .post('/unit/' + id)
-        .send(obj)
+        .get('/search/' + value)
         .end(function(error, res){
-          // console.log(error);
+          if (error) {
+            console.log(error);
+          }
+          console.log(res.body);
+          searchResponseData = res.body;
         });
       };
 
@@ -69,27 +71,25 @@ var FloorNameInput = React.createClass({
     this.setState({
       value: value
     });
-  },
 
-  handleFocus: function() {
-    this.refs.input.getInputDOMNode().select();
   },
 
   render: function() {
     return (
-      <div className="floornamewrapper">
-        <Input
-          type="text"
-          value={this.state.value}
+      <div>
+        <Input type="text"
+          className="search-query form-control"
+          placeholder="Search Doctor or patient"
           onChange={this.handleChange}
-          onFocus={this.handleFocus}
-          ref="input"
-          className="floorNameInput" />
+          value={this.state.value}
+          ref="search"
+          addonAfter={<Glyphicon glyph="search" />} />
       </div>
     );
   }
 
 });
+
 
 var HeaderMain = React.createClass({
 
@@ -97,8 +97,11 @@ var HeaderMain = React.createClass({
     var data;
 
     request
-    .get('/header/init')
+    .get('/header')
     .end(function(err, res){
+      if (err) {
+        console.log(err);
+      }
       data = res.body;
     });
 
@@ -106,41 +109,32 @@ var HeaderMain = React.createClass({
       this.setState({
         units : data.units,
         views : data.views,
-        id : data.id,
-        name : data.name,
+        id : data.units[0]._id,
+        name : data.units[0].name,
       });
     }
 
-    var tableData;
-    request
-    .get('/table/init')
-    .end(function(err, res){
-      tableData = res.body;
-    });
-
-    if (tableData) {
-      this.setState({
-        tableData : tableData
-      });
-    }
   },
 
   getInitialState: function() {
     return {
       units : this.props.headerData.units,
       views : this.props.headerData.views,
-      id : this.props.headerData.id,
-      name : this.props.headerData.name,
+      id : this.props.headerData.units[0]._id,
+      name : this.props.headerData.units[0].name,
       tableData : this.props.tableData
     };
   },
 
 
-  loadTable: function(key) {
+  loadTableById: function(id) {
     var tableData;
     request
-    .get('table/' + key)
+    .get('table/' + id)
     .end(function(err, res){
+      if (err) {
+        console.log(err);
+      }
       tableData = res.body;
     });
 
@@ -151,10 +145,17 @@ var HeaderMain = React.createClass({
     }
   },
 
+  loadTable: function(obj) {
+    this.setState({
+      tableData : obj
+    });
+  },
+
   handleSelect: function(eventKey) {
-    console.log(eventKey,'pressed');
-    if (eventKey.length >= 20) {
-      this.loadTable(eventKey);
+    var key = eventKey || 'none';
+    // console.log(key,'pressed');
+    if (key.length >= 20) {
+      this.loadTableById(eventKey);
     }
   },
 
@@ -180,7 +181,7 @@ var HeaderMain = React.createClass({
       <div>
         <Navbar
           brand={
-            <FloorNameInput
+            <UnitNameInput
               unitName={this.state.name}
               id={this.state.id} />
           }
@@ -191,11 +192,9 @@ var HeaderMain = React.createClass({
 
           <Nav onSelect={this.handleSelect} eventKey={0} right>
 
-            <NavItem eventKey="search" id="custom-search-input">
+            <NavItem id="custom-search-input">
               <div className="input-group">
-                <Input type="search" className="search-query form-control"
-                  placeholder="Search Doctor or patient"
-                  addonAfter={<Glyphicon glyph="search" />} />
+                <SearchInput />
               </div>
             </NavItem>
 
@@ -208,7 +207,8 @@ var HeaderMain = React.createClass({
             </DropdownButton>
 
             <DropdownButton eventKey="settings"
-              title={<Glyphicon glyph="cog" />}
+              title={
+                <Glyphicon glyph="cog" />}
               id="login">
               <MenuItem eventKey={1}>Edit Table</MenuItem>
               <MenuItem eventKey={2}>Edit Floors</MenuItem>
@@ -220,6 +220,7 @@ var HeaderMain = React.createClass({
             </DropdownButton>
 
           </Nav>
+
         </Navbar>
 
         <TableBox data={this.state.tableData} />
