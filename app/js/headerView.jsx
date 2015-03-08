@@ -197,7 +197,7 @@ var HeaderMain = React.createClass({
       );
     });
 
-    var navbarInstance = (
+    return (
       <div>
         <Navbar
           brand={
@@ -246,10 +246,6 @@ var HeaderMain = React.createClass({
         <TableBox data={this.state.tableData} />
 
       </div>
-    );
-
-    return (
-      navbarInstance
     );
   }
 
