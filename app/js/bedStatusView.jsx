@@ -342,11 +342,11 @@ var TableBox = React.createClass({
               <Row>
                 <Col xs={18} md={12}>
                   <Table striped condensed responsive hover>
-                    <tbody>
-                      <thead>
-                      {tableHead}
-                      </thead>
-                    </tbody>
+                    <thead>
+                      <tr>
+                        {tableHead}
+                      </tr>
+                    </thead>
                     <tbody>
                       {roomData}
                     </tbody>
