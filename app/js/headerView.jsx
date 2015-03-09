@@ -73,7 +73,7 @@ var SearchInput = React.createClass({
             console.log(error);
           }
           console.log(res.body);
-          searchResponseData = res.body || mockdata2;
+          searchResponseData = res.body || mockdata;
           console.log(searchResponseData);
           sendData(searchResponseData);
         });
