@@ -338,19 +338,23 @@ var TableBox = React.createClass({
 
     // builds the table with the header and the data
     return (
-      <Grid fluid>
-        <Row>
-          <Col xs={18} md={12}>
-            <Table striped condensed responsive hover>
-            <tbody>
-              {tableHead}
-              {roomData}
-            </tbody>
-            </Table>
-          </Col>
-        </Row>
-      </Grid>
-    );
+            <Grid fluid>
+              <Row>
+                <Col xs={18} md={12}>
+                  <Table striped condensed responsive hover>
+                    <tbody>
+                      <thead>
+                      {tableHead}
+                      </thead>
+                    </tbody>
+                    <tbody>
+                      {roomData}
+                    </tbody>
+                  </Table>
+                </Col>
+              </Row>
+            </Grid>
+          );
   }
 
 });
