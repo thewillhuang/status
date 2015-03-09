@@ -311,10 +311,6 @@ var TableBox = React.createClass({
 
       headerKey = Object.keys(key.data);
 
-      // if (key._id !== focusRow){
-      //   focusRow = "";
-      // }
-
       return (
         <PatientRow
           room={key.data}
@@ -341,16 +337,21 @@ var TableBox = React.createClass({
       <Grid fluid>
         <Row>
           <Col xs={18} md={12}>
+
             <Table striped condensed responsive hover>
+
               <thead>
                 <tr>
                   {tableHead}
                 </tr>
               </thead>
+
               <tbody>
                 {roomData}
               </tbody>
+
             </Table>
+
           </Col>
         </Row>
       </Grid>

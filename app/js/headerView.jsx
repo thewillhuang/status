@@ -73,8 +73,8 @@ var SearchInput = React.createClass({
             console.log(error);
           }
           console.log(res.body);
-          searchResponseData = res.body || mockdata;
-          console.log(searchResponseData);
+          searchResponseData = res.body || mockdata2;
+          // console.log(searchResponseData);
           sendData(searchResponseData);
         });
       };
@@ -108,7 +108,7 @@ var SearchInput = React.createClass({
 var HeaderMain = React.createClass({
 
   handleSearch: function(data) {
-    console.log(data);
+    // console.log(data);
     this.loadTable(data.detail);
   },
 

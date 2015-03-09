@@ -23,4 +23,4 @@ var MainView = React.createClass({
 
 });
 
-React.render(<MainView tableData={data} headerData={headerData}/>, document.getElementById('reactRoot'));
+React.render(<MainView tableData={mockdata} headerData={headerData}/>, document.getElementById('reactRoot'));
