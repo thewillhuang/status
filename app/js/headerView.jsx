@@ -39,16 +39,82 @@ var HeaderMain = React.createClass({
       return <span/>;
     }
 
+    var editTable = (
+      <Modal bsStyle="primary" title="Edit Table" onRequestHide={this.handleToggle}>
+        <div className="modal-body">
+          This modal is controlled by our custom trigger component.
+        </div>
+        <div className="modal-footer">
+          <Button onClick={this.handleToggle}>Close</Button>
+        </div>
+      </Modal>
+    );
+
+    var editFloor = (
+      <Modal bsStyle="primary" title="Edit Floor" onRequestHide={this.handleToggle}>
+        <div className="modal-body">
+          This modal is controlled by our custom trigger component.
+        </div>
+        <div className="modal-footer">
+          <Button onClick={this.handleToggle}>Close</Button>
+        </div>
+      </Modal>
+    );
+
+    var editView = (
+      <Modal bsStyle="primary" title="Edit View" onRequestHide={this.handleToggle}>
+        <div className="modal-body">
+          This modal is controlled by our custom trigger component.
+        </div>
+        <div className="modal-footer">
+          <Button onClick={this.handleToggle}>Close</Button>
+        </div>
+      </Modal>
+    );
+
+    var staffOptimizer = (
+      <Modal bsStyle="primary" title="Staff Optimizer" onRequestHide={this.handleToggle}>
+        <div className="modal-body">
+          This modal is controlled by our custom trigger component.
+        </div>
+        <div className="modal-footer">
+          <Button onClick={this.handleToggle}>Close</Button>
+        </div>
+      </Modal>
+    );
+
+
+    var eventKey = this.state.eventState;
+    // console.log('eventKey',eventKey);
+    var load;
+    var loadbyState = function(eventKey) {
+      switch(eventKey) {
+        case 1:
+            load = editTable;
+            break;
+        case 2:
+            load = editFloor;
+            break;
+        case 3:
+            load = editView;
+            break;
+        case 4:
+            load = staffOptimizer;
+            break;
+        default:
+            console.log('default triggered');
+            break;
+      }
+
+    };
+
+    loadbyState(eventKey);
+
     return (
-        <Modal bsStyle="primary" title="Modal heading" onRequestHide={this.handleToggle}>
-          <div className="modal-body">
-            This modal is controlled by our custom trigger component.
-          </div>
-          <div className="modal-footer">
-            <Button onClick={this.handleToggle}>Close</Button>
-          </div>
-        </Modal>
-      );
+      load
+    );
+
+
   },
 
   handleSearch: function(data) {
@@ -118,15 +184,23 @@ var HeaderMain = React.createClass({
   },
 
   handleSelect: function(eventKey) {
-    console.log(eventKey);
     var key = eventKey || 'none';
+
+    // console.log(key);
+
+    this.setState({
+      eventState : key
+    });
+
     // console.log(key,'pressed');
     if (key.length >= 20) {
       this.loadTableById(eventKey);
     }
-    if (key === 1){
+
+    if (key !== 'none') {
       this.handleToggle();
     }
+
   },
 
   render: function() {
@@ -185,8 +259,7 @@ var HeaderMain = React.createClass({
               <MenuItem eventKey={3}>Edit Views</MenuItem>
               <MenuItem eventKey={4}>Staff Optimizer</MenuItem>
               <MenuItem divider />
-              <MenuItem eventKey={5}>Preference</MenuItem>
-              <MenuItem eventKey={6}>Log Out</MenuItem>
+              <MenuItem eventKey={5}>Log Out</MenuItem>
             </DropdownButton>
 
           </Nav>
