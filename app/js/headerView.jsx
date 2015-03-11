@@ -38,7 +38,7 @@ var HeaderMain = React.createClass({
       return <span/>;
     }
 
-    //different menu items
+    //TODO different menu items needs building
     var editTable = (
       <Modal bsStyle="primary" title="Edit Table" onRequestHide={this.handleToggle}>
         <div className="modal-body">
@@ -118,8 +118,7 @@ var HeaderMain = React.createClass({
     return (
       load
     );
-
-
+    
   },
 
   handleSelect: function(eventKey) {
