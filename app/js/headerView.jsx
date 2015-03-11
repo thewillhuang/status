@@ -134,6 +134,9 @@ var HeaderMain = React.createClass({
 
   componentDidMount: function() {
 
+    //TODO add socket IO server refresh on refresh event. implimen this
+    //on server side to broadcast change to client on receving new data.
+
     window.addEventListener('searchData', this.handleSearch);
 
     var sendData = this.loadheader;
@@ -148,6 +151,21 @@ var HeaderMain = React.createClass({
       }
     });
 
+  },
+  
+  //TODO call this function to reload last loaded page on the specific client
+  _onServerPush : function() {
+    var loadtable = this.loadTable;
+    var id = this.state.tableID;
+
+    request
+    .get('tables/' + id)
+    .end(function(err, res){
+      if (err) console.log(err);
+      if (res.body) {
+        loadtable(res.body, id);
+      }
+    });
   },
 
   loadheader: function(data){
@@ -177,15 +195,16 @@ var HeaderMain = React.createClass({
     .end(function(err, res){
       if (err) console.log(err);
       if (res.body) {
-        loadtable(res.body);
+        loadtable(res.body, id);
       }
     });
 
   },
 
-  loadTable: function(data) {
+  loadTable: function(data, id) {
     this.setState({
-      tableData : data
+      tableData : data,
+      tableID : id
     });
   },
 
