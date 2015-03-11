@@ -1,5 +1,4 @@
 'use strict';
-var vow = require('vow');
 var request = require('superagent');
 
 var React = require('react');
@@ -123,6 +122,26 @@ var HeaderMain = React.createClass({
 
   },
 
+  handleSelect: function(eventKey) {
+    var key = eventKey || 'none';
+
+    // console.log(key);
+
+    this.setState({
+      eventState : key
+    });
+
+    // console.log(key,'pressed');
+    if (key.length >= 20) {
+      this.loadTableById(eventKey);
+    }
+
+    if (key >= 0) {
+      this.handleToggle();
+    }
+
+  },
+
   handleSearch: function(data) {
     // console.log(data);
     this.loadTable(data.detail);
@@ -139,7 +158,7 @@ var HeaderMain = React.createClass({
 
     window.addEventListener('searchData', this.handleSearch);
 
-    var sendData = this.loadheader;
+    var loadheader = this.loadHeader;
     request
     .get('/header')
     .end(function(err, res){
@@ -147,14 +166,14 @@ var HeaderMain = React.createClass({
         console.log(err);
       }
       if (res.body) {
-        sendData(res.body);
+        loadheader(res.body);
       }
     });
 
   },
-  
+
   //TODO call this function to reload last loaded page on the specific client
-  _onServerPush : function() {
+  onServerPush : function() {
     var loadtable = this.loadTable;
     var id = this.state.tableID;
 
@@ -168,7 +187,7 @@ var HeaderMain = React.createClass({
     });
   },
 
-  loadheader: function(data){
+  loadHeader: function(data){
     this.setState({
       units : data.units,
       views : data.views,
@@ -206,26 +225,6 @@ var HeaderMain = React.createClass({
       tableData : data,
       tableID : id
     });
-  },
-
-  handleSelect: function(eventKey) {
-    var key = eventKey || 'none';
-
-    // console.log(key);
-
-    this.setState({
-      eventState : key
-    });
-
-    // console.log(key,'pressed');
-    if (key.length >= 20) {
-      this.loadTableById(eventKey);
-    }
-
-    if (key >= 0) {
-      this.handleToggle();
-    }
-
   },
 
   render: function() {
