@@ -39,6 +39,7 @@ var HeaderMain = React.createClass({
       return <span/>;
     }
 
+    //different menu items
     var editTable = (
       <Modal bsStyle="primary" title="Edit Table" onRequestHide={this.handleToggle}>
         <div className="modal-body">
@@ -46,6 +47,7 @@ var HeaderMain = React.createClass({
         </div>
         <div className="modal-footer">
           <Button onClick={this.handleToggle}>Close</Button>
+          <Button bsStyle="primary">Save changes</Button>
         </div>
       </Modal>
     );
@@ -57,6 +59,7 @@ var HeaderMain = React.createClass({
         </div>
         <div className="modal-footer">
           <Button onClick={this.handleToggle}>Close</Button>
+          <Button bsStyle="primary">Save changes</Button>
         </div>
       </Modal>
     );
@@ -68,6 +71,7 @@ var HeaderMain = React.createClass({
         </div>
         <div className="modal-footer">
           <Button onClick={this.handleToggle}>Close</Button>
+          <Button bsStyle="primary">Save changes</Button>
         </div>
       </Modal>
     );
@@ -79,6 +83,7 @@ var HeaderMain = React.createClass({
         </div>
         <div className="modal-footer">
           <Button onClick={this.handleToggle}>Close</Button>
+          <Button bsStyle="primary">Save changes</Button>
         </div>
       </Modal>
     );
@@ -87,6 +92,7 @@ var HeaderMain = React.createClass({
     var eventKey = this.state.eventState;
     // console.log('eventKey',eventKey);
     var load;
+
     var loadbyState = function(eventKey) {
       switch(eventKey) {
         case 1:
@@ -102,7 +108,7 @@ var HeaderMain = React.createClass({
             load = staffOptimizer;
             break;
         default:
-            console.log('default triggered');
+            // console.log('default triggered');
             break;
       }
 
@@ -197,7 +203,7 @@ var HeaderMain = React.createClass({
       this.loadTableById(eventKey);
     }
 
-    if (key !== 'none') {
+    if (key >= 0) {
       this.handleToggle();
     }
 
