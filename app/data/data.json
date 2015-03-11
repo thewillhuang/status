@@ -1,8 +1,7 @@
 [{
-  "_id":"54aa32abe8beb379bfdfe100",
-  "data":
-  {
-    "Room":100,
+  "_id": "54aa32abe8beb379bfdfe100",
+  "data": {
+    "Room": 100,
     "Patient Name": "Jessica Lee",
     "Doctor Name": "Dr. Paul Liu",
     "Nurse": "Mary",
@@ -12,13 +11,11 @@
     "Misc": "dc",
     "Acuity": 2
   },
-  "updated":"2015-01-05T06:43:55.892Z"
-},
-{
-  "_id":"54aa32abe8beb379bfdfe101",
-  "data":
-  {
-    "Room":101,
+  "updated": "2015-01-05T06:43:55.892Z"
+}, {
+  "_id": "54aa32abe8beb379bfdfe101",
+  "data": {
+    "Room": 101,
     "Patient Name": "Monica Davidson",
     "Doctor Name": "Dr. Mike Lee",
     "Nurse": "Jack",
@@ -28,13 +25,11 @@
     "Misc": "dc",
     "Acuity": 4
   },
-  "updated":"2015-01-05T06:43:55.892Z"
-},
-{
-  "_id":"54aa32abe8beb379bfdfe102",
-  "data":
-  {
-    "Room":102,
+  "updated": "2015-01-05T06:43:55.892Z"
+}, {
+  "_id": "54aa32abe8beb379bfdfe102",
+  "data": {
+    "Room": 102,
     "Patient Name": "Mark Sandburg",
     "Doctor Name": "Dr. Kennith O'nell",
     "Nurse": "Wilson",
@@ -44,13 +39,11 @@
     "Misc": "dc",
     "Acuity": 5
   },
-  "updated":"2015-01-05T06:43:55.892Z"
-},
-{
-  "_id":"54aa32abe8beb379bfdfe103",
-  "data":
-  {
-    "Room":103,
+  "updated": "2015-01-05T06:43:55.892Z"
+}, {
+  "_id": "54aa32abe8beb379bfdfe103",
+  "data": {
+    "Room": 103,
     "Patient Name": "Max Williams",
     "Doctor Name": "Dr. Kenny Jackson",
     "Nurse": "Mary",
@@ -60,13 +53,11 @@
     "Misc": "surgery",
     "Acuity": 3
   },
-  "updated":"2015-01-05T06:43:55.892Z"
-},
-{
-  "_id":"54aa32abe8beb379bfdfe104",
-  "data":
-  {
-    "Room":104,
+  "updated": "2015-01-05T06:43:55.892Z"
+}, {
+  "_id": "54aa32abe8beb379bfdfe104",
+  "data": {
+    "Room": 104,
     "Patient Name": "Adam C",
     "Doctor Name": "Dr. Lief Michaelson",
     "Nurse": "Mary",
@@ -76,13 +67,11 @@
     "Misc": "PT",
     "Acuity": 2
   },
-  "updated":"2015-01-05T06:43:55.892Z"
-},
-{
-  "_id":"54aa32abe8beb379bfdfe105",
-  "data":
-  {
-    "Room":105,
+  "updated": "2015-01-05T06:43:55.892Z"
+}, {
+  "_id": "54aa32abe8beb379bfdfe105",
+  "data": {
+    "Room": 105,
     "Patient Name": "Conor breadwinner",
     "Doctor Name": "Dr. Tommy Singer",
     "Nurse": "Mike",
@@ -92,13 +81,11 @@
     "Misc": "transfer",
     "Acuity": 3
   },
-  "updated":"2015-01-05T06:43:55.892Z"
-},
-{
-  "_id":"54aa32abe8beb379bfdfe106",
-  "data":
-  {
-    "Room":106,
+  "updated": "2015-01-05T06:43:55.892Z"
+}, {
+  "_id": "54aa32abe8beb379bfdfe106",
+  "data": {
+    "Room": 106,
     "Patient Name": "Nelson Lewis",
     "Doctor Name": "Dr. Paul Liu",
     "Nurse": "Mary",
@@ -108,13 +95,11 @@
     "Misc": "cleaning",
     "Acuity": 4
   },
-  "updated":"2015-01-05T06:43:55.892Z"
-},
-{
-  "_id":"54aa32abe8beb379bfdfe107",
-  "data":
-  {
-    "Room":107,
+  "updated": "2015-01-05T06:43:55.892Z"
+}, {
+  "_id": "54aa32abe8beb379bfdfe107",
+  "data": {
+    "Room": 107,
     "Patient Name": "Nelson Lewis",
     "Doctor Name": "Dr. Paul Liu",
     "Nurse": "Mary",
@@ -124,13 +109,11 @@
     "Misc": "cleaning",
     "Acuity": 4
   },
-  "updated":"2015-01-05T06:43:55.892Z"
-},
-{
-  "_id":"54aa32abe8beb379bfdfe108",
-  "data":
-  {
-    "Room":108,
+  "updated": "2015-01-05T06:43:55.892Z"
+}, {
+  "_id": "54aa32abe8beb379bfdfe108",
+  "data": {
+    "Room": 108,
     "Patient Name": "Nelson Lewis",
     "Doctor Name": "Dr. Paul Liu",
     "Nurse": "Mary",
@@ -140,13 +123,11 @@
     "Misc": "cleaning",
     "Acuity": 4
   },
-  "updated":"2015-01-05T06:43:55.892Z"
-},
-{
-  "_id":"54aa32abe8beb379bfdfe109",
-  "data":
-  {
-    "Room":109,
+  "updated": "2015-01-05T06:43:55.892Z"
+}, {
+  "_id": "54aa32abe8beb379bfdfe109",
+  "data": {
+    "Room": 109,
     "Patient Name": "Nelson Lewis",
     "Doctor Name": "Dr. Paul Liu",
     "Nurse": "Mary",
@@ -156,15 +137,13 @@
     "Misc": "cleaning",
     "Acuity": 4
   },
-  "updated":"2015-01-05T06:43:55.892Z"
-},
-{
-  "_id":"54aa32abe8beb379bfdfe110",
+  "updated": "2015-01-05T06:43:55.892Z"
+}, {
+  "_id": "54aa32abe8beb379bfdfe110",
   "floor": "Medical Surgical 1",
-  "order":7,
-  "data":
-  {
-    "Room":110,
+  "order": 7,
+  "data": {
+    "Room": 110,
     "Patient Name": "Nelson Lewis",
     "Doctor Name": "Dr. Paul Liu",
     "Nurse": "Mary",
@@ -174,15 +153,13 @@
     "Misc": "cleaning",
     "Acuity": 4
   },
-  "updated":"2015-01-05T06:43:55.892Z",
-  "isActive":true,
-  "history":""
-},
-{
-  "_id":"54aa32abe8beb379bfdfe111",
-  "data":
-  {
-    "Room":111,
+  "updated": "2015-01-05T06:43:55.892Z",
+  "isActive": true,
+  "history": ""
+}, {
+  "_id": "54aa32abe8beb379bfdfe111",
+  "data": {
+    "Room": 111,
     "Patient Name": "Nelson Lewis",
     "Doctor Name": "Dr. Paul Liu",
     "Nurse": "Mary",
@@ -192,13 +169,11 @@
     "Misc": "cleaning",
     "Acuity": 4
   },
-  "updated":"2015-01-05T06:43:55.892Z"
-},
-{
-  "_id":"54aa32abe8beb379bfdfe112",
-  "data":
-  {
-    "Room":112,
+  "updated": "2015-01-05T06:43:55.892Z"
+}, {
+  "_id": "54aa32abe8beb379bfdfe112",
+  "data": {
+    "Room": 112,
     "Patient Name": "Nelson Lewis",
     "Doctor Name": "Dr. Paul Liu",
     "Nurse": "Mary",
@@ -208,13 +183,11 @@
     "Misc": "cleaning",
     "Acuity": 4
   },
-  "updated":"2015-01-05T06:43:55.892Z"
-},
-{
-  "_id":"54aa32abe8beb379bfdfe113",
-  "data":
-  {
-    "Room":113,
+  "updated": "2015-01-05T06:43:55.892Z"
+}, {
+  "_id": "54aa32abe8beb379bfdfe113",
+  "data": {
+    "Room": 113,
     "Patient Name": "Nelson Lewis",
     "Doctor Name": "Dr. Paul Liu",
     "Nurse": "Mary",
@@ -224,13 +197,11 @@
     "Misc": "cleaning",
     "Acuity": 4
   },
-  "updated":"2015-01-05T06:43:55.892Z"
-},
-{
-  "_id":"54aa32abe8beb379bfdfe114",
-  "data":
-  {
-    "Room":114,
+  "updated": "2015-01-05T06:43:55.892Z"
+}, {
+  "_id": "54aa32abe8beb379bfdfe114",
+  "data": {
+    "Room": 114,
     "Patient Name": "Nelson Lewis",
     "Doctor Name": "Dr. Paul Liu",
     "Nurse": "Mary",
@@ -240,13 +211,11 @@
     "Misc": "cleaning",
     "Acuity": 4
   },
-  "updated":"2015-01-05T06:43:55.892Z"
-},
-{
-  "_id":"54aa32abe8beb379bfdfe115",
-  "data":
-  {
-    "Room":115,
+  "updated": "2015-01-05T06:43:55.892Z"
+}, {
+  "_id": "54aa32abe8beb379bfdfe115",
+  "data": {
+    "Room": 115,
     "Patient Name": "Nelson Lewis",
     "Doctor Name": "Dr. Paul Liu",
     "Nurse": "Mary",
@@ -256,13 +225,11 @@
     "Misc": "cleaning",
     "Acuity": 4
   },
-  "updated":"2015-01-05T06:43:55.892Z"
-},
-{
-  "_id":"54aa32abe8beb379bfdfe116",
-  "data":
-  {
-    "Room":116,
+  "updated": "2015-01-05T06:43:55.892Z"
+}, {
+  "_id": "54aa32abe8beb379bfdfe116",
+  "data": {
+    "Room": 116,
     "Patient Name": "Nelson Lewis",
     "Doctor Name": "Dr. Paul Liu",
     "Nurse": "Mary",
@@ -272,13 +239,11 @@
     "Misc": "cleaning",
     "Acuity": 4
   },
-  "updated":"2015-01-05T06:43:55.892Z"
-},
-{
-  "_id":"54aa32abe8beb379bfdfe117",
-  "data":
-  {
-    "Room":117,
+  "updated": "2015-01-05T06:43:55.892Z"
+}, {
+  "_id": "54aa32abe8beb379bfdfe117",
+  "data": {
+    "Room": 117,
     "Patient Name": "Nelson Lewis",
     "Doctor Name": "Dr. Paul Liu",
     "Nurse": "Mary",
@@ -288,13 +253,11 @@
     "Misc": "cleaning",
     "Acuity": 4
   },
-  "updated":"2015-01-05T06:43:55.892Z"
-},
-{
-  "_id":"54aa32abe8beb379bfdfe118",
-  "data":
-  {
-    "Room":118,
+  "updated": "2015-01-05T06:43:55.892Z"
+}, {
+  "_id": "54aa32abe8beb379bfdfe118",
+  "data": {
+    "Room": 118,
     "Patient Name": "Nelson Lewis",
     "Doctor Name": "Dr. Paul Liu",
     "Nurse": "Mary",
@@ -304,13 +267,11 @@
     "Misc": "cleaning",
     "Acuity": 4
   },
-  "updated":"2015-01-05T06:43:55.892Z"
-},
-{
-  "_id":"54aa32abe8beb379bfdfe119",
-  "data":
-  {
-    "Room":119,
+  "updated": "2015-01-05T06:43:55.892Z"
+}, {
+  "_id": "54aa32abe8beb379bfdfe119",
+  "data": {
+    "Room": 119,
     "Patient Name": "Nelson Lewis",
     "Doctor Name": "Dr. Paul Liu",
     "Nurse": "Mary",
@@ -320,13 +281,11 @@
     "Misc": "cleaning",
     "Acuity": 4
   },
-  "updated":"2015-01-05T06:43:55.892Z"
-},
-{
-  "_id":"54aa32abe8beb379bfdfe120",
-  "data":
-  {
-    "Room":120,
+  "updated": "2015-01-05T06:43:55.892Z"
+}, {
+  "_id": "54aa32abe8beb379bfdfe120",
+  "data": {
+    "Room": 120,
     "Patient Name": "Nelson Lewis",
     "Doctor Name": "Dr. Paul Liu",
     "Nurse": "Mary",
@@ -336,5 +295,5 @@
     "Misc": "cleaning",
     "Acuity": 4
   },
-  "updated":"2015-01-05T06:43:55.892Z"
+  "updated": "2015-01-05T06:43:55.892Z"
 }]

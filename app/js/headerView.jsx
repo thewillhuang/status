@@ -12,100 +12,44 @@ var MenuItem = require('react-bootstrap/lib/MenuItem');
 var Input = require('react-bootstrap/lib/Input');
 var DropdownButton = require('react-bootstrap/lib/DropdownButton');
 var Glyphicon = require('react-bootstrap/lib/glyphicon');
-var EditColumn = require('./editColumn.jsx');
+var OverlayMixin = require('react-bootstrap/lib/OverlayMixin');
+var Modal = require('react-bootstrap/lib/Modal');
+var Button = require('react-bootstrap/lib/Button');
 
 //components
 var TableBox = require('./bedStatusView.jsx');
 var UnitNameInput = require('./unitnameinput.jsx');
-
+var SearchInput = require('./searchinput.jsx');
 
 //mock data
 var mockdata  = require('../data/mockdata2.json');
 var mockdata2  = require('../data/data.json');
 
-
-var SearchInput = React.createClass({
-
-  sendSearchData: function(obj) {
-    var searchEvent = new CustomEvent('searchData', {
-      detail: obj
-    });
-
-    window.dispatchEvent(searchEvent);
-  },
-
-  getInitialState: function(){
-    return {
-      value:""
-    };
-  },
-
-  debouncedChange: function (name) {
-    var dfd = vow.defer();
-
-    var timerId = this.timerId;
-    var self = this;
-    if (timerId) {
-      clearTimeout(timerId);
-    }
-    timerId = setTimeout((function (innerName) {
-      return function () {
-        dfd.resolve(innerName);
-      };
-    })(name), 1000);
-    this.timerId = timerId;
-
-    return dfd.promise();
-  },
-
-  handleChange: function() {
-    var value = this.refs.search.getInputDOMNode().value || null;
-    var sendData = this.sendSearchData;
-
-    this.debouncedChange(value).then(function(result){
-
-      var sendRequest = function() {
-        var searchResponseData;
-        request
-        .get('/search/' + value)
-        .end(function(error, res){
-          if (error) {
-            console.log(error);
-          }
-          console.log(res.body);
-          searchResponseData = res.body || mockdata2;
-          // console.log(searchResponseData);
-          sendData(searchResponseData);
-        });
-      };
-
-      sendRequest();
-
-    });
-
-    this.setState({
-      value: value
-    });
-
-  },
-
-  render: function() {
-    return (
-      <div>
-        <Input type="text"
-          className="search-query form-control"
-          placeholder="Search Doctor or patient"
-          onChange={this.handleChange}
-          value={this.state.value}
-          ref="search"
-          addonAfter={<Glyphicon glyph="search" />} />
-      </div>
-    );
-  }
-
-});
-
 var HeaderMain = React.createClass({
+  mixins: [OverlayMixin],
+
+  handleToggle: function () {
+    this.setState({
+      isModalOpen: !this.state.isModalOpen
+    });
+  },
+
+  renderOverlay: function () {
+    if (!this.state.isModalOpen) {
+      return <span/>;
+    }
+
+    return (
+        <Modal bsStyle="primary" title="Modal heading" onRequestHide={this.handleToggle}>
+          <div className="modal-body">
+            This modal is controlled by our custom trigger component.
+          </div>
+          <div className="modal-footer">
+            <Button onClick={this.handleToggle}>Close</Button>
+          </div>
+        </Modal>
+      );
+  },
 
   handleSearch: function(data) {
     // console.log(data);
@@ -120,26 +64,27 @@ var HeaderMain = React.createClass({
 
     window.addEventListener('searchData', this.handleSearch);
 
-    var data;
-
+    var sendData = this.loadheader;
     request
     .get('/header')
     .end(function(err, res){
       if (err) {
         console.log(err);
       }
-      data = res.body;
+      if (res.body) {
+        sendData(res.body);
+      }
     });
 
-    if (data) {
-      this.setState({
-        units : data.units,
-        views : data.views,
-        id : data.units[0]._id,
-        name : data.units[0].name,
-      });
-    }
+  },
 
+  loadheader: function(data){
+    this.setState({
+      units : data.units,
+      views : data.views,
+      id : data.units[0]._id,
+      name : data.units[0].name,
+    });
   },
 
   getInitialState: function() {
@@ -148,27 +93,22 @@ var HeaderMain = React.createClass({
       views : this.props.headerData.views,
       id : this.props.headerData.units[0]._id,
       name : this.props.headerData.units[0].name,
-      tableData : this.props.tableData
+      tableData : this.props.tableData,
+      isModalOpen: false
     };
   },
 
-
   loadTableById: function(id) {
-    var tableData;
+    var loadtable = this.loadTable;
     request
     .get('tables/' + id)
     .end(function(err, res){
-      if (err) {
-        console.log(err);
+      if (err) console.log(err);
+      if (res.body) {
+        loadtable(res.body);
       }
-      tableData = res.body;
     });
 
-    if (tableData) {
-      this.setState({
-        tableData : tableData
-      });
-    }
   },
 
   loadTable: function(data) {
@@ -178,10 +118,14 @@ var HeaderMain = React.createClass({
   },
 
   handleSelect: function(eventKey) {
+    console.log(eventKey);
     var key = eventKey || 'none';
     // console.log(key,'pressed');
     if (key.length >= 20) {
       this.loadTableById(eventKey);
+    }
+    if (key === 1){
+      this.handleToggle();
     }
   },
 

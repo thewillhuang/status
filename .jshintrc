@@ -11,7 +11,7 @@
     "after"      : false,
     "afterEach"  : false,
     "equal"      : false,
-    "document"   : true,
+    "document"   : false,
     "jasmine": true,
     "ApplicationConfiguration": true
   },
