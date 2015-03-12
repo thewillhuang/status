@@ -118,7 +118,7 @@ var HeaderMain = React.createClass({
     return (
       load
     );
-    
+
   },
 
   handleSelect: function(eventKey) {
@@ -126,13 +126,12 @@ var HeaderMain = React.createClass({
 
     // console.log(key);
 
-    this.setState({
-      eventState : key
-    });
-
     // console.log(key,'pressed');
     if (key.length >= 20) {
       this.loadTableById(eventKey);
+      this.setState({
+        eventState : key
+      });
     }
 
     if (key >= 0) {
