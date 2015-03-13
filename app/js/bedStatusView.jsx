@@ -13,10 +13,7 @@ var vow = require('vow');
 var Cell = React.createClass({
   // mixins: [PureRenderMixin],
 
-  handleFocus: function() {
-
-    this.refs.input.getInputDOMNode().select();
-
+  broadcastAddress: function() {
     var id = this.props.id;
     var prevID = this.props.prevID;
     var nextID = this.props.nextID;
@@ -39,6 +36,14 @@ var Cell = React.createClass({
     });
 
     window.dispatchEvent(myEvent);
+
+  },
+
+  handleFocus: function() {
+
+    this.refs.input.getInputDOMNode().select();
+
+    this.broadcastAddress();
 
   },
 

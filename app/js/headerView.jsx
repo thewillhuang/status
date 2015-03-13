@@ -33,6 +33,14 @@ var HeaderMain = React.createClass({
     });
   },
 
+  handleEditTableChange: function(){
+    var value = this.refs.editTableChange.getInputDOMNode().value || null;
+    
+    this.setState({
+      editTableRowInput:value
+    });
+  },
+
   renderOverlay: function () {
     if (!this.state.isModalOpen) {
       return <span/>;
@@ -42,7 +50,16 @@ var HeaderMain = React.createClass({
     var editTable = (
       <Modal bsStyle="primary" title="Edit Table" onRequestHide={this.handleToggle}>
         <div className="modal-body">
-          This modal is controlled by our custom trigger component.
+          Select How many Rows {this.state.editTableRowInput}
+          <input type="range"
+            ref="editTableChange"
+            id="weight"
+            value={this.state.editTableRowInput}
+            min="0"
+            max="22"
+            step="1"
+            onChange={this.handleEditTableChange} />
+
         </div>
         <div className="modal-footer">
           <Button onClick={this.handleToggle}>Close</Button>
@@ -89,7 +106,8 @@ var HeaderMain = React.createClass({
 
 
     var eventKey = this.state.eventState;
-    // console.log('eventKey',eventKey);
+    console.log('eventKey',eventKey);
+
     var load;
 
     var loadbyState = function(eventKey) {
@@ -129,13 +147,18 @@ var HeaderMain = React.createClass({
     // console.log(key,'pressed');
     if (key.length >= 20) {
       this.loadTableById(eventKey);
+
       this.setState({
         eventState : key
       });
     }
 
-    if (key >= 0) {
+    if (key >= 0 && key < 5) {
       this.handleToggle();
+
+      this.setState({
+        eventState : key
+      });
     }
 
   },
