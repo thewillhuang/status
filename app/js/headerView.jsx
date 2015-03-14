@@ -11,6 +11,8 @@ var MenuItem = require('react-bootstrap/lib/MenuItem');
 var Input = require('react-bootstrap/lib/Input');
 var DropdownButton = require('react-bootstrap/lib/DropdownButton');
 var Glyphicon = require('react-bootstrap/lib/glyphicon');
+
+//modal compoments
 var OverlayMixin = require('react-bootstrap/lib/OverlayMixin');
 var Modal = require('react-bootstrap/lib/Modal');
 var Button = require('react-bootstrap/lib/Button');
@@ -19,12 +21,15 @@ var Button = require('react-bootstrap/lib/Button');
 var TableBox = require('./bedStatusView.jsx');
 var UnitNameInput = require('./unitnameinput.jsx');
 var SearchInput = require('./searchinput.jsx');
+var EditModel = require('./editmodel.jsx');
 
 //mock data
 var mockdata  = require('../data/mockdata2.json');
 var mockdata2  = require('../data/data.json');
 
 var HeaderMain = React.createClass({
+
+  //start of model hide show inner workings
   mixins: [OverlayMixin],
 
   handleToggle: function () {
@@ -33,118 +38,106 @@ var HeaderMain = React.createClass({
     });
   },
 
-  handleEditTableChange: function(){
-    var value = this.refs.editTableChange.getInputDOMNode().value || null;
-    
-    this.setState({
-      editTableRowInput:value
-    });
-  },
-
   renderOverlay: function () {
     if (!this.state.isModalOpen) {
+      console.log('hide modal in headerview called');
       return <span/>;
     }
 
-    //TODO different menu items needs building
-    var editTable = (
-      <Modal bsStyle="primary" title="Edit Table" onRequestHide={this.handleToggle}>
-        <div className="modal-body">
-          Select How many Rows {this.state.editTableRowInput}
-          <input type="range"
-            ref="editTableChange"
-            id="weight"
-            value={this.state.editTableRowInput}
-            min="0"
-            max="22"
-            step="1"
-            onChange={this.handleEditTableChange} />
-
-        </div>
-        <div className="modal-footer">
-          <Button onClick={this.handleToggle}>Close</Button>
-          <Button bsStyle="primary">Save changes</Button>
-        </div>
-      </Modal>
-    );
-
-    var editFloor = (
-      <Modal bsStyle="primary" title="Edit Floor" onRequestHide={this.handleToggle}>
-        <div className="modal-body">
-          This modal is controlled by our custom trigger component.
-        </div>
-        <div className="modal-footer">
-          <Button onClick={this.handleToggle}>Close</Button>
-          <Button bsStyle="primary">Save changes</Button>
-        </div>
-      </Modal>
-    );
-
-    var editView = (
-      <Modal bsStyle="primary" title="Edit View" onRequestHide={this.handleToggle}>
-        <div className="modal-body">
-          This modal is controlled by our custom trigger component.
-        </div>
-        <div className="modal-footer">
-          <Button onClick={this.handleToggle}>Close</Button>
-          <Button bsStyle="primary">Save changes</Button>
-        </div>
-      </Modal>
-    );
-
-    var staffOptimizer = (
-      <Modal bsStyle="primary" title="Staff Optimizer" onRequestHide={this.handleToggle}>
-        <div className="modal-body">
-          This modal is controlled by our custom trigger component.
-        </div>
-        <div className="modal-footer">
-          <Button onClick={this.handleToggle}>Close</Button>
-          <Button bsStyle="primary">Save changes</Button>
-        </div>
-      </Modal>
-    );
-
-
-    var eventKey = this.state.eventState;
-    console.log('eventKey',eventKey);
-
-    var load;
-
-    var loadbyState = function(eventKey) {
-      switch(eventKey) {
-        case 1:
-            load = editTable;
-            break;
-        case 2:
-            load = editFloor;
-            break;
-        case 3:
-            load = editView;
-            break;
-        case 4:
-            load = staffOptimizer;
-            break;
-        default:
-            // console.log('default triggered');
-            break;
-      }
-
-    };
-
-    loadbyState(eventKey);
-
     return (
-      load
+      <EditModel eventKey={this.state.eventState} />
     );
+
+    // //TODO different menu items needs building
+    // var editTable = (
+    //   <Modal bsStyle="primary" title="Edit Table" onRequestHide={this.handleToggle}>
+    //     <div className="modal-body">
+    //       Select How many Rows
+    //     </div>
+    //     <div className="modal-footer">
+    //       <Button onClick={this.handleToggle}>Close</Button>
+    //       <Button bsStyle="primary">Save changes</Button>
+    //     </div>
+    //   </Modal>
+    // );
+    //
+    // var editFloor = (
+    //   <Modal bsStyle="primary" title="Edit Floor" onRequestHide={this.handleToggle}>
+    //     <div className="modal-body">
+    //       This modal is controlled by our custom trigger component.
+    //     </div>
+    //     <div className="modal-footer">
+    //       <Button onClick={this.handleToggle}>Close</Button>
+    //       <Button bsStyle="primary">Save changes</Button>
+    //     </div>
+    //   </Modal>
+    // );
+    //
+    // var editView = (
+    //   <Modal bsStyle="primary" title="Edit View" onRequestHide={this.handleToggle}>
+    //     <div className="modal-body">
+    //       This modal is controlled by our custom trigger component.
+    //     </div>
+    //     <div className="modal-footer">
+    //       <Button onClick={this.handleToggle}>Close</Button>
+    //       <Button bsStyle="primary">Save changes</Button>
+    //     </div>
+    //   </Modal>
+    // );
+    //
+    // var staffOptimizer = (
+    //   <Modal bsStyle="primary" title="Staff Optimizer" onRequestHide={this.handleToggle}>
+    //     <div className="modal-body">
+    //       This modal is controlled by our custom trigger component.
+    //     </div>
+    //     <div className="modal-footer">
+    //       <Button onClick={this.handleToggle}>Close</Button>
+    //       <Button bsStyle="primary">Save changes</Button>
+    //     </div>
+    //   </Modal>
+    // );
+
+
+    // var eventKey = this.state.eventState;
+    // console.log('eventKey',eventKey);
+    //
+    // var load;
+    //
+    // var loadbyState = function(eventKey) {
+    //   switch(eventKey) {
+    //     case 1:
+    //         load = editTable;
+    //         break;
+    //     case 2:
+    //         load = editFloor;
+    //         break;
+    //     case 3:
+    //         load = editView;
+    //         break;
+    //     case 4:
+    //         load = staffOptimizer;
+    //         break;
+    //     default:
+    //         // console.log('default triggered');
+    //         break;
+    //   }
+    //
+    // };
+    //
+    // loadbyState(eventKey);
+
+    //end
 
   },
 
+  //handles what happens during clicking the drop down
   handleSelect: function(eventKey) {
     var key = eventKey || 'none';
 
     // console.log(key);
 
     // console.log(key,'pressed');
+    //handles requests with a given ID to load a new table, ie swithcing from view 1 to view 2 or view 1 to  table 1
     if (key.length >= 20) {
       this.loadTableById(eventKey);
 
@@ -153,6 +146,7 @@ var HeaderMain = React.createClass({
       });
     }
 
+    //handles cog events 1 - 4
     if (key >= 0 && key < 5) {
       this.handleToggle();
 
@@ -170,28 +164,24 @@ var HeaderMain = React.createClass({
 
   componentWillUnmount: function () {
     window.removeEventListener('searchData', this.handleSearch);
+    window.removeEventListener('modelToggle', this.handleToggle);
   },
 
   componentDidMount: function() {
 
-    //TODO add socket IO server refresh on refresh event. implimen this
-    //on server side to broadcast change to client on receving new data.
+    //handles toggle of modals from editmodel
+    window.addEventListener('modelToggle', this.handleToggle);
 
+    //handles search data to give new data to table
     window.addEventListener('searchData', this.handleSearch);
 
-    var loadheader = this.loadHeader;
-    request
-    .get('/header')
-    .end(function(err, res){
-      if (err) {
-        console.log(err);
-      }
-      if (res.body) {
-        loadheader(res.body);
-      }
-    });
+    //initialize header with server data instead of mock data.
+    this.initializeHeader();
 
+    //TODO add socket IO server refresh on refresh event. implimen this
+    //on server side to broadcast change to client on receving new data.
   },
+
 
   //TODO call this function to reload last loaded page on the specific client
   onServerPush : function() {
@@ -208,6 +198,20 @@ var HeaderMain = React.createClass({
     });
   },
 
+  initializeHeader: function(){
+    var loadheader = this.loadHeader;
+    request
+    .get('/header')
+    .end(function(err, res){
+      if (err) {
+        console.log(err);
+      }
+      if (res.body) {
+        loadheader(res.body);
+      }
+    });
+  },
+
   loadHeader: function(data){
     this.setState({
       units : data.units,
@@ -217,6 +221,7 @@ var HeaderMain = React.createClass({
     });
   },
 
+  //transfer mock data from props to states
   getInitialState: function() {
     return {
       units : this.props.headerData.units,
