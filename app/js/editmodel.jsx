@@ -9,14 +9,18 @@ var React = require('react');
 //renders the correct setting model and calls the backend api to update new settings.
 var EditModals = React.createClass({
 
-  toggleEvent: function(obj) {
-    var toggleEvent = new CustomEvent('modelToggle');
-
-    window.dispatchEvent(toggleEvent);
-  },
-
   propTypes:{
     eventKey: React.PropTypes.number.isRequired
+  },
+
+  handleToggle: function () {
+    // console.log('toggle modal in editmodel called');
+    this.toggleEvent();
+  },
+  
+  toggleEvent: function(obj) {
+    var toggleEvent = new CustomEvent('modelToggle');
+    window.dispatchEvent(toggleEvent);
   },
 
   getInitialState: function() {
@@ -25,10 +29,6 @@ var EditModals = React.createClass({
     };
   },
 
-  handleToggle: function () {
-    // console.log('toggle modal in editmodel called');
-    this.toggleEvent();
-  },
 
   render: function() {
 

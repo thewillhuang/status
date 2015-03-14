@@ -20,6 +20,7 @@ var Cell = React.createClass({
     var left = this.props.keyArray[this.props.keyArrayIndex -1] || null;
     var right = this.props.keyArray[this.props.keyArrayIndex + 1] || null;
     var first = this.props.keyArray[0];
+    var last = this.props.keyArray[this.props.keyArray.length - 1];
     var allID = this.props.allID;
     var current = this.props.keyArray[this.props.keyArrayIndex];
     var myEvent = new CustomEvent('address', {
@@ -31,6 +32,7 @@ var Cell = React.createClass({
         'left': left,
         'right': right,
         'firstCol': first,
+        'lastCol': last,
         'allID': allID
       }
     });
@@ -42,6 +44,7 @@ var Cell = React.createClass({
   handleFocus: function() {
 
     this.refs.input.getInputDOMNode().select();
+    // React.findDOMNode(this.refs.input).select();
 
     this.broadcastAddress();
 
@@ -50,6 +53,7 @@ var Cell = React.createClass({
   //suspect this is where the bug that makes moving focus from key to key
   //not work with mouse click... possibl solutions, on mouse click set focus
   setFocus: function() {
+    // React.findDOMNode(this.refs.input).focus();
     this.refs.input.getInputDOMNode().focus();
   },
 
