@@ -6,7 +6,7 @@ var OverlayMixin = require('react-bootstrap/lib/OverlayMixin');
 
 var React = require('react');
 
-//renders the correct setting and calls the backend api to update new settings.
+//renders the correct setting model and calls the backend api to update new settings.
 var EditModals = React.createClass({
 
   toggleEvent: function(obj) {
