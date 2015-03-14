@@ -10,9 +10,7 @@ var React = require('react');
 var EditModals = React.createClass({
 
   toggleEvent: function(obj) {
-    var toggleEvent = new CustomEvent('modelToggle', {
-      detail: obj
-    });
+    var toggleEvent = new CustomEvent('modelToggle');
 
     window.dispatchEvent(toggleEvent);
   },
