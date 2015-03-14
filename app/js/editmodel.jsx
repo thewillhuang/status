@@ -26,12 +26,8 @@ var EditModals = React.createClass({
   },
 
   handleToggle: function () {
-    console.log('toggle modal in editmodel called');
+    // console.log('toggle modal in editmodel called');
     this.toggleEvent();
-    // console.log('isModalOpen in editModel', this.state.isModalOpen);
-    // this.setState({
-    //   isModalOpen: !this.state.isModalOpen
-    // });
   },
 
   render: function() {
@@ -95,10 +91,11 @@ var EditModals = React.createClass({
     );
 
 
+
+    // console.log('eventKey',eventKey);
+
+    // this part handles which modal will be rendered given an eventkey
     var eventKey = this.state.eventKey;
-
-    console.log('eventKey',eventKey);
-
     var load;
 
     var loadbyState = function(eventKey) {
@@ -116,7 +113,7 @@ var EditModals = React.createClass({
             load = staffOptimizer;
             break;
         default:
-            // console.log('default triggered');
+            console.log('default triggered');
             break;
       }
 

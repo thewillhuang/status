@@ -40,7 +40,7 @@ var HeaderMain = React.createClass({
 
   renderOverlay: function () {
     if (!this.state.isModalOpen) {
-      console.log('hide modal in headerview called');
+      // console.log('hide modal in headerview called');
       return <span/>;
     }
 
@@ -57,8 +57,9 @@ var HeaderMain = React.createClass({
     // console.log(key);
 
     // console.log(key,'pressed');
-    
-    //handles requests with a given ID to load a new table, ie swithcing from view 1 to view 2 or view 1 to  table 1
+
+    //handles requests with a given ID to load a new table,
+    //ie swithcing from view 1 to view 2 or view 1 to  table 1
     if (key.length >= 20) {
       this.loadTableById(eventKey);
 
@@ -75,6 +76,8 @@ var HeaderMain = React.createClass({
         eventState : key
       });
     }
+
+    //TODO handle cog event 5 logout
 
   },
 
