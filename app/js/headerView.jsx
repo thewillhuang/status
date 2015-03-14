@@ -45,7 +45,7 @@ var HeaderMain = React.createClass({
     }
 
     return (
-      <EditModel eventKey={this.state.eventState} />
+      <EditModel eventKey={this.state.eventState} id={this.state.id} />
     );
 
   },
@@ -110,7 +110,7 @@ var HeaderMain = React.createClass({
   //TODO call this function to reload last loaded page on the specific client
   onServerPush : function() {
     var loadtable = this.loadTable;
-    var id = this.state.tableID;
+    var id = this.state.id;
 
     request
     .get('tables/' + id)
@@ -173,7 +173,7 @@ var HeaderMain = React.createClass({
   loadTable: function(data, id) {
     this.setState({
       tableData : data,
-      tableID : id
+      id : id
     });
   },
 

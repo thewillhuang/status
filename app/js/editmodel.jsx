@@ -10,14 +10,15 @@ var React = require('react');
 var EditModals = React.createClass({
 
   propTypes:{
-    eventKey: React.PropTypes.number.isRequired
+    eventKey: React.PropTypes.number.isRequired,
+    id: React.PropTypes.string.isRequired
   },
 
   handleToggle: function () {
     // console.log('toggle modal in editmodel called');
     this.toggleEvent();
   },
-  
+
   toggleEvent: function(obj) {
     var toggleEvent = new CustomEvent('modelToggle');
     window.dispatchEvent(toggleEvent);
@@ -38,11 +39,22 @@ var EditModals = React.createClass({
         <div className="modal-body">
           Select How many Rows {this.state.editTableRowInput}
           <input type="range"
-            ref="editTableChange"
-            id="weight"
+            ref="editTableRowChange"
             value={this.state.editTableRowInput}
-            min="0"
-            max="22"
+            min="2"
+            max="24"
+            step="1"
+            onChange={this.handleEditTableChange} />
+
+          <hr />
+
+          Select How many Columns
+
+          <input type="range"
+            ref="editTableColChange"
+            value={this.state.editTableRowInput}
+            min="2"
+            max="24"
             step="1"
             onChange={this.handleEditTableChange} />
 
