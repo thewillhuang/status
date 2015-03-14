@@ -48,86 +48,6 @@ var HeaderMain = React.createClass({
       <EditModel eventKey={this.state.eventState} />
     );
 
-    // //TODO different menu items needs building
-    // var editTable = (
-    //   <Modal bsStyle="primary" title="Edit Table" onRequestHide={this.handleToggle}>
-    //     <div className="modal-body">
-    //       Select How many Rows
-    //     </div>
-    //     <div className="modal-footer">
-    //       <Button onClick={this.handleToggle}>Close</Button>
-    //       <Button bsStyle="primary">Save changes</Button>
-    //     </div>
-    //   </Modal>
-    // );
-    //
-    // var editFloor = (
-    //   <Modal bsStyle="primary" title="Edit Floor" onRequestHide={this.handleToggle}>
-    //     <div className="modal-body">
-    //       This modal is controlled by our custom trigger component.
-    //     </div>
-    //     <div className="modal-footer">
-    //       <Button onClick={this.handleToggle}>Close</Button>
-    //       <Button bsStyle="primary">Save changes</Button>
-    //     </div>
-    //   </Modal>
-    // );
-    //
-    // var editView = (
-    //   <Modal bsStyle="primary" title="Edit View" onRequestHide={this.handleToggle}>
-    //     <div className="modal-body">
-    //       This modal is controlled by our custom trigger component.
-    //     </div>
-    //     <div className="modal-footer">
-    //       <Button onClick={this.handleToggle}>Close</Button>
-    //       <Button bsStyle="primary">Save changes</Button>
-    //     </div>
-    //   </Modal>
-    // );
-    //
-    // var staffOptimizer = (
-    //   <Modal bsStyle="primary" title="Staff Optimizer" onRequestHide={this.handleToggle}>
-    //     <div className="modal-body">
-    //       This modal is controlled by our custom trigger component.
-    //     </div>
-    //     <div className="modal-footer">
-    //       <Button onClick={this.handleToggle}>Close</Button>
-    //       <Button bsStyle="primary">Save changes</Button>
-    //     </div>
-    //   </Modal>
-    // );
-
-
-    // var eventKey = this.state.eventState;
-    // console.log('eventKey',eventKey);
-    //
-    // var load;
-    //
-    // var loadbyState = function(eventKey) {
-    //   switch(eventKey) {
-    //     case 1:
-    //         load = editTable;
-    //         break;
-    //     case 2:
-    //         load = editFloor;
-    //         break;
-    //     case 3:
-    //         load = editView;
-    //         break;
-    //     case 4:
-    //         load = staffOptimizer;
-    //         break;
-    //     default:
-    //         // console.log('default triggered');
-    //         break;
-    //   }
-    //
-    // };
-    //
-    // loadbyState(eventKey);
-
-    //end
-
   },
 
   //handles what happens during clicking the drop down
@@ -137,6 +57,7 @@ var HeaderMain = React.createClass({
     // console.log(key);
 
     // console.log(key,'pressed');
+    
     //handles requests with a given ID to load a new table, ie swithcing from view 1 to view 2 or view 1 to  table 1
     if (key.length >= 20) {
       this.loadTableById(eventKey);
