@@ -54,22 +54,27 @@ var HeaderMain = React.createClass({
   updateHeaderName: function(tableid) {
     // console.log(tableid);
     var name;
+    var id;
     var units = this.state.units;
     var views = this.state.views;
     // console.log(units, views);
     for (var i = 0; i < units.length; i++){
       if (units[i].tableid === tableid){
         name = units[i].name;
-        return name;
+        id = units[i]._id;
       }
     }
     for (var j = 0; j < views.length; j++){
       if (views[j].tableid === tableid){
         name = views[j].name;
-        return name;
+        id = views[j]._id;
       }
     }
-    // console.log('priv variable name', name);
+
+    this.setState({
+      name: name,
+      id: id
+    });
 
   },
 
@@ -81,12 +86,7 @@ var HeaderMain = React.createClass({
     //ie swithcing from view 1 to view 2 or view 1 to  table 1
     if (key.length >= 20) {
       this.loadTableById(eventKey);
-      var floorName = this.updateHeaderName(eventKey);
-
-      this.setState({
-        tableid : key,
-        name : floorName
-      });
+      this.updateHeaderName(eventKey);
 
     } else if (key >= 0 && key < 5) { //handles event 1-4
       this.handleToggle();

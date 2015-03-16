@@ -9,13 +9,16 @@ var UnitNameInput = React.createClass({
 
   getInitialState: function() {
     return {
-      value: this.props.unitName
+      value: this.props.unitName,
+      id: this.props.id
     };
   },
 
   componentWillReceiveProps: function(nextProps){
+    console.log(nextProps);
     this.setState({
-      value: nextProps.unitName
+      value: nextProps.unitName,
+      id: nextProps.id
     });
   },
 
@@ -41,7 +44,7 @@ var UnitNameInput = React.createClass({
   handleChange: function() {
     var value = this.refs.unit.getInputDOMNode().value || null;
     var obj = {};
-    var id = this.props.id;
+    var id = this.state.id;
 
     this.debouncedChange(value).then(function(result){
 
