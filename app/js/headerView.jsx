@@ -60,15 +60,16 @@ var HeaderMain = React.createClass({
     for (var i = 0; i < units.length; i++){
       if (units[i].tableid === tableid){
         name = units[i].name;
+        return name;
       }
     }
     for (var j = 0; j < views.length; j++){
       if (views[j].tableid === tableid){
         name = views[j].name;
+        return name;
       }
     }
     // console.log('priv variable name', name);
-    return name;
 
   },
 
@@ -82,20 +83,13 @@ var HeaderMain = React.createClass({
       this.loadTableById(eventKey);
       var floorName = this.updateHeaderName(eventKey);
 
-      // console.log(floorName);
       this.setState({
         tableid : key,
         name : floorName
       });
 
-      // console.log(this.state);
-
-    }
-
-    //handles cog events 1 - 4
-    if (key >= 0 && key < 5) {
+    } else if (key >= 0 && key < 5) { //handles event 1-4
       this.handleToggle();
-
       this.setState({
         eventState : key
       });

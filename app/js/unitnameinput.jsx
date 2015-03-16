@@ -8,15 +8,14 @@ var Glyphicon = require('react-bootstrap/lib/glyphicon');
 var UnitNameInput = React.createClass({
 
   getInitialState: function() {
-    // console.log(this.props);
     return {
       value: this.props.unitName
     };
   },
 
-  componentDidUpdate: function(){
+  componentWillReceiveProps: function(nextProps){
     this.setState({
-      value: this.props.unitName
+      value: nextProps.unitName
     });
   },
 
