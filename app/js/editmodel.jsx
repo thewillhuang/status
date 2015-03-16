@@ -33,7 +33,7 @@ var EditModals = React.createClass({
   },
 
   handleChange: function(){
-    
+
   },
 
   render: function() {

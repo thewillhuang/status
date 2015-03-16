@@ -151,7 +151,7 @@ var HeaderMain = React.createClass({
   },
 
   //TODO call this function to reload last loaded page on the specific client
-  onServerPush : function() {
+  onTablePush : function() {
     var loadtable = this.loadTable;
     var id = this.state.tableid;
 
@@ -161,6 +161,19 @@ var HeaderMain = React.createClass({
       if (err) console.log(err);
       if (res.body) {
         loadtable(res.body, id);
+      }
+    });
+  },
+
+  onHeaderPush : function() {
+    var loadheader = this.loadHeader;
+
+    request
+    .get('header/')
+    .end(function(err, res){
+      if (err) console.log(err);
+      if (res.body) {
+        loadheader(res.body);
       }
     });
   },

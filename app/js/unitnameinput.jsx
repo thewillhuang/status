@@ -52,7 +52,7 @@ var UnitNameInput = React.createClass({
         obj.unit = result;
         // console.log(obj);
         request
-        .post('/unit/' + id)
+        .post('/header/' + id)
         .send(obj)
         .end(function(error, res){
           // console.log(error);
