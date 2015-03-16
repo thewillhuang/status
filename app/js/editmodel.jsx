@@ -3,6 +3,7 @@
 var Modal = require('react-bootstrap/lib/Modal');
 var Button = require('react-bootstrap/lib/Button');
 var OverlayMixin = require('react-bootstrap/lib/OverlayMixin');
+var request = require('superagent');
 
 var React = require('react');
 
@@ -27,15 +28,17 @@ var EditModals = React.createClass({
   getInitialState: function() {
     return {
       eventKey: this.props.eventKey,
+      id: this.props.id
     };
   },
-
 
   render: function() {
 
     //TODO different menu items needs building
     var editTable = (
-      <Modal bsStyle="primary" title="Edit Table" onRequestHide={this.handleToggle}>
+      <Modal bsStyle="primary"
+        title="Edit Table"
+        onRequestHide={this.handleToggle}>
         <div className="modal-body">
           Select How many Rows {this.state.editTableRowInput}
           <input type="range"
@@ -47,14 +50,12 @@ var EditModals = React.createClass({
             onChange={this.handleEditTableChange} />
 
           <hr />
-
           Select How many Columns
-
           <input type="range"
             ref="editTableColChange"
             value={this.state.editTableRowInput}
             min="2"
-            max="24"
+            max="12"
             step="1"
             onChange={this.handleEditTableChange} />
 
@@ -101,8 +102,6 @@ var EditModals = React.createClass({
         </div>
       </Modal>
     );
-
-
 
     // console.log('eventKey',eventKey);
 

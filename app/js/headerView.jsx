@@ -45,8 +45,30 @@ var HeaderMain = React.createClass({
     }
 
     return (
-      <EditModel eventKey={this.state.eventState} id={this.state.id} />
+      <EditModel eventKey={this.state.eventState} id={this.state.tableid} />
     );
+
+  },
+
+  //gets called to update header name during loadTableById
+  updateHeaderName: function(tableid) {
+    // console.log(tableid);
+    var name;
+    var units = this.state.units;
+    var views = this.state.views;
+    // console.log(units, views);
+    for (var i = 0; i < units.length; i++){
+      if (units[i].tableid === tableid){
+        name = units[i].name;
+      }
+    }
+    for (var j = 0; j < views.length; j++){
+      if (views[j].tableid === tableid){
+        name = views[j].name;
+      }
+    }
+    // console.log('priv variable name', name);
+    return name;
 
   },
 
@@ -54,18 +76,20 @@ var HeaderMain = React.createClass({
   handleSelect: function(eventKey) {
     var key = eventKey || 'none';
 
-    // console.log(key);
-
-    // console.log(key,'pressed');
-
     //handles requests with a given ID to load a new table,
     //ie swithcing from view 1 to view 2 or view 1 to  table 1
     if (key.length >= 20) {
       this.loadTableById(eventKey);
+      var floorName = this.updateHeaderName(eventKey);
 
+      // console.log(floorName);
       this.setState({
-        eventState : key
+        tableid : key,
+        name : floorName
       });
+
+      // console.log(this.state);
+
     }
 
     //handles cog events 1 - 4
@@ -96,7 +120,7 @@ var HeaderMain = React.createClass({
     //handles toggle of modals from editmodel
     window.addEventListener('modelToggle', this.handleToggle);
 
-    //handles search data to give new data to table
+    //handles search data from searchinput to give new data to table
     window.addEventListener('searchData', this.handleSearch);
 
     //initialize header with server data instead of mock data.
@@ -104,22 +128,6 @@ var HeaderMain = React.createClass({
 
     //TODO add socket IO server refresh on refresh event. implimen this
     //on server side to broadcast change to client on receving new data.
-  },
-
-
-  //TODO call this function to reload last loaded page on the specific client
-  onServerPush : function() {
-    var loadtable = this.loadTable;
-    var id = this.state.id;
-
-    request
-    .get('tables/' + id)
-    .end(function(err, res){
-      if (err) console.log(err);
-      if (res.body) {
-        loadtable(res.body, id);
-      }
-    });
   },
 
   initializeHeader: function(){
@@ -137,28 +145,21 @@ var HeaderMain = React.createClass({
   },
 
   loadHeader: function(data){
-    this.setState({
-      units : data.units,
-      views : data.views,
-      id : data.units[0]._id,
-      name : data.units[0].name,
-    });
+
+      this.setState({
+        units : data.units,
+        views : data.views,
+        tableid : data.units[0].tableid,
+        name : data.units[0].name
+      });
+
   },
 
-  //transfer mock data from props to states
-  getInitialState: function() {
-    return {
-      units : this.props.headerData.units,
-      views : this.props.headerData.views,
-      id : this.props.headerData.units[0]._id,
-      name : this.props.headerData.units[0].name,
-      tableData : this.props.tableData,
-      isModalOpen: false
-    };
-  },
-
-  loadTableById: function(id) {
+  //TODO call this function to reload last loaded page on the specific client
+  onServerPush : function() {
     var loadtable = this.loadTable;
+    var id = this.state.tableid;
+
     request
     .get('tables/' + id)
     .end(function(err, res){
@@ -167,13 +168,39 @@ var HeaderMain = React.createClass({
         loadtable(res.body, id);
       }
     });
+  },
+
+
+  //transfer mock data from props to states
+  getInitialState: function() {
+    return {
+      units : this.props.headerData.units,
+      views : this.props.headerData.views,
+      tableid : this.props.headerData.units[0].tableid,
+      id: this.props.headerData.units[0]._id,
+      name : this.props.headerData.units[0].name,
+      tableData : this.props.tableData,
+      isModalOpen: false
+    };
+  },
+
+  loadTableById: function(tableid) {
+    var loadtable = this.loadTable;
+
+    request
+    .get('tables/' + tableid)
+    .end(function(err, res){
+      if (err) console.log(err);
+      if (res.body) {
+        loadtable(res.body);
+      }
+    });
 
   },
 
-  loadTable: function(data, id) {
+  loadTable: function(data) {
     this.setState({
-      tableData : data,
-      id : id
+      tableData : data
     });
   },
 
@@ -183,7 +210,7 @@ var HeaderMain = React.createClass({
       // console.log(key);
       return (
         <MenuItem
-          eventKey={key._id} key={index} > {key.name} </MenuItem>
+          eventKey={key.tableid} key={index} > {key.name} </MenuItem>
       );
     });
 
@@ -191,11 +218,11 @@ var HeaderMain = React.createClass({
       // console.log(key);
       return (
         <MenuItem
-          eventKey={key._id} key={index} > {key.name} </MenuItem>
+          eventKey={key.tableid} key={index} > {key.name} </MenuItem>
       );
     });
 
-    return (
+    var all = (
       <div>
         <Navbar
           brand={
@@ -243,6 +270,12 @@ var HeaderMain = React.createClass({
         <TableBox data={this.state.tableData} />
 
       </div>
+
+    );
+
+
+    return (
+      all
     );
   }
 

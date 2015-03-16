@@ -10,8 +10,14 @@ var UnitNameInput = React.createClass({
   getInitialState: function() {
     // console.log(this.props);
     return {
-      value:this.props.unitName
+      value: this.props.unitName
     };
+  },
+
+  componentDidUpdate: function(){
+    this.setState({
+      value: this.props.unitName
+    });
   },
 
   //debounced to send the post request when changes are finished
