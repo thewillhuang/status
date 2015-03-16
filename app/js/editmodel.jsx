@@ -32,6 +32,10 @@ var EditModals = React.createClass({
     };
   },
 
+  handleChange: function(){
+    
+  },
+
   render: function() {
 
     //TODO different menu items needs building

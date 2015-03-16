@@ -15,7 +15,7 @@ var UnitNameInput = React.createClass({
   },
 
   componentWillReceiveProps: function(nextProps){
-    console.log(nextProps);
+    // console.log(nextProps);
     this.setState({
       value: nextProps.unitName,
       id: nextProps.id
@@ -69,7 +69,10 @@ var UnitNameInput = React.createClass({
   },
 
   handleFocus: function() {
-    this.refs.unit.getInputDOMNode().select();
+    var element = this.refs.unit.getInputDOMNode();
+    setTimeout(function() {
+      element.select();
+      }, 0);
   },
 
   render: function() {

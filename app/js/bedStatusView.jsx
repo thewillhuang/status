@@ -44,7 +44,6 @@ var Cell = React.createClass({
   handleFocus: function() {
 
     this.refs.input.getInputDOMNode().select();
-    // React.findDOMNode(this.refs.input).select();
 
     this.broadcastAddress();
 

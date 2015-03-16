@@ -23,6 +23,13 @@ var SearchInput = React.createClass({
     };
   },
 
+  handleFocus: function() {
+    var element = this.refs.search.getInputDOMNode();
+    setTimeout(function() {
+      element.select();
+      }, 0);
+  },
+
   debouncedChange: function (name) {
     var dfd = vow.defer();
 
@@ -80,6 +87,7 @@ var SearchInput = React.createClass({
           className="search-query form-control"
           placeholder="Search Doctor or patient"
           onChange={this.handleChange}
+          onFocus={this.handleFocus}
           value={this.state.value}
           ref="search"
           addonAfter={<Glyphicon glyph="search" />} />

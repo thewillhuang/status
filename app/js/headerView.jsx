@@ -50,7 +50,6 @@ var HeaderMain = React.createClass({
 
   },
 
-  //gets called to update header name during loadTableById
   updateHeaderName: function(tableid) {
     // console.log(tableid);
     var name;
@@ -62,12 +61,13 @@ var HeaderMain = React.createClass({
       if (units[i].tableid === tableid){
         name = units[i].name;
         id = units[i]._id;
-      }
-    }
-    for (var j = 0; j < views.length; j++){
-      if (views[j].tableid === tableid){
-        name = views[j].name;
-        id = views[j]._id;
+      } else {
+        for (var j = 0; j < views.length; j++){
+          if (views[j].tableid === tableid){
+            name = views[j].name;
+            id = views[j]._id;
+          }
+        }
       }
     }
 
@@ -144,7 +144,8 @@ var HeaderMain = React.createClass({
         units : data.units,
         views : data.views,
         tableid : data.units[0].tableid,
-        name : data.units[0].name
+        name : data.units[0].name,
+        id: data.units[0]._id
       });
 
   },
@@ -180,6 +181,10 @@ var HeaderMain = React.createClass({
 
   loadTableById: function(tableid) {
     var loadtable = this.loadTable;
+
+    this.setState({
+      tableid: tableid
+    });
 
     request
     .get('tables/' + tableid)
