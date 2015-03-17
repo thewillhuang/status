@@ -144,10 +144,7 @@ var HeaderMain = React.createClass({
 
       this.setState({
         units : units,
-        views : views,
-        tableid : units[0].tableid,
-        name : units[0].name,
-        id: units[0]._id
+        views : views
       });
 
   },
@@ -184,28 +181,19 @@ var HeaderMain = React.createClass({
     // console.log(data);
     var array = [];
     for (var i = 0; i < data.length; i++) {
-      // console.log(data[i]);
-      // console.log(data[i].dropdown);
       if (data[i].dropdown === "units"){
-        // console.log(data[i]);
         array.push(data[i]);
-        // console.log(array);
       }
-      // console.log(array);
     }
     return array;
   },
 
   parseViewsFromHeader: function(data){
-    // console.log(data);
     var array = [];
     for (var i = 0; i < data.length; i++) {
-      // console.log(data[i]);
-      // console.log(data[i].dropdown);
       if (data[i].dropdown === "views"){
         array.push(data[i]);
       }
-      // console.log(array);
     }
       return array;
   },
