@@ -51,15 +51,17 @@ var UnitNameInput = React.createClass({
       var sendRequest = function() {
         obj.unit = result;
         // console.log(obj);
-        request
-        .post('/header/' + id)
-        .send(obj)
-        .end(function(error, res){
-          // console.log(error);
-        });
+        if (id) {
+          request
+          .post('/header/' + id)
+          .send(obj)
+          .end(function(error, res){
+            // console.log(error);
+          });
+        }
       };
 
-      sendRequest();
+        sendRequest();
 
     });
 

@@ -94,14 +94,14 @@ var HeaderMain = React.createClass({
       //loads a new header name with the given id
       this.updateHeaderName(eventKey);
 
-    } else if (key >= 0 && key < 5) { //handles event 1-4
+    } else if (key >= 0 && key < 5) { //handles event 1-4 by loading the modals
       this.handleToggle();
       this.setState({
         eventState : key
       });
     }
 
-    //TODO handle cog event 5 logout
+    //TODO handle cog event 5 logout for auth auth
 
   },
 
@@ -109,7 +109,8 @@ var HeaderMain = React.createClass({
     // console.log(data);
     this.loadTable(data.detail);
     this.setState({
-      name:"search result"
+      name:"Search Results",
+      id: ''
     });
   },
 

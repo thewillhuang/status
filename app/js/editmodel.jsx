@@ -107,10 +107,9 @@ var EditModals = React.createClass({
       </Modal>
     );
 
-    // console.log('eventKey',eventKey);
-
     // this part handles which modal will be rendered given an eventkey
     var eventKey = this.state.eventKey;
+    console.log('eventKey',eventKey);
     var load;
 
     var loadbyState = function(eventKey) {
