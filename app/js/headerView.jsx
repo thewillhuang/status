@@ -50,6 +50,7 @@ var HeaderMain = React.createClass({
 
   },
 
+  //updates the header name to coorolate with the current table being displayed.
   updateHeaderName: function(tableid) {
     // console.log(tableid);
     var name;
@@ -57,11 +58,14 @@ var HeaderMain = React.createClass({
     var units = this.state.units;
     var views = this.state.views;
     // console.log(units, views);
+
+    //find the actual object with the same id then set the name and nameid as the new
+    //header state going through units first
     for (var i = 0; i < units.length; i++){
       if (units[i].tableid === tableid){
         name = units[i].name;
         id = units[i]._id;
-      } else {
+      } else { // then go through views
         for (var j = 0; j < views.length; j++){
           if (views[j].tableid === tableid){
             name = views[j].name;
@@ -85,7 +89,9 @@ var HeaderMain = React.createClass({
     //handles requests with a given ID to load a new table,
     //ie swithcing from view 1 to view 2 or view 1 to  table 1
     if (key.length >= 20) {
+      //loads the corosponding table with a given id
       this.loadTableById(eventKey);
+      //loads a new header name with the given id
       this.updateHeaderName(eventKey);
 
     } else if (key >= 0 && key < 5) { //handles event 1-4
@@ -102,6 +108,9 @@ var HeaderMain = React.createClass({
   handleSearch: function(data) {
     // console.log(data);
     this.loadTable(data.detail);
+    this.setState({
+      name:"search result"
+    });
   },
 
   componentWillUnmount: function () {
