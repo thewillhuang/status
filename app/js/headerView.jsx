@@ -139,13 +139,15 @@ var HeaderMain = React.createClass({
   },
 
   loadHeader: function(data){
+    var units = this.parseUnitsFromHeader(this.props.headerData);
+    var views = this.parseViewsFromHeader(this.props.headerData);
 
       this.setState({
-        units : data.units,
-        views : data.views,
-        tableid : data.units[0].tableid,
-        name : data.units[0].name,
-        id: data.units[0]._id
+        units : units,
+        views : views,
+        tableid : units[0].tableid,
+        name : units[0].name,
+        id: units[0]._id
       });
 
   },
@@ -178,15 +180,47 @@ var HeaderMain = React.createClass({
     });
   },
 
+  parseUnitsFromHeader: function(data){
+    // console.log(data);
+    var array = [];
+    for (var i = 0; i < data.length; i++) {
+      // console.log(data[i]);
+      // console.log(data[i].dropdown);
+      if (data[i].dropdown === "units"){
+        // console.log(data[i]);
+        array.push(data[i]);
+        // console.log(array);
+      }
+      // console.log(array);
+    }
+    return array;
+  },
+
+  parseViewsFromHeader: function(data){
+    // console.log(data);
+    var array = [];
+    for (var i = 0; i < data.length; i++) {
+      // console.log(data[i]);
+      // console.log(data[i].dropdown);
+      if (data[i].dropdown === "views"){
+        array.push(data[i]);
+      }
+      // console.log(array);
+    }
+      return array;
+  },
 
   //transfer mock data from props to states
   getInitialState: function() {
+      var units = this.parseUnitsFromHeader(this.props.headerData);
+      var views = this.parseViewsFromHeader(this.props.headerData);
     return {
-      units : this.props.headerData.units,
-      views : this.props.headerData.views,
-      tableid : this.props.headerData.units[0].tableid,
-      id: this.props.headerData.units[0]._id,
-      name : this.props.headerData.units[0].name,
+      headerData: this.props.headerData,
+      units : units,
+      views : views,
+      tableid : units[0].tableid,
+      id: units[0]._id,
+      name : units[0].name,
       tableData : this.props.tableData,
       isModalOpen: false
     };
