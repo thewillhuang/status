@@ -209,7 +209,6 @@ var TableBox = React.createClass({
   handleKeyDown: function (event) {
     if (event.keyCode >= 37 && event.keyCode <= 40 ||
       event.keyCode === 9 || event.keyCode === 13) {
-        event.preventDefault();
 
     //down
     if (event.keyCode === 40 || event.keyCode === 13) {
@@ -266,6 +265,7 @@ var TableBox = React.createClass({
             focusCol:this.state.focusinfo.right
           });
         }
+        event.preventDefault();
       }
     },
 

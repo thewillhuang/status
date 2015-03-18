@@ -4,7 +4,7 @@
 var TableBox = require('./bedStatusView.jsx');
 var HeaderMain = require('./headerView.jsx');
 var React = require('react');
-window.React = React;
+var Select = require('react-select');
 
 // data.json
 var data  = require('../data/data.json');

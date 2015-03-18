@@ -4,6 +4,7 @@ var Modal = require('react-bootstrap/lib/Modal');
 var Button = require('react-bootstrap/lib/Button');
 var OverlayMixin = require('react-bootstrap/lib/OverlayMixin');
 var request = require('superagent');
+var Select = require('react-select');
 
 var React = require('react');
 
@@ -12,7 +13,8 @@ var EditModals = React.createClass({
 
   propTypes:{
     eventKey: React.PropTypes.number.isRequired,
-    id: React.PropTypes.string.isRequired
+    id: React.PropTypes.string.isRequired,
+    tableData: React.PropTypes.array.isRequired
   },
 
   handleToggle: function () {
@@ -28,7 +30,7 @@ var EditModals = React.createClass({
   getInitialState: function() {
     return {
       eventKey: this.props.eventKey,
-      id: this.props.id
+      id: this.props.id,
     };
   },
 
@@ -38,28 +40,77 @@ var EditModals = React.createClass({
 
   render: function() {
 
+    function logChange(val) {
+      console.log("Selected: " + val);
+    }
+
+    var options = [];
+    var data = this.props.tableData;
+    var makeOptionFromTable = function() {
+      // console.log(data);
+      var headerkey;
+      var roomMap = data.map(function(key,index) {
+
+        headerkey = Object.keys(key.data);
+
+      });
+
+      // console.log(headerkey);
+
+      for (var i = 0; i < headerkey.length; i++) {
+        // console.log(headerkey.length);
+        var obj = {};
+        // console.log(headerkey[i]);
+        obj.value = headerkey[i];
+        obj.label = headerkey[i];
+        // console.log(obj);
+        options.push(obj);
+        // console.log(options);
+      }
+
+    };
+
+    makeOptionFromTable();
+
+    var getOptions = function(input, callback) {
+      setTimeout(function() {
+          callback(null, {
+              options: options,
+              complete: true
+          });
+      }, 500);
+    };
+
+
+
+    // console.log(options);
+
     //TODO different menu items needs building
     var editTable = (
       <Modal bsStyle="primary"
         title="Edit Table"
         onRequestHide={this.handleToggle}>
         <div className="modal-body">
+
+          Choose Column Order
+
+              <Select
+                  name="form-field-name"
+                  multi={true}
+                  onChange={logChange}
+                  value="one"
+                  asyncOptions={getOptions}
+              />
+
+
+          <hr />
+
           Select How many Rows {this.state.editTableRowInput}
           <input type="range"
             ref="editTableRowChange"
             value={this.state.editTableRowInput}
             min="2"
             max="24"
-            step="1"
-            onChange={this.handleEditTableChange} />
-
-          <hr />
-          Select How many Columns
-          <input type="range"
-            ref="editTableColChange"
-            value={this.state.editTableRowInput}
-            min="2"
-            max="12"
             step="1"
             onChange={this.handleEditTableChange} />
 
