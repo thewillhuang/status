@@ -5,7 +5,6 @@ var Button = require('react-bootstrap/lib/Button');
 var OverlayMixin = require('react-bootstrap/lib/OverlayMixin');
 var request = require('superagent');
 var Select = require('react-select');
-
 var React = require('react');
 
 //renders the correct setting model and calls the backend api to update new settings.
@@ -34,21 +33,22 @@ var EditModals = React.createClass({
     };
   },
 
-  handleChange: function(){
-
+  setHeaderKey: function(array){
+    this.setState({
+      headerKey: array
+    });
+  },
+  logChange: function(val) {
+    console.log("Selected: " + val);
   },
 
-  render: function() {
-
-    function logChange(val) {
-      console.log("Selected: " + val);
-    }
-
-    var options = [];
+  getOptions: function(input, callback){
     var data = this.props.tableData;
+    var options = [];
+    var headerkey;
+    var set = this.setHeaderKey;
     var makeOptionFromTable = function() {
       // console.log(data);
-      var headerkey;
       var roomMap = data.map(function(key,index) {
 
         headerkey = Object.keys(key.data);
@@ -68,22 +68,28 @@ var EditModals = React.createClass({
         // console.log(options);
       }
 
+      // console.log(headerkey);
+
+      set(headerkey);
+
     };
 
     makeOptionFromTable();
 
-    var getOptions = function(input, callback) {
-      setTimeout(function() {
-          callback(null, {
-              options: options,
-              complete: true
-          });
-      }, 500);
-    };
+    setTimeout(function() {
+        callback(null, {
+            options: options,
+            complete: true
+        });
+    }, 500);
 
+  },
 
+  handleRowChange: function(){
 
-    // console.log(options);
+  },
+
+  render: function() {
 
     //TODO different menu items needs building
     var editTable = (
@@ -94,27 +100,39 @@ var EditModals = React.createClass({
 
           Choose Column Order
 
-              <Select
-                  name="form-field-name"
-                  multi={true}
-                  onChange={logChange}
-                  value="one"
-                  asyncOptions={getOptions}
-              />
-
+          <Select
+              name="form-field-name"
+              multi={true}
+              onChange={this.logChange}
+              value={this.state.headerKey}
+              asyncOptions={this.getOptions}
+          />
 
           <hr />
 
           Select How many Rows {this.state.editTableRowInput}
-          <input type="range"
-            ref="editTableRowChange"
-            value={this.state.editTableRowInput}
-            min="2"
-            max="24"
-            step="1"
-            onChange={this.handleEditTableChange} />
+
+          <input
+              type="range"
+              ref="editTableRow"
+              value={this.state.editTableRowInput}
+              min="2"
+              max="24"
+              step="1"
+              onChange={this.handleRowChange}
+            />
+
+          <hr />
+          Enter New Column name
+          <br />
+          <input
+            ref="newColumn"
+            value={this.state.columnchange}
+            onChange={this.handleColumnChange}
+          />
 
         </div>
+
         <div className="modal-footer">
           <Button onClick={this.handleToggle}>Close</Button>
           <Button bsStyle="primary">Save changes</Button>
