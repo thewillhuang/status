@@ -27,9 +27,16 @@ var EditModals = React.createClass({
   },
 
   getInitialState: function() {
+    var data = this.props.tableData;
+    var headerkey;
+    var roomMap = data.map(function(key,index) {
+      headerkey = Object.keys(key.data);
+    });
     return {
       eventKey: this.props.eventKey,
       id: this.props.id,
+      value: "",
+      headerKey: headerkey
     };
   },
 
@@ -38,55 +45,59 @@ var EditModals = React.createClass({
       headerKey: array
     });
   },
-  logChange: function(val) {
+  logChange: function(val, array) {
     console.log("Selected: " + val);
+    // console.log(array);
   },
 
   getOptions: function(input, callback){
-    var data = this.props.tableData;
     var options = [];
-    var headerkey;
-    var set = this.setHeaderKey;
+    var headerkey = this.state.headerKey;
     var makeOptionFromTable = function() {
-      // console.log(data);
-      var roomMap = data.map(function(key,index) {
-
-        headerkey = Object.keys(key.data);
-
-      });
-
-      // console.log(headerkey);
-
       for (var i = 0; i < headerkey.length; i++) {
-        // console.log(headerkey.length);
         var obj = {};
-        // console.log(headerkey[i]);
         obj.value = headerkey[i];
         obj.label = headerkey[i];
-        // console.log(obj);
         options.push(obj);
-        // console.log(options);
       }
-
-      // console.log(headerkey);
-
-      set(headerkey);
-
     };
-
     makeOptionFromTable();
-
     setTimeout(function() {
         callback(null, {
             options: options,
             complete: true
         });
     }, 500);
+  },
+
+  handleRowChange: function(e){
+    var value = e.target.value || null;
+    this.setState({
+      rowValue: value
+    });
+  },
+
+  handleColumnSubmit: function(e) {
+    console.log('onsubmit called');
+    e.preventDefault();
+    var value = this.state.columnValue || null;
+    var headerKey = this.state.headerKey;
+
+    headerKey.push(value);
+
+    this.setState({
+      headerKey: headerKey
+    });
 
   },
 
-  handleRowChange: function(){
+  handleColumnChange: function(e) {
+    console.log('onChange called');
+    var value = e.target.value || null;
 
+    this.setState({
+      columnValue: value
+    });
   },
 
   render: function() {
@@ -99,38 +110,39 @@ var EditModals = React.createClass({
         <div className="modal-body">
 
           Choose Column Order
-
           <Select
               name="form-field-name"
               multi={true}
               onChange={this.logChange}
-              value={this.state.headerKey}
+              value={undefined}
               asyncOptions={this.getOptions}
+              autoload={false}
           />
-
           <hr />
 
-          Select How many Rows {this.state.editTableRowInput}
+          Enter New Column name
+          <br/>
 
+          <form onSubmit={this.handleColumnSubmit}>
+            <input
+              ref="newColumn"
+              onChange={this.handleColumnChange}
+              value={this.state.columnValue} />
+              <br/>
+            <button>Add Column</button>
+          </form>
+          <hr />
+
+          Select How many Rows:  {this.state.rowValue}
           <input
               type="range"
               ref="editTableRow"
-              value={this.state.editTableRowInput}
-              min="2"
-              max="24"
+              value={this.state.rowValue}
+              min="0"
+              max="25"
               step="1"
               onChange={this.handleRowChange}
             />
-
-          <hr />
-          Enter New Column name
-          <br />
-          <input
-            ref="newColumn"
-            value={this.state.columnchange}
-            onChange={this.handleColumnChange}
-          />
-
         </div>
 
         <div className="modal-footer">
