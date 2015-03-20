@@ -118,7 +118,7 @@ var HeaderMain = React.createClass({
   },
 
   componentWillUnmount: function () {
-    window.removeEventListener('searchData', this.handleSearch);
+    window.removeEventListener('tableData', this.handleSearch);
     window.removeEventListener('modelToggle', this.handleToggle);
   },
 
@@ -128,7 +128,7 @@ var HeaderMain = React.createClass({
     window.addEventListener('modelToggle', this.handleToggle);
 
     //handles search data from searchinput to give new data to table
-    window.addEventListener('searchData', this.handleSearch);
+    window.addEventListener('tableData', this.handleSearch);
 
     //initialize header with server data instead of mock data.
     this.initializeHeader();

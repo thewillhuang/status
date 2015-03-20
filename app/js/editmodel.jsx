@@ -26,6 +26,14 @@ var EditModals = React.createClass({
     window.dispatchEvent(toggleEvent);
   },
 
+  sendTableData: function(array) {
+    var searchEvent = new CustomEvent('tableData', {
+      detail: array
+    });
+
+    window.dispatchEvent(searchEvent);
+  },
+
   getInitialState: function() {
     var data = this.props.tableData;
     var headerkey;
@@ -86,7 +94,8 @@ var EditModals = React.createClass({
     headerKey.push(value);
 
     this.setState({
-      headerKey: headerKey
+      headerKey: headerKey,
+      columnValue: ""
     });
 
   },

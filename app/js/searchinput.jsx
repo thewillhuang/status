@@ -9,9 +9,9 @@ var mockdata2  = require('../data/data.json');
 
 var SearchInput = React.createClass({
 
-  sendSearchData: function(obj) {
-    var searchEvent = new CustomEvent('searchData', {
-      detail: obj
+  sendSearchData: function(array) {
+    var searchEvent = new CustomEvent('tableData', {
+      detail: array
     });
 
     window.dispatchEvent(searchEvent);
