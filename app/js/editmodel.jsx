@@ -122,7 +122,7 @@ var EditModals = React.createClass({
   handleRowChange: function(e){
     var value = e.target.value || null;
     var headerKey = this.state.headerKey;
-    console.log(headerKey);
+    // console.log(headerKey);
     this.setState({
       rowValue: value
     });
