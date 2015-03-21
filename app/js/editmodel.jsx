@@ -62,13 +62,13 @@ var EditModals = React.createClass({
   //returns an array of objects.data and object.id that is unique for each row
   //with the input of new columns.
   generateTable: function(columnArray){
-    // console.log(columnArray);
+    var column = columnArray || this.state.headerKey;
     var numRow = this.state.rowValue;
     // console.log(numRow);
     var array = [];
   	var o = {};
 
-  	for (var i = 0; i < columnArray.length; i++) {
+  	for (var i = 0; i < column.length; i++) {
   		o[columnArray[i]] = "data" + i;
   	}
 
@@ -152,6 +152,11 @@ var EditModals = React.createClass({
     this.setState({
       columnValue: value
     });
+  },
+
+  //TODO need to write final function that will tell the server to make the changes
+  onTableSaveChange: function() {
+    console.log('submit all changes to server');
   },
 
   render: function() {
