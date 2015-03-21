@@ -42,7 +42,7 @@ var EditModals = React.createClass({
     var rowValue;
     var roomMap = data.map(function(key,index) {
       headerkey = Object.keys(key.data);
-      rowValue = index;
+      rowValue = index + 1;
     });
     return {
       eventKey: this.props.eventKey,
@@ -166,7 +166,7 @@ var EditModals = React.createClass({
     //TODO different menu items needs building
     var editTable = (
       <Modal bsStyle="primary"
-        title="Edit Table"
+        title="Edit Table Format (Rows and Column)"
         onRequestHide={this.handleToggle}>
         <div className="modal-body">
 
