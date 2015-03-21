@@ -6,6 +6,15 @@ var OverlayMixin = require('react-bootstrap/lib/OverlayMixin');
 var request = require('superagent');
 var Select = require('react-select');
 var React = require('react');
+var uuid = require('uuid');
+
+/**
+ * Fast UUID generator, RFC4122 version 4 compliant.
+ * @author Jeff Ward (jcward.com).
+ * @license MIT license
+ * @link http://stackoverflow.com/questions/105034/how-to-create-a-guid-uuid-in-javascript/21963136#21963136
+ **/
+
 
 //renders the correct setting model and calls the backend api to update new settings.
 var EditModals = React.createClass({
@@ -53,9 +62,39 @@ var EditModals = React.createClass({
       headerKey: array
     });
   },
-  logChange: function(val, array) {
-    console.log("Selected: " + val);
-    // console.log(array);
+
+  //returns an array of objects.data and object.id that is unique for each row
+  //with the input of new columns.
+  generateTable: function(columnArray){
+    var numRow = this.state.rowValue;
+    var array = [];
+    var o ={};
+
+    o.data = {};
+    for (var i = 0; i < columnArray.length; i++) {
+      o.data[columnArray[i]] = "text";
+      o.id = "";
+    }
+
+    for (var j = 0; j < numRow; j++) {
+      array.push(o);
+    }
+
+    for (var k = 0; k < array.length; k++) {
+      console.log(array[k]);
+      array[k].id = uuid();
+    }
+    console.log(array);
+
+    // this.sendTableData(array);
+
+  },
+
+  columnOrderOnChange: function(val, array) {
+    // console.log("Selected: " + val);
+    var newArray = val.split(",");
+    // console.log(newArray);
+    this.generateTable(newArray);
   },
 
   getOptions: function(input, callback){
@@ -80,9 +119,12 @@ var EditModals = React.createClass({
 
   handleRowChange: function(e){
     var value = e.target.value || null;
+    var headerKey = this.state.headerKey;
     this.setState({
       rowValue: value
     });
+
+    this.generateTable(headerKey);
   },
 
   handleColumnSubmit: function(e) {
@@ -122,7 +164,7 @@ var EditModals = React.createClass({
           <Select
               name="form-field-name"
               multi={true}
-              onChange={this.logChange}
+              onChange={this.columnOrderOnChange}
               value={undefined}
               asyncOptions={this.getOptions}
               autoload={false}

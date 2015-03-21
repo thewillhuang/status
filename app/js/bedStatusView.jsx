@@ -300,7 +300,7 @@ var TableBox = React.createClass({
 
     //parses the keyID out of the data object for each row.
     var idKey = this.props.data.map(function(key){
-      return key._id;
+      return key._id || key.id;
     });
 
     var assignID = function(array, index) {
