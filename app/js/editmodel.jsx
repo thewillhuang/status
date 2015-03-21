@@ -131,7 +131,7 @@ var EditModals = React.createClass({
   },
 
   handleColumnSubmit: function(e) {
-    console.log('onsubmit called');
+    // console.log('onsubmit called');
     e.preventDefault();
     var value = this.state.columnValue || null;
     var headerKey = this.state.headerKey;
@@ -146,7 +146,7 @@ var EditModals = React.createClass({
   },
 
   handleColumnChange: function(e) {
-    console.log('onChange called');
+    // console.log('onChange called');
     var value = e.target.value || null;
 
     this.setState({
