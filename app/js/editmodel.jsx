@@ -72,7 +72,7 @@ var EditModals = React.createClass({
     o.data = {};
 
     for (var i = 0; i < columnArray.length; i++) {
-      o.data[columnArray[i]] = "text";
+      o.data[columnArray[i]] = "data";
     }
 
     for (var j = 0; j < numRow; j++) {
@@ -82,9 +82,9 @@ var EditModals = React.createClass({
     for (var k = 0; k < array.length; k++) {
       array[k].id = uuid();
       console.log(numRow, k, array[k]);
+      console.log(array);
     }
 
-    console.log(array);
     // this.sendTableData(array);
 
   },
