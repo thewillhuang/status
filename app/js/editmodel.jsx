@@ -61,15 +61,15 @@ var EditModals = React.createClass({
 
   //returns an array of objects.data and object.id that is unique for each row
   //with the input of new columns.
-  generateTable: function(columnArray){
+  generateTable: function(columnArray, row){
     var column = columnArray || this.state.headerKey;
-    var numRow = this.state.rowValue;
-    // console.log(numRow);
+    var numRow = row;
+    // console.log('numRow', numRow);
     var array = [];
   	var o = {};
 
   	for (var i = 0; i < column.length; i++) {
-  		o[columnArray[i]] = "data" + i;
+  		o[columnArray[i]] = "example" + i;
   	}
 
   	for (var j = 0; j < numRow; j++) {
@@ -93,10 +93,11 @@ var EditModals = React.createClass({
 
   columnOrderSubmit: function(){
     var headerkey = transfer.columnOrderChange;
+    var row = this.state.rowValue;
     this.setState({
       headerKey: headerkey
     });
-    this.generateTable(headerkey);
+    this.generateTable(headerkey, row);
   },
 
   getOptions: function(input, callback){
@@ -122,12 +123,13 @@ var EditModals = React.createClass({
   handleRowChange: function(e){
     var value = e.target.value || null;
     var headerKey = this.state.headerKey;
-    // console.log(headerKey);
+    // console.log('row value', value);
+
+    this.generateTable(headerKey, value);
+
     this.setState({
       rowValue: value
     });
-
-    this.generateTable(headerKey);
   },
 
   handleColumnSubmit: function(e) {
@@ -201,7 +203,7 @@ var EditModals = React.createClass({
               type="range"
               ref="editTableRow"
               value={this.state.rowValue}
-              min="0"
+              min="1"
               max="25"
               step="1"
               onChange={this.handleRowChange}
