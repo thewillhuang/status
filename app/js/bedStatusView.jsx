@@ -323,7 +323,7 @@ var TableBox = React.createClass({
         <PatientRow
           room={key.data}
           key={index}
-          rowID={key._id}
+          rowID={key._id || key.id}
           prevID={assignID(idKey, index - 1)}
           nextID={assignID(idKey, index + 1)}
           allID = {idKey}
