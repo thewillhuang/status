@@ -67,25 +67,24 @@ var EditModals = React.createClass({
   //with the input of new columns.
   generateTable: function(columnArray){
     var numRow = this.state.rowValue;
+    var o = {};
     var array = [];
-    var o ={};
-
     o.data = {};
+
     for (var i = 0; i < columnArray.length; i++) {
       o.data[columnArray[i]] = "text";
-      o.id = "";
     }
 
     for (var j = 0; j < numRow; j++) {
-      array.push(o);
+      array[j] = o;
     }
 
     for (var k = 0; k < array.length; k++) {
-      console.log(array[k]);
       array[k].id = uuid();
+      console.log(numRow, k, array[k]);
     }
-    console.log(array);
 
+    console.log(array);
     // this.sendTableData(array);
 
   },
