@@ -210,7 +210,7 @@ var EditModals = React.createClass({
 
         <div className="modal-footer">
           <Button onClick={this.handleToggle}>Close</Button>
-          <Button onClick={this.onSaveChange}bsStyle="primary">Save changes</Button>
+          <Button onClick={this.onTableSaveChange}bsStyle="primary">Save changes</Button>
         </div>
       </Modal>
     );
