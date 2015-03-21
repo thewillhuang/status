@@ -37,14 +37,17 @@ var EditModals = React.createClass({
   getInitialState: function() {
     var data = this.props.tableData;
     var headerkey;
+    var rowValue;
     var roomMap = data.map(function(key,index) {
       headerkey = Object.keys(key.data);
+      rowValue = index;
     });
     return {
       eventKey: this.props.eventKey,
       id: this.props.id,
       value: "",
-      headerKey: headerkey
+      headerKey: headerkey,
+      rowValue: rowValue
     };
   },
 
@@ -57,8 +60,9 @@ var EditModals = React.createClass({
   //returns an array of objects.data and object.id that is unique for each row
   //with the input of new columns.
   generateTable: function(columnArray){
-    console.log(columnArray);
+    // console.log(columnArray);
     var numRow = this.state.rowValue;
+    console.log(numRow);
     var array = [];
   	var o = {};
 
@@ -75,15 +79,18 @@ var EditModals = React.createClass({
   			});
   	}
 
+    console.log(array);
     this.sendTableData(array);
+  },
+
+  columnOrderChange: function(val, array) {
+
+    var newArray = val.split(",");
 
   },
 
-  columnOrderOnChange: function(val, array) {
-    // console.log("Selected: " + val);
-    var newArray = val.split(",");
-    // console.log(newArray);
-    this.generateTable(newArray);
+  columnOrderSubmit: function(e){
+    console.log(e);
   },
 
   getOptions: function(input, callback){
@@ -109,6 +116,7 @@ var EditModals = React.createClass({
   handleRowChange: function(e){
     var value = e.target.value || null;
     var headerKey = this.state.headerKey;
+    console.log(headerKey);
     this.setState({
       rowValue: value
     });
@@ -153,24 +161,28 @@ var EditModals = React.createClass({
           <Select
               name="form-field-name"
               multi={true}
-              onChange={this.columnOrderOnChange}
               value={undefined}
+              onChange={this.columnOrderChange}
               asyncOptions={this.getOptions}
               autoload={false}
           />
+          <Button onClick={this.columnOrderSubmit} >
+            Change Column Order
+          </Button>
           <hr />
 
           Enter New Column name
           <br/>
 
-          <form onSubmit={this.handleColumnSubmit}>
             <input
               ref="newColumn"
               onChange={this.handleColumnChange}
               value={this.state.columnValue} />
-              <br/>
-            <button>Add Column</button>
-          </form>
+            <br/>
+            <Button onClick={this.handleColumnSubmit}>
+              Add Column
+            </Button>
+
           <hr />
 
           Select How many Rows:  {this.state.rowValue}
@@ -187,7 +199,7 @@ var EditModals = React.createClass({
 
         <div className="modal-footer">
           <Button onClick={this.handleToggle}>Close</Button>
-          <Button bsStyle="primary">Save changes</Button>
+          <Button onClick={this.onSaveChange}bsStyle="primary">Save changes</Button>
         </div>
       </Modal>
     );
