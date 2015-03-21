@@ -334,7 +334,7 @@ var TableBox = React.createClass({
     });
 
     //table head component constructor
-    console.log(headerKey);
+    // console.log(headerKey);
     var tableHead = headerKey.map(function(key, index) {
       return(
         <TableHead head={key} key={index} />
