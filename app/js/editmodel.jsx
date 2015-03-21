@@ -96,7 +96,7 @@ var EditModals = React.createClass({
     this.setState({
       headerKey: headerkey
     });
-    generateTable(headerkey);
+    this.generateTable(headerkey);
   },
 
   getOptions: function(input, callback){
