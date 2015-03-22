@@ -15,7 +15,9 @@ var EditModals = React.createClass({
   propTypes:{
     eventKey: React.PropTypes.number.isRequired,
     id: React.PropTypes.string.isRequired,
-    tableData: React.PropTypes.array.isRequired
+    tableData: React.PropTypes.array.isRequired,
+    headerUnits: React.PropTypes.array.isRequired,
+    headerViews: React.PropTypes.array.isRequired
   },
 
   handleToggle: function () {
@@ -44,12 +46,20 @@ var EditModals = React.createClass({
       headerkey = Object.keys(key.data);
       rowValue = index + 1;
     });
+    var props = this.props;
+    console.log(props.headerUnits, props.headerViews);
+
+    var hederMap = props.headerUnits.map(function(key,index) {
+      console.log(key);
+    });
     return {
       eventKey: this.props.eventKey,
       id: this.props.id,
       value: "",
       headerKey: headerkey,
-      rowValue: rowValue
+      rowValue: rowValue,
+      units: this.props.headerUnits,
+      views: this.props.headerViews
     };
   },
 
@@ -58,6 +68,9 @@ var EditModals = React.createClass({
       headerKey: array
     });
   },
+
+
+
 
   //returns an array of objects.data and object.id that is unique for each row
   //with the input of new columns.
@@ -120,6 +133,9 @@ var EditModals = React.createClass({
     }, 500);
   },
 
+
+
+
   handleRowChange: function(e){
     var value = e.target.value || null;
     var headerKey = this.state.headerKey;
@@ -131,6 +147,9 @@ var EditModals = React.createClass({
       rowValue: value
     });
   },
+
+
+
 
   handleColumnSubmit: function(e) {
     // console.log('onsubmit called');
@@ -156,9 +175,13 @@ var EditModals = React.createClass({
     });
   },
 
+
+
+
   //TODO need to write final function that will tell the server to make the changes
   onTableSaveChange: function() {
     console.log('submit all changes to server');
+    this.handleToggle();
   },
 
   render: function() {
@@ -217,10 +240,35 @@ var EditModals = React.createClass({
       </Modal>
     );
 
-    var editFloor = (
-      <Modal bsStyle="primary" title="Edit Floor" onRequestHide={this.handleToggle}>
+
+
+
+    var editUnit = (
+      <Modal bsStyle="primary" title="Edit Units" onRequestHide={this.handleToggle}>
         <div className="modal-body">
-          This modal is controlled by our custom trigger component.
+          <Select
+              name="form-field-name"
+              multi={true}
+              value={undefined}
+              onChange={this.onUnitChange}
+              asyncOptions={this.unitGetOptions}
+              autoload={false}
+          />
+        <Button onClick={this.onUnitSubmit} >
+            Modify Units
+          </Button>
+          <hr />
+          Enter New Unit
+          <br/>
+
+            <input
+              ref="newColumn"
+              onChange={this.handleColumnChange}
+              value={this.state.columnValue} />
+            <br/>
+            <Button onClick={this.handleColumnSubmit}>
+              Add Column
+            </Button>
         </div>
         <div className="modal-footer">
           <Button onClick={this.handleToggle}>Close</Button>
@@ -229,10 +277,35 @@ var EditModals = React.createClass({
       </Modal>
     );
 
+
+
+
     var editView = (
       <Modal bsStyle="primary" title="Edit View" onRequestHide={this.handleToggle}>
         <div className="modal-body">
-          This modal is controlled by our custom trigger component.
+          <Select
+              name="form-field-name"
+              multi={true}
+              value={undefined}
+              onChange={this.onViewChange}
+              asyncOptions={this.viewGetOptions}
+              autoload={false}
+          />
+        <Button onClick={this.onViewSubmit} >
+            Modify Views
+          </Button>
+          <hr />
+          Enter New View
+          <br/>
+
+            <input
+              ref="newColumn"
+              onChange={this.handleColumnChange}
+              value={this.state.columnValue} />
+            <br/>
+            <Button onClick={this.handleColumnSubmit}>
+              Add Column
+            </Button>
         </div>
         <div className="modal-footer">
           <Button onClick={this.handleToggle}>Close</Button>
@@ -240,6 +313,9 @@ var EditModals = React.createClass({
         </div>
       </Modal>
     );
+
+
+
 
     var staffOptimizer = (
       <Modal bsStyle="primary" title="Staff Optimizer" onRequestHide={this.handleToggle}>
@@ -264,7 +340,7 @@ var EditModals = React.createClass({
             load = editTable;
             break;
         case 2:
-            load = editFloor;
+            load = editUnit;
             break;
         case 3:
             load = editView;

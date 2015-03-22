@@ -48,7 +48,9 @@ var HeaderMain = React.createClass({
       <EditModel
         eventKey={this.state.eventState}
         id={this.state.tableid}
-        tableData={this.state.tableData}/>
+        tableData={this.state.tableData}
+        headerUnits={this.state.units}
+        headerViews={this.state.views}/>
     );
 
   },
