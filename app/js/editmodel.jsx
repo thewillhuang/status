@@ -7,7 +7,8 @@ var request = require('superagent');
 var Select = require('react-select');
 var React = require('react');
 var uuid = require('uuid');
-
+// var Selectize = require('./selectize.jsx');
+// require('selectize');
 var transfer = {};
 
 var EditModals = React.createClass({
@@ -47,10 +48,10 @@ var EditModals = React.createClass({
       rowValue = index + 1;
     });
     var props = this.props;
-    console.log(props.headerUnits, props.headerViews);
+    // console.log(props.headerUnits, props.headerViews);
 
     var hederMap = props.headerUnits.map(function(key,index) {
-      console.log(key);
+      // console.log(key);
     });
     return {
       eventKey: this.props.eventKey,
@@ -193,7 +194,7 @@ var EditModals = React.createClass({
         onRequestHide={this.handleToggle}>
         <div className="modal-body">
 
-          Choose Column Order
+          Choose Columns
           <Select
               name="form-field-name"
               multi={true}
@@ -247,28 +248,27 @@ var EditModals = React.createClass({
       <Modal bsStyle="primary" title="Edit Units" onRequestHide={this.handleToggle}>
         <div className="modal-body">
           <Select
-              name="form-field-name"
-              multi={true}
-              value={undefined}
-              onChange={this.onUnitChange}
-              asyncOptions={this.unitGetOptions}
-              autoload={false}
+            name="form-field-name"
+            multi={true}
+            value={undefined}
+            onChange={this.onUnitChange}
+            asyncOptions={this.unitGetOptions}
+            autoload={false}
           />
-        <Button onClick={this.onUnitSubmit} >
+          <Button onClick={this.onUnitSubmit} >
             Modify Units
           </Button>
-          <hr />
-          Enter New Unit
-          <br/>
 
-            <input
-              ref="newColumn"
-              onChange={this.handleColumnChange}
-              value={this.state.columnValue} />
-            <br/>
-            <Button onClick={this.handleColumnSubmit}>
-              Add Column
-            </Button>
+          <hr />
+
+          Enter New Unit <br/>
+          <input
+            ref="newColumn"
+            onChange={this.handleColumnChange}
+            value={this.state.columnValue} /> <br/>
+          <Button onClick={this.handleColumnSubmit}>
+            Add Column
+          </Button>
         </div>
         <div className="modal-footer">
           <Button onClick={this.handleToggle}>Close</Button>
@@ -320,7 +320,6 @@ var EditModals = React.createClass({
     var staffOptimizer = (
       <Modal bsStyle="primary" title="Staff Optimizer" onRequestHide={this.handleToggle}>
         <div className="modal-body">
-          This modal is controlled by our custom trigger component.
         </div>
         <div className="modal-footer">
           <Button onClick={this.handleToggle}>Close</Button>
