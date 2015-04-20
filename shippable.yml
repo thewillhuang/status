@@ -2,8 +2,8 @@
 language: node_js
 
 # # version numbers, testing against two versions of node
-# node_js:
-#   - 0.12.2
+node_js:
+  - 0.12.2
 
 services:
   - mongodb
