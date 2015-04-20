@@ -22,3 +22,6 @@ Every single hospital floor has a bed status board. The purpose of this board is
 <ul>
   <li>Change some status based on alarms, maybe getting input from some sensor.</li>
 </ul>
+
+
+test
