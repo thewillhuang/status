@@ -24,5 +24,6 @@ Every single hospital floor has a bed status board. The purpose of this board is
   <li>Change some status based on alarms, maybe getting input from some sensor.</li>
 </ul>
 
-
-test
+```bash
+docker stop $(docker ps -a -q) && docker rm $(docker ps -a -q) && docker rmi build && docker build -t "build" . && docker run -p 3000:8080 -i -t build
+```
