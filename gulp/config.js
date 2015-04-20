@@ -1,4 +1,5 @@
 'use strict';
+
 var dest = '../public';
 var src = '../app';
 var gulp = './gulp';
@@ -53,7 +54,7 @@ module.exports = {
     // nodemon our expressjs server
     script: '../server.js',
     // watch core server file(s) that require server restart on change
-    watch: ['../server.js'],
+    watch: ['../server.js', '../server/**/*'],
     env: { 'NODE_ENV': 'development' }
   },
   browserify: {
