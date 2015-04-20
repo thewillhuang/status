@@ -1,9 +1,12 @@
-# # language setting
-# language: node_js
-#
+# language setting
+language: node_js
+
 # # version numbers, testing against two versions of node
 # node_js:
 #   - 0.12.2
+
+services:
+  - mongodb
 
 script:
   - true
