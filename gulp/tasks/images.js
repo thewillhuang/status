@@ -6,6 +6,7 @@ var imagemin   = require('gulp-imagemin');
 var config     = require('../config').images;
 var browserSync  = require('browser-sync');
 var pngquant = require('imagemin-pngquant');
+var cache = require('gulp-cached');
 var opt = {
       optimizationLevel: 5,
       progressive: true,
@@ -14,6 +15,7 @@ var opt = {
 
 gulp.task('images', function() {
   return gulp.src(config.src)
+    .pipe(cache('images')) //cache files and skip unchanged files
     .pipe(changed(config.dest)) // Ignore unchanged files
     .pipe(imagemin(opt)) // Optimize
     .pipe(pngquant({quality: '65-80', speed: 3})())

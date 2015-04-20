@@ -6,7 +6,6 @@
 var gulp     = require('gulp');
 var config   = require('../config');
 // var watchify = require('./browserify');
-var livereload = require('gulp-livereload');
 
 gulp.task('watch', ['watchify', 'browserSync'], function() {
   gulp.watch(config.sass.src,   ['sass']);

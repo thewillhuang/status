@@ -3,7 +3,7 @@
   "requireMultipleVarDecl": null,
   "validateQuoteMarks": true,
   "disallowMultipleVarDecl": false,
-  "requireCamelCaseOrUpperCaseIdentifiers": "ignoreProperties"
+  "requireCamelCaseOrUpperCaseIdentifiers": "ignoreProperties",
   "esprima": "esprima-fb",
   "fileExtensions": [".js", ".jsx"],
 }

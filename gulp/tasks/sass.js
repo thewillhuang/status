@@ -6,9 +6,11 @@ var sass = require('gulp-sass');
 var autoprefixer = require('gulp-autoprefixer');
 var sourcemaps = require('gulp-sourcemaps');
 var config       = require('../config').sass;
+var cache = require('gulp-cached');
 
 gulp.task('sass', function() {
   return gulp.src(config.src)
+    .pipe(cache('sass')) //cache files and skip unchanged files
     // Convert sass into css
     .pipe(sass(config.settings))
     // Catch any SCSS errors and prevent them from crashing gulp

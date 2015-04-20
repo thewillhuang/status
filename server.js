@@ -1,56 +1,32 @@
 'use strict';
-var cluster = require('cluster');
-var http = require('http');
-var numCPUs = require('os').cpus().length;
+var express = require('express');
+var app = express();
+var port = process.argv[2] || process.env.PORT || 3000;
+var build = "/public";
+var bodyParser = require('body-parser');
+var mongoose = require('mongoose');
+var logger = require('morgan');
 
-if (cluster.isMaster) {
-  // Fork workers.
-  for (var i = 0; i < numCPUs; i++) {
-    cluster.fork();
-  }
+//connect with mongoDB
+mongoose.connect('mongodb://localhost/status');
 
-  cluster.on('exit', function(worker, code, signal) {
-    console.log('worker ' + worker.process.pid + ' died');
-  });
-} else {
+//initiate morgan to do logging
+app.use(logger('dev'));
 
-  var init = require('./config/init')(),
-  config   = require('./config/config'),
-  mongoose = require('mongoose'),
-  chalk    = require('chalk');
+//body parser for parsing jsons
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
-// db connection
-  var db = mongoose.connect(config.db.uri, config.db.options, function(err) {
-  if (err) {
-    console.error(chalk.red('Could not connect to MongoDB!'));
-    console.log(chalk.red(err));
-  }
-});
-  mongoose.connection.on('error', function(err) {
-  console.error(chalk.red('MongoDB connection error: ' + err));
-  process.exit(-1);
-});
+//static server
+app.use(express.static(__dirname + build));
 
-// Init the express application
-  var app = require('./config/express')(db);
+var api = express.Router();
+app.use('/api', api);
 
-// passport config
-  require('./config/passport')();
+//routes
+require('./server/routes/headerRoutes.js')(api);
+require('./server/routes/rowRoutes.js')(api);
+// require('./server/routes/userRoutes.js')(api);
 
-// Start the app by listening on <port>
-  app.listen(config.port);
-
-// Expose app
-  exports = module.exports = app;
-
-// Logging initialization
-  console.log('--');
-  console.log(chalk.green(config.app.title + ' application started'));
-  console.log(chalk.green('Environment:\t\t\t' + process.env.NODE_ENV));
-  console.log(chalk.green('Port:\t\t\t\t' + config.port));
-  console.log(chalk.green('Database:\t\t\t' + config.db.uri));
-  if (process.env.NODE_ENV === 'secure') {
-    console.log(chalk.green('HTTPs:\t\t\t\ton'));
-  }
-  console.log('--');
-}
+app.listen(port);
+console.log("server started listening on port %d", port);

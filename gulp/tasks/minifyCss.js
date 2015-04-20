@@ -7,7 +7,6 @@ var minifyCSS = require('gulp-minify-css');
 //this will enable uncss, to remove unused css, it will not work with react atm
 // var uncss = require('gulp-uncss');
 var size      = require('gulp-filesize');
-
 gulp.task('minifyCss', ['sass'], function() {
   return gulp.src(config.cssSrc)
     // .pipe(uncss({html:[markup.src]}))
