@@ -9,7 +9,11 @@ var compression = require('compression');
 module.exports = {
   browserSync: {
     proxy: 'http://localhost:3000',
-    port: 4004,  // use *different* port than above
+    // server: {
+    //   // Serve up our build folder
+    //   baseDir: dest,
+    //   middleware: [compression()]
+    // },
   },
   sass: {
     src: src + '/css/**/*.{sass,scss}',
