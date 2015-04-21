@@ -5,12 +5,12 @@
   "main": "server.js",
   "scripts": {
     "postinstall": "npm run version && npm run production",
-    "bower": "bower install",
+    "bower": "bower install --config.interactive=false",
     "version": "node -v",
-    "build": "cd gulp && npm install && NODE_ENV=development && gulp",
+    "build": "cd gulp && npm install && NODE_ENV=development && cd node_modules/gulp-sass/ && npm uninstall node-sass && npm install node-sass && gulp",
     "start": "node server",
     "test": "npm run production",
-    "production": "cd gulp && npm install && NODE_ENV=production && gulp production"
+    "production": "cd gulp && npm install && NODE_ENV=production && cd node_modules/gulp-sass/ && npm uninstall node-sass && npm install node-sass && gulp production"
   },
   "repository": {
     "type": "git",
