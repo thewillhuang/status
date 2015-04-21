@@ -60,4 +60,4 @@ USER nonroot
 ENV HOME /usr/local/nonroot
 
 # runs below command in WORKDIR when the images is ran.
-CMD npm install
+CMD npm install && forever server.js
