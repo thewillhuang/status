@@ -62,4 +62,4 @@ USER nonroot
 ENV HOME /usr/local/nonroot
 
 # runs below command in WORKDIR when the images is ran. do a git pull and npm install
-CMD git pull https://ff4f2f41db65174957d50fe1afabbcb56a625c5f:x-oauth-basic@github.com/thewillhuang/status.git && npm install
+CMD git pull https://ff4f2f41db65174957d50fe1afabbcb56a625c5f:x-oauth-basic@github.com/thewillhuang/status.git && cd /src && npm install

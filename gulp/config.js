@@ -9,6 +9,7 @@ var compression = require('compression');
 module.exports = {
   browserSync: {
     proxy: 'http://localhost:3000',
+    port: 8080
     // server: {
     //   // Serve up our build folder
     //   baseDir: dest,
