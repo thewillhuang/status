@@ -50,9 +50,11 @@ EXPOSE $PORT
 
 # add current directory from the host maching to docker WORKDIR
 #   s  dest
-ADD . ./
-RUN echo "checking source directory" && cd /src && ls
-RUN echo "checking source directory" && cd /src/gulp && ls
+# ADD . ./
+
+# or alternatively we can clone it.
+RUN git clone https://ff4f2f41db65174957d50fe1afabbcb56a625c5f:x-oauth-baseic@github.com/thewillhuang/status.git /src
+
 # make user and set /src as project folder with only user privelages. *running as root will make bower and npm go nuts*
 RUN /usr/sbin/useradd --create-home --home-dir /usr/local/nonroot --shell /bin/bash nonroot
 RUN chown -R nonroot /src
@@ -60,4 +62,4 @@ USER nonroot
 ENV HOME /usr/local/nonroot
 
 # runs below command in WORKDIR when the images is ran.
-CMD npm install
+CMD git pull https://ff4f2f41db65174957d50fe1afabbcb56a625c5f:x-oauth-baseic@github.com/thewillhuang/status.git && npm install
