@@ -4,6 +4,7 @@ var gulp      = require('gulp');
 var config    = require('../config').production;
 var markup = require('../config').markup;
 var minifyCSS = require('gulp-minify-css');
+// var uglifyCSS = require('gulp-uglifycss');
 //this will enable uncss, to remove unused css, it will not work with react atm
 // var uncss = require('gulp-uncss');
 var size      = require('gulp-filesize');
