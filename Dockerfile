@@ -52,8 +52,8 @@ EXPOSE $PORT
 #   s  dest
 # ADD . ./
 
-# or alternatively we can clone it.
-RUN git clone https://ff4f2f41db65174957d50fe1afabbcb56a625c5f:x-oauth-baseic@github.com/thewillhuang/status.git /src
+# or alternatively we can clone it using oauth token so theres no prompt in git clone.
+RUN git clone https://ff4f2f41db65174957d50fe1afabbcb56a625c5f:x-oauth-basic@github.com/thewillhuang/status.git /src
 
 # make user and set /src as project folder with only user privelages. *running as root will make bower and npm go nuts*
 RUN /usr/sbin/useradd --create-home --home-dir /usr/local/nonroot --shell /bin/bash nonroot
@@ -61,5 +61,5 @@ RUN chown -R nonroot /src
 USER nonroot
 ENV HOME /usr/local/nonroot
 
-# runs below command in WORKDIR when the images is ran.
-CMD git pull https://ff4f2f41db65174957d50fe1afabbcb56a625c5f:x-oauth-baseic@github.com/thewillhuang/status.git && npm install
+# runs below command in WORKDIR when the images is ran. do a git pull and npm install
+CMD git pull https://ff4f2f41db65174957d50fe1afabbcb56a625c5f:x-oauth-basic@github.com/thewillhuang/status.git && npm install
