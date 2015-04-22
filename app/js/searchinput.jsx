@@ -3,7 +3,7 @@ var vow = require('vow');
 var React = require('react');
 var request = require('superagent');
 var Input = require('react-bootstrap/lib/Input');
-var Glyphicon = require('react-bootstrap/lib/glyphicon');
+var Glyphicon = require('react-bootstrap/lib/Glyphicon');
 
 var mockdata2  = require('../data/data.json');
 

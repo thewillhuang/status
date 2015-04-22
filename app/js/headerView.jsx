@@ -10,7 +10,7 @@ var NavItem = require('react-bootstrap/lib/NavItem');
 var MenuItem = require('react-bootstrap/lib/MenuItem');
 var Input = require('react-bootstrap/lib/Input');
 var DropdownButton = require('react-bootstrap/lib/DropdownButton');
-var Glyphicon = require('react-bootstrap/lib/glyphicon');
+var Glyphicon = require('react-bootstrap/lib/Glyphicon');
 
 //modal compoments
 var OverlayMixin = require('react-bootstrap/lib/OverlayMixin');

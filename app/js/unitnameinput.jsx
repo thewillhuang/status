@@ -3,7 +3,7 @@ var React = require('react');
 var vow = require('vow');
 var request = require('superagent');
 var Input = require('react-bootstrap/lib/Input');
-var Glyphicon = require('react-bootstrap/lib/glyphicon');
+var Glyphicon = require('react-bootstrap/lib/Glyphicon');
 
 var UnitNameInput = React.createClass({
 
